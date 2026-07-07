@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mason Obegi — Resume</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 9pt;
+    color: #000;
+    background: #fff;
+    padding: 0.24in 0.52in;
+    max-width: 8.5in;
+    margin: 0 auto;
+    line-height: 1.23;
+  }
+  h1 {
+    text-align: center;
+    font-size: 15pt;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    margin-bottom: 3px;
+  }
+  .contact {
+    text-align: center;
+    font-size: 8.5pt;
+    margin-bottom: 6px;
+  }
+  .contact a { color: #1a0dab; text-decoration: none; }
+  .section-title {
+    font-size: 9.2pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 5px 0 2px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 1px;
+  }
+  .summary { font-size: 8.8pt; margin-bottom: 2px; }
+  .job { margin-bottom: 3px; }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .job-title { font-weight: bold; font-size: 9pt; }
+  .job-date { font-size: 8.8pt; white-space: nowrap; }
+  .job-sub { font-size: 8.5pt; color: #333; margin-bottom: 1px; }
+  .job-sub a { color: #1a0dab; text-decoration: none; }
+  ul { padding-left: 13px; margin-top: 1px; }
+  li { font-size: 8.8pt; margin-bottom: 0.5px; list-style-type: disc; }
+  .skills-row { font-size: 8.8pt; margin-bottom: 1px; }
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: bold;
+    font-size: 9pt;
+  }
+  .edu-detail { font-size: 8.8pt; margin-top: 1px; }
+  @media print {
+    body { padding: 0.22in 0.48in; }
+  }
+</style>
+</head>
+<body>
+
+<h1>MASON OBEGI</h1>
+<p class="contact">
+  Camas, WA &nbsp;&bull;&nbsp; (360) 921-0148 &nbsp;&bull;&nbsp;
+  <a href="mailto:mobegibusiness@gmail.com">mobegibusiness@gmail.com</a> &nbsp;&bull;&nbsp;
+  <a href="https://linkedin.com/in/mason-obegi-5a963b1ba">linkedin.com/in/mason-obegi-5a963b1ba</a> &nbsp;&bull;&nbsp;
+  <a href="https://github.com/masonobegi">github.com/masonobegi</a>
+</p>
+
+<div class="section-title">Experience</div>
+
+<div class="job">
+  <div class="job-header">
+    <span class="job-title">HP &mdash; Quality Engineer III</span>
+    <span class="job-date">Oct 2025 &ndash; Present</span>
+  </div>
+  <ul>
+    <li>Design and develop internal web applications to host automation tooling, giving testers a central place to launch, monitor, and share programs across the QE org.</li>
+    <li>Build automation systems that replace repetitive manual testing processes, improving coverage and freeing engineering time.</li>
+    <li>Rebuilt a degraded Power BI reporting database from the ground up, restoring reliable team-wide reporting on test results and product metrics.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-header">
+    <span class="job-title">HP &mdash; Test Specialist I</span>
+    <span class="job-date">Feb 2025 &ndash; Oct 2025</span>
+  </div>
+  <ul>
+    <li>Automated enterprise-level reporting pipelines using Python and R, improving efficiency, accuracy, and consistency across stakeholder workflows.</li>
+    <li>Built time series forecasts and statistical models in R to support data-driven planning and decision-making.</li>
+    <li>Developed prompt-engineering workflows for internal LLM tools and built dashboards and Tkinter desktop applications for internal stakeholders.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-header">
+    <span class="job-title">Molecular Testing Labs &mdash; Lab Automation Engineering Intern</span>
+    <span class="job-date">Jun 2023 &ndash; Apr 2024</span>
+  </div>
+  <ul>
+    <li>Developed computer vision pipelines using OpenCV and PIL.</li>
+    <li>Built machine learning models using TensorFlow and Keras; presented findings to executive leadership.</li>
+    <li>Created KPI dashboards using R Shiny and designed components in Autodesk Fusion 360.</li>
+  </ul>
+</div>
+
+<div class="section-title">Projects</div>
+
+<div class="job">
+  <div class="job-header">
+    <span class="job-title">Bootleggers &mdash; Real-Time Multiplayer Strategy Game</span>
+    <span class="job-date">Mar 2026 &ndash; Present</span>
+  </div>
+  <p class="job-sub">TypeScript, Node.js, Phaser 3, PostgreSQL, Socket.io, Railway &nbsp;&ndash;&nbsp; <a href="https://bootleggers.up.railway.app">bootleggers.up.railway.app</a></p>
+  <ul>
+    <li>Designed and built a full-stack real-time multiplayer strategy game &mdash; Phaser 3 frontend, Node.js + Socket.io backend &mdash; deployed on Railway.</li>
+    <li>Designed a normalized PostgreSQL schema with a hand-rolled idempotent migration runner; authored complex SQL for Google OAuth upsert, 24-column lifetime stat aggregation, and conditional logic for streak tracking.</li>
+    <li>Engineered a four-tier bot AI (Easy &ndash; Expert) with EV-driven scoring across builds, sprawls, gambles, and trades; Expert bots evaluate ~30 candidate moves per turn using forward-thinking heuristics, color-card probability modeling, and adversarial leader-targeting.</li>
+    <li>Authored a regression harness running 1,000+ simulated games per pass with 25,000+ behavioral invariants, catching strategy and state-machine bugs before deployment.</li>
+    <li>Built a trade evaluation engine simulating post-trade casino ownership and computing per-player expected income/VP deltas, preventing bots from accepting or proposing lopsided swaps.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-header">
+    <span class="job-title">Full-Stack Web Applications &mdash; E-Commerce &amp; Booking Platforms</span>
+    <span class="job-date">Mar 2026 &ndash; Present</span>
+  </div>
+  <p class="job-sub">Next.js, TypeScript, Prisma, PostgreSQL, Stripe, Resend, Sharp, Railway, Cloudflare &nbsp;&ndash;&nbsp; <a href="https://imadobegi.up.railway.app">imadobegi.up.railway.app</a> &nbsp;&middot;&nbsp; <a href="https://thepoochpitgrooming.com">thepoochpitgrooming.com</a></p>
+  <ul>
+    <li>Built two production web apps: a multi-section fine art storefront (photography prints, watercolors, sticker shop) and an appointment booking platform for a real grooming business &mdash; both live on custom domains with Cloudflare DNS/SSL and Railway-managed Postgres.</li>
+    <li>Engineered a scheduling availability engine with interval-overlap checks preventing double-bookings, configurable hours, and one-off/recurring time-off blocking; integrated a deposit + balance payment flow and transactional email notifications via Stripe and Resend.</li>
+    <li>Developed lightweight CMS dashboards for non-technical owners to edit content, pricing, policies, photos, and reviews &mdash; changes cascade site-wide instantly, backed by a settings store with safe defaults.</li>
+    <li>Automated image-processing pipeline using Sharp and Python (pillow-heif) for watermarking and HEIC conversion; implemented secure cookie-based auth, Open Graph/SEO, and fully responsive mobile design across both platforms.</li>
+  </ul>
+</div>
+
+<div class="section-title">Technical Skills</div>
+<p class="skills-row"><b>Languages:</b> Python, TypeScript, JavaScript, R, SQL, Java, C++</p>
+<p class="skills-row"><b>Frontend:</b> React, Next.js, Tailwind CSS, Phaser 3</p>
+<p class="skills-row"><b>Backend &amp; Data:</b> Node.js, PostgreSQL, Prisma, Socket.io, REST APIs, Streamlit, Tkinter, Shiny</p>
+<p class="skills-row"><b>ML &amp; Analytics:</b> TensorFlow, Keras, PyTorch, OpenCV, Pandas, Scikit-Learn, Forecasting, Statistical Modeling, Tableau, Power BI</p>
+<p class="skills-row"><b>Tools &amp; Math:</b> Git, GitHub, Railway, Cloudflare, Excel, VS Code, Autodesk Fusion 360 &nbsp;&middot;&nbsp; Statistics, Linear Algebra, Calculus</p>
+
+<div class="section-title">Education</div>
+<div class="edu-header">
+  <span>Washington State University</span>
+  <span>2024</span>
+</div>
+<p class="edu-detail">B.S. Data Analytics &nbsp;&bull;&nbsp; Minor in Mathematics &nbsp;&bull;&nbsp; Minor in Criminal Justice &nbsp;&bull;&nbsp; GPA: 3.62 / 4.00 &nbsp;&bull;&nbsp; 2024 Outstanding Data Analytics Student Award</p>
+
+</body>
+</html>

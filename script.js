@@ -31,8 +31,8 @@ const PROJECTS = [
       "A browser-based, real-time multiplayer build of the tabletop game Lords of Vegas, where players fight over Vegas casinos for points. An authoritative Node/TypeScript server runs the full rules engine and Socket.IO rooms, with difficulty-tunable AI opponents and a Phaser + Three.js board.",
     tags: ["TypeScript", "Socket.IO", "Node", "Phaser", "PostgreSQL"],
     image: "images/bootleggers.png",
-    live: "",   // TODO: paste the public URL
-    code: "",   // TODO: paste the GitHub repo URL
+    live: "https://bootleggers.up.railway.app",
+    code: "",
     featured: true,
   },
   {
@@ -95,7 +95,7 @@ const PROJECTS = [
       "An e-commerce storefront for a photographer, selling fine-art prints with Stripe checkout.",
     tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
     image: "images/imad-website.png",
-    live: "",
+    live: "https://imadobegi.up.railway.app",
     code: "",
     featured: true,
   },
@@ -106,7 +106,7 @@ const PROJECTS = [
       "A booking-and-deposit website for a dog & cat grooming business, with an admin dashboard for managing appointments.",
     tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
     image: "images/jaidyn-website.png",
-    live: "",
+    live: "https://thepoochpitgrooming.com",
     code: "",
     featured: true,
   },

@@ -296,6 +296,24 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
 .education p { color: var(--muted); font-size: 0.92rem; max-width: 68ch; }
 .education strong { color: var(--text); font-weight: 600; }
 
+/* ===== Skills ===== */
+.skills h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.75rem; }
+.skills-list { display: flex; flex-direction: column; }
+.skill-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--border);
+}
+.skill-row:last-child { border-bottom: 1px solid var(--border); }
+.skill-row dt { font-weight: 600; font-size: 0.9rem; }
+.skill-row dd { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+
+@media (max-width: 780px) {
+  .skill-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
 /* ===== Contact ===== */
 .contact { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); }
 .contact h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
