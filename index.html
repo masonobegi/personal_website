@@ -22,10 +22,14 @@
       <h1>Mason Obegi</h1>
       <h2>I build things for the web.</h2>
       <p class="hero-sub">
-        Software engineer focused on building clean, functional web applications.
-        Currently looking for new opportunities.
+        Software engineer who builds real-time multiplayer games, full-stack apps,
+        and websites for real clients. Currently looking for new opportunities.
       </p>
-      <a class="btn" href="#contact">Get in touch</a>
+      <div class="hero-actions">
+        <a class="btn" href="#projects">See my work</a>
+        <!-- Social icons are generated from the SOCIALS config in script.js -->
+        <div class="socials" id="socials"></div>
+      </div>
     </div>
   </header>
 
@@ -33,36 +37,19 @@
     <section id="about" class="section">
       <h3 class="section-title"><span>01.</span> About Me</h3>
       <p>
-        I'm a developer who enjoys turning ideas into real, working software.
-        This page is a work in progress — projects and more are on the way.
+        I'm a developer who enjoys turning ideas into real, working software —
+        from Discord games and digital board-game adaptations to inventory apps
+        and client websites. I like shipping things people actually use.
       </p>
     </section>
 
-    <section id="projects" class="section">
+    <section id="projects" class="section section-wide">
       <h3 class="section-title"><span>02.</span> Projects</h3>
-      <div class="projects-grid">
-        <article class="project-card">
-          <h4>Project One</h4>
-          <p>A short description of what this project does and why it matters.</p>
-          <div class="tags">
-            <span>HTML</span><span>CSS</span><span>JavaScript</span>
-          </div>
-        </article>
-        <article class="project-card">
-          <h4>Project Two</h4>
-          <p>A short description of what this project does and why it matters.</p>
-          <div class="tags">
-            <span>React</span><span>Node</span>
-          </div>
-        </article>
-        <article class="project-card">
-          <h4>Project Three</h4>
-          <p>A short description of what this project does and why it matters.</p>
-          <div class="tags">
-            <span>Python</span>
-          </div>
-        </article>
-      </div>
+
+      <!-- Everything below is rendered by script.js from the PROJECTS list.
+           To add a project, edit that list — no HTML changes needed. -->
+      <div id="featured" class="featured"></div>
+      <div id="project-groups"></div>
     </section>
 
     <section id="contact" class="section contact">
@@ -72,6 +59,7 @@
         I'll get back to you.
       </p>
       <a class="btn" href="mailto:mason.obegi@gmail.com">Say Hello</a>
+      <div class="socials socials-center" id="socials-contact"></div>
     </section>
   </main>
 
