@@ -201,12 +201,12 @@ function render() {
   const featured = PROJECTS.filter((p) => p.featured);
   document.getElementById("featured").innerHTML = featured.map(featuredCard).join("");
 
-  // Grouped grid (everything not featured), in CATEGORY_ORDER
-  const rest = PROJECTS.filter((p) => !p.featured);
+  // Grouped grid (ALL projects, including featured ones), in CATEGORY_ORDER.
+  // Featured projects show big at the top AND again inside their category.
   const groupsEl = document.getElementById("project-groups");
   let html = "";
   for (const category of CATEGORY_ORDER) {
-    const items = rest.filter((p) => p.category === category);
+    const items = PROJECTS.filter((p) => p.category === category);
     if (!items.length) continue;
     html += `
       <div class="project-group">
