@@ -16,15 +16,15 @@
     <nav class="nav-links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
-      <a href="#resume" id="resume-link">Resume</a>
+      <a href="resume.pdf" id="resume-link" target="_blank" rel="noopener">Resume</a>
       <a href="#contact">Contact</a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme"></button>
     </nav>
   </header>
 
   <main id="top">
-    <!-- HERO / ABOUT -->
-    <section class="hero" id="about">
+    <!-- HERO -->
+    <section class="hero" id="intro">
       <div class="hero-text">
         <h1>Hi, I'm Mason Obegi.</h1>
         <p class="role">Software Engineer</p>
@@ -40,6 +40,39 @@
           <span class="hero-placeholder">Add images/hero.jpg</span>
           <img src="images/hero.jpg" alt="Mason Obegi" onerror="this.remove()" />
         </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+      <h2>About</h2>
+      <div class="about-body">
+        <p>
+          I'm a software engineer and Washington State University Data Analytics
+          graduate (3.62 GPA, minors in Mathematics and Criminal Justice).
+          By day I'm a Quality Engineer at HP, where I build internal web tools
+          and test-automation programs, rebuild data infrastructure, and turn
+          ambiguous business and regulatory requirements into reliable tooling
+          and reporting.
+        </p>
+        <p>
+          On my own time I build things end to end. I've shipped production
+          websites for real clients — like The Pooch Pit, a dog-grooming booking
+          platform with Stripe deposits, a double-booking-proof availability
+          engine, transactional email, and a no-code admin dashboard the owner
+          runs herself, all deployed on PostgreSQL and Prisma with Cloudflare DNS
+          and SSL. I've also built real-time multiplayer adaptations of tabletop
+          games like Lords of Vegas and Betrayal on authoritative game servers,
+          Discord Activity games, and a full-stack cigar-collection PWA with
+          native iOS and Android builds.
+        </p>
+        <p>
+          I work across the stack in TypeScript, React, Node, and Next.js, with a
+          data background in Python and R. I like hard problems and shipping
+          things people actually use.
+        </p>
       </div>
     </section>
 
