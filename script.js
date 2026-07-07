@@ -28,8 +28,8 @@ const PROJECTS = [
     title: "Bootleggers",
     category: "Board Game Adaptations",
     description:
-      "A digital reskin of the board game Lords of Vegas — full multiplayer game logic, turns, and scoring playable in the browser.",
-    tags: ["JavaScript", "Node", "Real-time"],
+      "A browser-based, real-time multiplayer build of the tabletop game Lords of Vegas, where players fight over Vegas casinos for points. An authoritative Node/TypeScript server runs the full rules engine and Socket.IO rooms, with difficulty-tunable AI opponents and a Phaser + Three.js board.",
+    tags: ["TypeScript", "Socket.IO", "Node", "Phaser", "PostgreSQL"],
     image: "images/bootleggers.png",
     live: "",   // TODO: paste the public URL
     code: "",   // TODO: paste the GitHub repo URL
@@ -39,8 +39,8 @@ const PROJECTS = [
     title: "Cigar Maps",
     category: "Apps",
     description:
-      "A cigar inventory app for tracking a collection — add, browse, and manage cigars with a clean interface and persistent storage.",
-    tags: ["Full-stack", "Database"],
+      "A full-stack PWA for cigar lovers: browse nearby lounges on an interactive map, track your collection, log tasting reviews, and follow store deals. Backed by a PostgreSQL API with JWT auth and store-owner dashboards, and wrapped with Capacitor for native iOS/Android builds.",
+    tags: ["React", "Vite", "Express", "PostgreSQL", "Leaflet"],
     image: "images/cigar-maps.png",
     live: "",
     code: "",
@@ -50,8 +50,8 @@ const PROJECTS = [
     title: "Discord Soccer",
     category: "Discord Games",
     description:
-      "A multiplayer soccer game that runs inside Discord — players compete in real time directly through the bot.",
-    tags: ["Discord API", "Node", "Game"],
+      "A two-player penalty-shootout party game that runs as a Discord Activity, with momentum-powered special abilities. Playable versus a bot, pass-and-play, or online in real time over WebSockets.",
+    tags: ["JavaScript", "Node", "WebSockets", "Discord SDK"],
     image: "images/discord-soccer.png",
     live: "",
     code: "",
@@ -61,8 +61,8 @@ const PROJECTS = [
     title: "Betrayal",
     category: "Board Game Adaptations",
     description:
-      "A digital adaptation of the board game Betrayal — exploration, events, and the traitor mechanic, rebuilt for online play.",
-    tags: ["JavaScript", "Node", "Real-time"],
+      "An online multiplayer engine for Betrayal at House on the Hill, built on a server-authoritative rules architecture with a framework-free HTML5 Canvas client and procedural audio.",
+    tags: ["Node", "WebSocket", "Vanilla JS", "Canvas"],
     image: "images/betrayal.png",
     live: "",
     code: "",
@@ -72,8 +72,8 @@ const PROJECTS = [
     title: "Best of 5",
     category: "Discord Games",
     description:
-      "A competitive best-of-five game built for Discord, played through the bot with match tracking.",
-    tags: ["Discord API", "Node", "Game"],
+      "A best-of-five Discord duel that rotates through Connect 4, Checkers, Battleship, Chess, and mini golf — first to three games wins. Full Discord Activity integration.",
+    tags: ["JavaScript", "Node", "WebSockets", "Discord SDK"],
     image: "images/bestof5.png",
     live: "",
     code: "",
@@ -82,28 +82,28 @@ const PROJECTS = [
     title: "Gibbs Prudential",
     category: "Client Work",
     description:
-      "A business website built and deployed for a real client.",
-    tags: ["Web", "Client"],
+      "A marketing site and password-protected admin dashboard for a wealth-management advisory firm.",
+    tags: ["Next.js", "React", "Tailwind", "PostgreSQL"],
     image: "images/gibbs-prudential.png",
     live: "",
     code: "",
   },
   {
-    title: "Imad Website",
+    title: "Imad Photography",
     category: "Client Work",
     description:
-      "A website built and deployed for a real client.",
-    tags: ["Web", "Client"],
+      "An e-commerce storefront for a photographer, selling fine-art prints with Stripe checkout.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
     image: "images/imad-website.png",
     live: "",
     code: "",
   },
   {
-    title: "Jaidyn Website",
+    title: "The Pooch Pit",
     category: "Client Work",
     description:
-      "A website built and deployed for a real client.",
-    tags: ["Web", "Client"],
+      "A booking-and-deposit website for a dog & cat grooming business, with an admin dashboard for managing appointments.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
     image: "images/jaidyn-website.png",
     live: "",
     code: "",
