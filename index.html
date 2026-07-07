@@ -3,69 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mason Obegi</title>
+  <title>Mason Obegi — Software Engineer</title>
+  <meta name="description" content="Mason Obegi — software engineer building real-time multiplayer games, full-stack apps, and websites for real clients." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <nav class="nav">
-      <span class="logo">MO</span>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <div class="layout">
+    <!-- LEFT PANEL — always visible on desktop (this is the About) -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <div class="headshot">
+          <span>MO</span>
+          <img src="images/headshot.jpg" alt="Mason Obegi" onerror="this.remove()" />
+        </div>
 
-    <div class="hero-content">
-      <p class="eyebrow">Hi, my name is</p>
-      <h1>Mason Obegi</h1>
-      <h2>I build things for the web.</h2>
-      <p class="hero-sub">
-        Software engineer who builds real-time multiplayer games, full-stack apps,
-        and websites for real clients. Currently looking for new opportunities.
-      </p>
-      <div class="hero-actions">
-        <a class="btn" href="#projects">See my work</a>
-        <!-- Social icons are generated from the SOCIALS config in script.js -->
+        <p class="status"><span class="dot"></span> Available for work</p>
+
+        <h1>Mason Obegi</h1>
+        <p class="role">Software Engineer</p>
+
+        <p class="bio">
+          I build real-time multiplayer games, full-stack apps, and websites for
+          real clients — from digital board-game adaptations to Stripe-powered
+          storefronts. I like shipping things people actually use.
+        </p>
+
         <div class="socials" id="socials"></div>
+
+        <div class="sidebar-actions">
+          <a class="btn" href="mailto:mason.obegi@gmail.com">Get in touch</a>
+          <a class="btn btn-ghost" href="#" id="resume-link">Résumé</a>
+        </div>
       </div>
-    </div>
-  </header>
+    </aside>
 
-  <main>
-    <section id="about" class="section">
-      <h3 class="section-title"><span>01.</span> About Me</h3>
-      <p>
-        I'm a developer who enjoys turning ideas into real, working software —
-        from Discord games and digital board-game adaptations to inventory apps
-        and client websites. I like shipping things people actually use.
-      </p>
-    </section>
+    <!-- RIGHT COLUMN — projects visible immediately -->
+    <main class="content">
+      <section id="projects">
+        <div class="content-head">
+          <h2>Selected Work</h2>
+          <p class="content-sub">A mix of games, full-stack apps, and client websites.</p>
+        </div>
 
-    <section id="projects" class="section section-wide">
-      <h3 class="section-title"><span>02.</span> Projects</h3>
+        <!-- Rendered by script.js from the PROJECTS list -->
+        <div id="featured" class="card-grid"></div>
+        <div id="project-groups"></div>
+      </section>
 
-      <!-- Everything below is rendered by script.js from the PROJECTS list.
-           To add a project, edit that list — no HTML changes needed. -->
-      <div id="featured" class="featured"></div>
-      <div id="project-groups"></div>
-    </section>
+      <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <p>I'm currently open to new opportunities — feel free to reach out.</p>
+        <a class="btn" href="mailto:mason.obegi@gmail.com">Say Hello</a>
+      </section>
 
-    <section id="contact" class="section contact">
-      <h3 class="section-title"><span>03.</span> Get In Touch</h3>
-      <p>
-        I'm currently open to new opportunities. Feel free to reach out and
-        I'll get back to you.
-      </p>
-      <a class="btn" href="mailto:mason.obegi@gmail.com">Say Hello</a>
-      <div class="socials socials-center" id="socials-contact"></div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>Built by Mason Obegi &middot; <span id="year"></span></p>
-  </footer>
+      <footer class="footer">
+        <span>© <span id="year"></span> Mason Obegi</span>
+      </footer>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>

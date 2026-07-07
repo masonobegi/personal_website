@@ -160,30 +160,23 @@ function thumbHtml(p) {
     </div>`;
 }
 
-function statusHtml(p) {
-  return p.status ? `<span class="badge">${p.status}</span>` : "";
+function badgesHtml(p, showFeatured) {
+  const b = [];
+  if (showFeatured && p.featured) b.push(`<span class="badge badge-featured">Featured</span>`);
+  if (p.status) b.push(`<span class="badge badge-status">${p.status}</span>`);
+  return b.join("");
 }
 
-function featuredCard(p) {
+// One card style everywhere. showFeatured=true adds the "Featured" pill + accent ring.
+function card(p, showFeatured) {
   return `
-    <article class="feature-card">
-      ${thumbHtml(p)}
-      <div class="feature-body">
-        <p class="eyebrow">Featured Project</p>
-        <h4>${p.title} ${statusHtml(p)}</h4>
-        <p>${p.description}</p>
-        ${tagsHtml(p.tags)}
-        ${linksHtml(p)}
-      </div>
-    </article>`;
-}
-
-function gridCard(p) {
-  return `
-    <article class="project-card">
+    <article class="card${showFeatured && p.featured ? " is-featured" : ""}">
       ${thumbHtml(p)}
       <div class="card-body">
-        <h4>${p.title} ${statusHtml(p)}</h4>
+        <div class="card-title">
+          <h3>${p.title}</h3>
+          ${badgesHtml(p, showFeatured)}
+        </div>
         <p>${p.description}</p>
         ${tagsHtml(p.tags)}
         ${linksHtml(p)}
@@ -192,17 +185,15 @@ function gridCard(p) {
 }
 
 function render() {
-  // Social icons (hero + contact)
-  const s = socialsHtml();
-  document.getElementById("socials").innerHTML = s;
-  document.getElementById("socials-contact").innerHTML = s;
+  // Social icons (sidebar)
+  document.getElementById("socials").innerHTML = socialsHtml();
 
-  // Featured row
+  // Featured grid (shown first, highlighted)
   const featured = PROJECTS.filter((p) => p.featured);
-  document.getElementById("featured").innerHTML = featured.map(featuredCard).join("");
+  document.getElementById("featured").innerHTML =
+    featured.map((p) => card(p, true)).join("");
 
-  // Grouped grid (ALL projects, including featured ones), in CATEGORY_ORDER.
-  // Featured projects show big at the top AND again inside their category.
+  // Grouped grid (ALL projects, including featured), in CATEGORY_ORDER.
   const groupsEl = document.getElementById("project-groups");
   let html = "";
   for (const category of CATEGORY_ORDER) {
@@ -210,8 +201,8 @@ function render() {
     if (!items.length) continue;
     html += `
       <div class="project-group">
-        <h4 class="group-title">${category}</h4>
-        <div class="projects-grid">${items.map(gridCard).join("")}</div>
+        <h3 class="group-title">${category}</h3>
+        <div class="card-grid">${items.map((p) => card(p, false)).join("")}</div>
       </div>`;
   }
   groupsEl.innerHTML = html;
