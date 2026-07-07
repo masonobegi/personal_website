@@ -44,7 +44,7 @@ const PROJECTS = [
     image: "images/cigar-maps.png",
     live: "",
     code: "",
-    featured: true,
+    status: "In progress",
   },
   {
     title: "Discord Soccer",
@@ -55,7 +55,6 @@ const PROJECTS = [
     image: "images/discord-soccer.png",
     live: "",
     code: "",
-    featured: true,
   },
   {
     title: "Betrayal",
@@ -87,6 +86,7 @@ const PROJECTS = [
     image: "images/gibbs-prudential.png",
     live: "",
     code: "",
+    featured: true,
   },
   {
     title: "Imad Photography",
@@ -97,6 +97,7 @@ const PROJECTS = [
     image: "images/imad-website.png",
     live: "",
     code: "",
+    featured: true,
   },
   {
     title: "The Pooch Pit",
@@ -107,6 +108,7 @@ const PROJECTS = [
     image: "images/jaidyn-website.png",
     live: "",
     code: "",
+    featured: true,
   },
 ];
 
