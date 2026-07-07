@@ -267,6 +267,35 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
   border-radius: 20px;
 }
 
+/* ===== Experience ===== */
+.experience h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2rem; }
+
+.exp-list { display: flex; flex-direction: column; gap: 2.25rem; }
+
+.exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; }
+
+.exp-meta { display: flex; flex-direction: column; gap: 0.25rem; }
+.exp-date { font-size: 0.82rem; color: var(--muted-dim); }
+.exp-company { font-size: 0.95rem; font-weight: 600; }
+
+.exp-detail h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 0.65rem; }
+.exp-prev { font-weight: 400; color: var(--muted-dim); font-size: 0.85rem; }
+
+.exp-detail ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.exp-detail li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.exp-detail li::before { content: "—"; position: absolute; left: 0; color: var(--muted-dim); }
+
+.education { margin-top: 2.75rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.edu-title { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted-dim); margin-bottom: 0.75rem; }
+.education p { color: var(--muted); font-size: 0.92rem; max-width: 68ch; }
+.education strong { color: var(--text); font-weight: 600; }
+
 /* ===== Contact ===== */
 .contact { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); }
 .contact h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
@@ -300,6 +329,8 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
   .hero-image { aspect-ratio: 16 / 10; }
   .nav-links { gap: 1.1rem; }
   .nav-links a { font-size: 0.82rem; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+  .exp-meta { flex-direction: row; align-items: baseline; gap: 0.75rem; }
 }
 
 @media (max-width: 480px) {
