@@ -9,8 +9,8 @@
 
 // --- Your links (edit these) ---------------------------------------------
 const SOCIALS = {
-  github:   "https://github.com/masonobegi",
-  linkedin: "https://www.linkedin.com/in/YOUR-HANDLE", // TODO: paste your real LinkedIn URL
+  github:   "https://github.com/masonobegi?tab=repositories",
+  linkedin: "https://www.linkedin.com/in/mason-obegi-5a963b1ba/",
   email:    "mason.obegi@gmail.com",
 };
 

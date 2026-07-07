@@ -264,6 +264,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
 .contact { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); }
 .contact h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
 .contact p { color: var(--muted); margin: 0.75rem 0 1.25rem; max-width: 48ch; }
+.contact-lines { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
 .contact-link { font-size: 1rem; font-weight: 500; border-bottom: 1px solid var(--border-bright); padding-bottom: 2px; }
 .contact-link:hover { border-color: var(--text); }
 
