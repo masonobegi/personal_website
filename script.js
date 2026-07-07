@@ -11,7 +11,7 @@
 const SOCIALS = {
   github:   "https://github.com/masonobegi?tab=repositories",
   linkedin: "https://www.linkedin.com/in/mason-obegi-5a963b1ba/",
-  email:    "mason.obegi@gmail.com",
+  email:    "mobegibusiness@gmail.com",
 };
 
 // The order categories appear in on the page.
