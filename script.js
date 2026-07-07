@@ -130,25 +130,16 @@ const ICONS = {
 function socialsHtml() {
   const items = [];
   if (SOCIALS.github)
-    items.push(`<a href="${SOCIALS.github}" target="_blank" rel="noopener" aria-label="GitHub">${ICONS.github}</a>`);
+    items.push(`<a href="${SOCIALS.github}" target="_blank" rel="noopener">GitHub →</a>`);
   if (SOCIALS.linkedin)
-    items.push(`<a href="${SOCIALS.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin}</a>`);
+    items.push(`<a href="${SOCIALS.linkedin}" target="_blank" rel="noopener">LinkedIn →</a>`);
   if (SOCIALS.email)
-    items.push(`<a href="mailto:${SOCIALS.email}" aria-label="Email">${ICONS.email}</a>`);
+    items.push(`<a href="mailto:${SOCIALS.email}">Email →</a>`);
   return items.join("");
 }
 
 function tagsHtml(tags) {
-  return `<div class="tags">${(tags || []).map((t) => `<span>${t}</span>`).join("")}</div>`;
-}
-
-function linksHtml(p) {
-  const links = [];
-  if (p.live)
-    links.push(`<a href="${p.live}" target="_blank" rel="noopener" class="card-link">Live ${ICONS.external}</a>`);
-  if (p.code)
-    links.push(`<a href="${p.code}" target="_blank" rel="noopener" class="card-link">Code ${ICONS.github}</a>`);
-  return links.length ? `<div class="card-links">${links.join("")}</div>` : "";
+  return `<p class="card-tags">${(tags || []).join(", ")}</p>`;
 }
 
 function thumbHtml(p) {
@@ -162,30 +153,64 @@ function thumbHtml(p) {
 
 function badgesHtml(p, showFeatured) {
   const b = [];
-  if (showFeatured && p.featured) b.push(`<span class="badge badge-featured">Featured</span>`);
-  if (p.status) b.push(`<span class="badge badge-status">${p.status}</span>`);
+  if (showFeatured && p.featured) b.push(`<span class="badge-featured">Featured</span>`);
+  if (p.status) b.push(`<span class="status-note">· ${p.status}</span>`);
   return b.join("");
 }
 
-// One card style everywhere. showFeatured=true adds the "Featured" pill + accent ring.
+// One card style everywhere. The whole card links to the project when a URL exists.
 function card(p, showFeatured) {
-  return `
-    <article class="card${showFeatured && p.featured ? " is-featured" : ""}">
+  const url = p.live || p.code || "";
+  const cls = `card${showFeatured && p.featured ? " is-featured" : ""}${url ? " card-linked" : ""}`;
+  const inner = `
       ${thumbHtml(p)}
       <div class="card-body">
         <div class="card-title">
           <h3>${p.title}</h3>
           ${badgesHtml(p, showFeatured)}
         </div>
-        <p>${p.description}</p>
+        <p class="desc">${p.description}</p>
         ${tagsHtml(p.tags)}
-        ${linksHtml(p)}
-      </div>
-    </article>`;
+      </div>`;
+  return url
+    ? `<a class="${cls}" href="${url}" target="_blank" rel="noopener">${inner}</a>`
+    : `<article class="${cls}">${inner}</article>`;
+}
+
+// ---- Light / dark theme toggle -------------------------------------------
+const SUN =
+  '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+const MOON =
+  '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>';
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  const btn = document.getElementById("theme-toggle");
+  if (btn) btn.innerHTML = theme === "dark" ? SUN : MOON;
+}
+
+function initTheme() {
+  let theme = "light";
+  try {
+    theme = localStorage.getItem("theme") || "light";
+  } catch (e) {}
+  applyTheme(theme);
+  const btn = document.getElementById("theme-toggle");
+  if (btn)
+    btn.addEventListener("click", () => {
+      const next =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "light"
+          : "dark";
+      applyTheme(next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch (e) {}
+    });
 }
 
 function render() {
-  // Social icons (sidebar)
+  // Social links (hero)
   document.getElementById("socials").innerHTML = socialsHtml();
 
   // Featured grid (shown first, highlighted)
@@ -209,6 +234,9 @@ function render() {
 
   // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Theme toggle
+  initTheme();
 }
 
 render();

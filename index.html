@@ -7,63 +7,69 @@
   <meta name="description" content="Mason Obegi — software engineer building real-time multiplayer games, full-stack apps, and websites for real clients." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="layout">
-    <!-- LEFT PANEL — always visible on desktop (this is the About) -->
-    <aside class="sidebar">
-      <div class="sidebar-inner">
-        <div class="headshot">
-          <span>MO</span>
-          <img src="images/headshot.jpg" alt="Mason Obegi" onerror="this.remove()" />
-        </div>
+  <header class="topnav">
+    <a class="brand" href="#top">masonobegi.com</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume" id="resume-link">Resume</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme"></button>
+    </nav>
+  </header>
 
-        <p class="status"><span class="dot"></span> Available for work</p>
-
-        <h1>Mason Obegi</h1>
+  <main id="top">
+    <!-- HERO / ABOUT -->
+    <section class="hero" id="about">
+      <div class="hero-text">
+        <h1>Hi, I'm Mason Obegi.</h1>
         <p class="role">Software Engineer</p>
-
         <p class="bio">
-          I build real-time multiplayer games, full-stack apps, and websites for
-          real clients — from digital board-game adaptations to Stripe-powered
-          storefronts. I like shipping things people actually use.
+          I build real-time multiplayer games, full-stack applications, and
+          client websites. I enjoy solving problems and shipping things people
+          actually use.
         </p>
-
-        <div class="socials" id="socials"></div>
-
-        <div class="sidebar-actions">
-          <a class="btn" href="mailto:mason.obegi@gmail.com">Get in touch</a>
-          <a class="btn btn-ghost" href="#" id="resume-link">Résumé</a>
+        <div class="hero-links" id="socials"></div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-image">
+          <span class="hero-placeholder">Add images/hero.jpg</span>
+          <img src="images/hero.jpg" alt="Mason Obegi" onerror="this.remove()" />
         </div>
       </div>
-    </aside>
+    </section>
 
-    <!-- RIGHT COLUMN — projects visible immediately -->
-    <main class="content">
-      <section id="projects">
-        <div class="content-head">
-          <h2>Selected Work</h2>
-          <p class="content-sub">A mix of games, full-stack apps, and client websites.</p>
-        </div>
+    <hr class="divider" />
 
-        <!-- Rendered by script.js from the PROJECTS list -->
-        <div id="featured" class="card-grid"></div>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-head">
+        <h2>Featured Projects</h2>
+        <a href="#all-projects" class="view-all">View all projects →</a>
+      </div>
+      <div id="featured" class="card-grid"></div>
+
+      <div id="all-projects">
         <div id="project-groups"></div>
-      </section>
+      </div>
+    </section>
 
-      <section id="contact" class="contact">
-        <h2>Get In Touch</h2>
-        <p>I'm currently open to new opportunities — feel free to reach out.</p>
-        <a class="btn" href="mailto:mason.obegi@gmail.com">Say Hello</a>
-      </section>
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h2>Get In Touch</h2>
+      <p>I'm currently open to new opportunities — feel free to reach out.</p>
+      <a class="contact-link" href="mailto:mason.obegi@gmail.com">mason.obegi@gmail.com →</a>
+    </section>
 
-      <footer class="footer">
-        <span>© <span id="year"></span> Mason Obegi</span>
-      </footer>
-    </main>
-  </div>
+    <footer class="footer">
+      <span>© <span id="year"></span> Mason Obegi</span>
+      <span>Built with vanilla HTML, CSS &amp; JS</span>
+    </footer>
+  </main>
 
   <script src="script.js"></script>
 </body>

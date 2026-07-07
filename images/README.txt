@@ -1,6 +1,10 @@
-Drop project screenshots in this folder.
+Drop project screenshots (and your hero photo) in this folder.
 
-Name each file to match the "image" path in script.js. Current expected names:
+For the big hero photo next to your name, add:
+
+  hero.jpg   (roughly 4:3, e.g. a nice landscape/lifestyle photo of you)
+
+For project cards, name each file to match the "image" path in script.js:
 
   bootleggers.png
   cigar-maps.png
