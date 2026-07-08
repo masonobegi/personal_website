@@ -141,20 +141,19 @@ function tagsHtml(tags) {
   return `<p class="card-tags">${(tags || []).join(", ")}</p>`;
 }
 
-function thumbHtml(p) {
+function thumbHtml(p, showFeatured) {
   // Shows the screenshot if it exists; otherwise a clean placeholder.
+  const tag = showFeatured && p.featured ? `<span class="thumb-badge">Featured</span>` : "";
   return `
     <div class="thumb">
       <span class="thumb-placeholder">Screenshot coming soon</span>
       <img src="${p.image}" alt="${p.title} screenshot" loading="lazy" onerror="this.remove()" />
+      ${tag}
     </div>`;
 }
 
-function badgesHtml(p, showFeatured) {
-  const b = [];
-  if (showFeatured && p.featured) b.push(`<span class="badge-featured">Featured</span>`);
-  if (p.status) b.push(`<span class="status-note">· ${p.status}</span>`);
-  return b.join("");
+function badgesHtml(p) {
+  return p.status ? `<span class="status-note">· ${p.status}</span>` : "";
 }
 
 // One card style everywhere. The whole card links to the project when a URL exists.
@@ -162,11 +161,11 @@ function card(p, showFeatured) {
   const url = p.live || p.code || "";
   const cls = `card${showFeatured && p.featured ? " is-featured" : ""}${url ? " card-linked" : ""}`;
   const inner = `
-      ${thumbHtml(p)}
+      ${thumbHtml(p, showFeatured)}
       <div class="card-body">
         <div class="card-title">
           <h3>${p.title}</h3>
-          ${badgesHtml(p, showFeatured)}
+          ${badgesHtml(p)}
         </div>
         <p class="desc">${p.description}</p>
         ${tagsHtml(p.tags)}
