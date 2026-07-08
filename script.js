@@ -16,22 +16,43 @@ const SOCIALS = {
 
 // The order categories appear in on the page.
 const CATEGORY_ORDER = [
-  "Board Game Adaptations",
-  "Discord Games",
-  "Apps",
   "Client Work",
+  "Apps",
+  "Passion Projects",
 ];
 
 // --- Your projects --------------------------------------------------------
 const PROJECTS = [
   {
-    title: "Bootleggers",
-    category: "Board Game Adaptations",
+    title: "The Pooch Pit",
+    category: "Client Work",
     description:
-      "A browser-based, real-time multiplayer build of the tabletop game Lords of Vegas, where players fight over Vegas casinos for points. An authoritative Node/TypeScript server runs the full rules engine and Socket.IO rooms, with difficulty-tunable AI opponents and a Phaser + Three.js board.",
-    tags: ["TypeScript", "Socket.IO", "Node", "Phaser", "PostgreSQL"],
-    image: "images/bootleggers.png",
-    live: "https://bootleggers.up.railway.app",
+      "A booking-and-deposit platform for a real grooming business — Stripe deposits, an availability engine that prevents double-bookings, transactional email, and a no-code admin dashboard the owner runs herself.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
+    image: "images/jaidyn-website.png",
+    live: "https://thepoochpitgrooming.com",
+    code: "",
+    featured: true,
+  },
+  {
+    title: "Imad Photography",
+    category: "Client Work",
+    description:
+      "A multi-section fine-art e-commerce storefront for a photographer — prints, watercolors, and a sticker shop — with Stripe checkout and an automated image pipeline.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
+    image: "images/imad-website.png",
+    live: "https://imadobegi.up.railway.app",
+    code: "",
+    featured: true,
+  },
+  {
+    title: "Gibbs Prudential",
+    category: "Client Work",
+    description:
+      "A marketing site and password-protected admin dashboard for a wealth-management advisory firm.",
+    tags: ["Next.js", "React", "Tailwind", "PostgreSQL"],
+    image: "images/gibbs-prudential.png",
+    live: "",
     code: "",
     featured: true,
   },
@@ -47,18 +68,19 @@ const PROJECTS = [
     status: "In progress",
   },
   {
-    title: "Discord Soccer",
-    category: "Discord Games",
+    title: "Bootleggers",
+    category: "Passion Projects",
     description:
-      "A two-player penalty-shootout party game that runs as a Discord Activity, with momentum-powered special abilities. Playable versus a bot, pass-and-play, or online in real time over WebSockets.",
-    tags: ["JavaScript", "Node", "WebSockets", "Discord SDK"],
-    image: "images/discord-soccer.png",
-    live: "",
+      "A real-time multiplayer strategy game (a Lords of Vegas build) with an authoritative Node/TypeScript server, a four-tier bot AI with EV-driven scoring, and a regression harness running 1,000+ simulated games with 25,000+ invariants.",
+    tags: ["TypeScript", "Socket.IO", "Node", "Phaser", "PostgreSQL"],
+    image: "images/bootleggers.png",
+    live: "https://bootleggers.up.railway.app",
     code: "",
+    featured: true,
   },
   {
     title: "Betrayal",
-    category: "Board Game Adaptations",
+    category: "Passion Projects",
     description:
       "An online multiplayer engine for Betrayal at House on the Hill, built on a server-authoritative rules architecture with a framework-free HTML5 Canvas client and procedural audio.",
     tags: ["Node", "WebSocket", "Vanilla JS", "Canvas"],
@@ -68,47 +90,24 @@ const PROJECTS = [
     status: "In progress",
   },
   {
+    title: "Discord Soccer",
+    category: "Passion Projects",
+    description:
+      "A two-player penalty-shootout party game that runs as a Discord Activity, with momentum-powered special abilities. Playable versus a bot, pass-and-play, or online in real time over WebSockets.",
+    tags: ["JavaScript", "Node", "WebSockets", "Discord SDK"],
+    image: "images/discord-soccer.png",
+    live: "",
+    code: "",
+  },
+  {
     title: "Best of 5",
-    category: "Discord Games",
+    category: "Passion Projects",
     description:
       "A best-of-five Discord duel that rotates through Connect 4, Checkers, Battleship, Chess, and mini golf — first to three games wins. Full Discord Activity integration.",
     tags: ["JavaScript", "Node", "WebSockets", "Discord SDK"],
     image: "images/bestof5.png",
     live: "",
     code: "",
-  },
-  {
-    title: "Gibbs Prudential",
-    category: "Client Work",
-    description:
-      "A marketing site and password-protected admin dashboard for a wealth-management advisory firm.",
-    tags: ["Next.js", "React", "Tailwind", "PostgreSQL"],
-    image: "images/gibbs-prudential.png",
-    live: "",
-    code: "",
-    featured: true,
-  },
-  {
-    title: "Imad Photography",
-    category: "Client Work",
-    description:
-      "An e-commerce storefront for a photographer, selling fine-art prints with Stripe checkout.",
-    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
-    image: "images/imad-website.png",
-    live: "https://imadobegi.up.railway.app",
-    code: "",
-    featured: true,
-  },
-  {
-    title: "The Pooch Pit",
-    category: "Client Work",
-    description:
-      "A booking-and-deposit website for a dog & cat grooming business, with an admin dashboard for managing appointments.",
-    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
-    image: "images/jaidyn-website.png",
-    live: "https://thepoochpitgrooming.com",
-    code: "",
-    featured: true,
   },
 ];
 
@@ -134,7 +133,7 @@ function socialsHtml() {
   if (SOCIALS.linkedin)
     items.push(`<a href="${SOCIALS.linkedin}" target="_blank" rel="noopener">LinkedIn →</a>`);
   if (SOCIALS.email)
-    items.push(`<a href="mailto:${SOCIALS.email}">Email →</a>`);
+    items.push(`<a href="#" class="copy-email" data-email="${SOCIALS.email}">Email →</a>`);
   return items.join("");
 }
 
@@ -209,6 +208,26 @@ function initTheme() {
     });
 }
 
+// Click-to-copy email — avoids opening a mail client (Outlook, etc.)
+function initCopyEmail() {
+  document.querySelectorAll(".copy-email").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const email = el.getAttribute("data-email");
+      const done = () => {
+        if (!el.dataset.original) el.dataset.original = el.textContent;
+        el.textContent = "Copied!";
+        setTimeout(() => { el.textContent = el.dataset.original; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(done).catch(done);
+      } else {
+        done();
+      }
+    });
+  });
+}
+
 function render() {
   // Social links (hero)
   document.getElementById("socials").innerHTML = socialsHtml();
@@ -237,6 +256,9 @@ function render() {
 
   // Theme toggle
   initTheme();
+
+  // Click-to-copy email links
+  initCopyEmail();
 }
 
 render();
