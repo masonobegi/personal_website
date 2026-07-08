@@ -248,10 +248,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
   color: var(--muted);
   font-size: 0.85rem;
   line-height: 1.55;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .card-tags { margin-top: auto; padding-top: 1rem; color: var(--muted-dim); font-size: 0.75rem; }
