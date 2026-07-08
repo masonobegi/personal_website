@@ -28,7 +28,7 @@ const PROJECTS = [
     category: "Client Work",
     description:
       "A booking-and-deposit platform for a real grooming business — Stripe deposits, an availability engine that prevents double-bookings, transactional email, and a no-code admin dashboard the owner runs herself.",
-    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
+    tags: ["Next.js", "TypeScript", "Prisma", "Stripe", "Resend"],
     image: "images/jaidyn-website.png",
     live: "https://thepoochpitgrooming.com",
     code: "",
@@ -39,7 +39,7 @@ const PROJECTS = [
     category: "Client Work",
     description:
       "A multi-section fine-art e-commerce storefront for a photographer — prints, watercolors, and a sticker shop — with Stripe checkout and an automated image pipeline.",
-    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
+    tags: ["Next.js", "TypeScript", "Stripe", "Sharp", "Cloudflare"],
     image: "images/imad-website.png",
     live: "https://imadobegi.up.railway.app",
     code: "",
@@ -50,7 +50,7 @@ const PROJECTS = [
     category: "Client Work",
     description:
       "A marketing site and password-protected admin dashboard for a wealth-management advisory firm.",
-    tags: ["Next.js", "React", "Tailwind", "PostgreSQL"],
+    tags: ["Next.js", "React", "Tailwind", "PostgreSQL", "Resend"],
     image: "images/gibbs-prudential.png",
     live: "https://oswegolegacypartners.com",
     code: "",
@@ -61,7 +61,7 @@ const PROJECTS = [
     category: "Apps",
     description:
       "A full-stack PWA for cigar lovers: browse nearby lounges on an interactive map, track your collection, log tasting reviews, and follow store deals. Backed by a PostgreSQL API with JWT auth and store-owner dashboards, and wrapped with Capacitor for native iOS/Android builds.",
-    tags: ["React", "Vite", "Express", "PostgreSQL", "Leaflet"],
+    tags: ["React", "Express", "PostgreSQL", "Leaflet", "Capacitor"],
     image: "images/cigar-maps.png",
     live: "https://cigarmapsclaude-production.up.railway.app",
     code: "",
