@@ -4,159 +4,222 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mason Obegi — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #5b5b5b;
+    --faint: #7a7a7a;
+    --accent: #9a5b1f;
+    --rule: #e2ddd4;
+    --sheet: #ffffff;
+    --page: #edece7;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 9pt;
-    color: #000;
-    background: #fff;
-    padding: 0.24in 0.52in;
-    max-width: 8.5in;
-    margin: 0 auto;
-    line-height: 1.23;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 20px;
   }
+  .sheet {
+    background: var(--sheet);
+    max-width: 830px;
+    margin: 0 auto;
+    padding: 56px 64px 60px;
+    border-radius: 6px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Header */
+  header { text-align: center; margin-bottom: 6px; }
   h1 {
-    text-align: center;
-    font-size: 15pt;
-    font-weight: bold;
-    letter-spacing: 0.03em;
-    margin-bottom: 3px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink);
   }
   .contact {
-    text-align: center;
-    font-size: 8.5pt;
-    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
   }
-  .contact a { color: #1a0dab; text-decoration: none; }
+  .contact a { color: var(--accent); text-decoration: none; }
+  .contact a:hover { text-decoration: underline; }
+  .dot { color: var(--faint); margin: 0 7px; }
+
+  /* Sections */
   .section-title {
-    font-size: 9.2pt;
-    font-weight: bold;
+    font-size: 12.5px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin: 5px 0 2px;
-    border-bottom: 1px solid #000;
-    padding-bottom: 1px;
+    letter-spacing: 0.09em;
+    color: var(--ink);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 4px;
+    margin: 26px 0 12px;
   }
-  .summary { font-size: 8.8pt; margin-bottom: 2px; }
-  .job { margin-bottom: 3px; }
-  .job-header {
+
+  /* Entries */
+  .entry { margin-bottom: 15px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .entry-title { font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .entry-date { font-size: 12.5px; color: var(--faint); white-space: nowrap; }
+  .entry-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .entry-sub a { color: var(--accent); text-decoration: none; }
+  .entry-sub a:hover { text-decoration: underline; }
+
+  ul { list-style: none; margin-top: 7px; }
+  li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* Skills */
+  .skill-row { font-size: 13px; margin-bottom: 5px; color: #333; }
+  .skill-row b { color: var(--ink); font-weight: 600; }
+
+  /* Education */
+  .edu-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
   }
-  .job-title { font-weight: bold; font-size: 9pt; }
-  .job-date { font-size: 8.8pt; white-space: nowrap; }
-  .job-sub { font-size: 8.5pt; color: #333; margin-bottom: 1px; }
-  .job-sub a { color: #1a0dab; text-decoration: none; }
-  ul { padding-left: 13px; margin-top: 1px; }
-  li { font-size: 8.8pt; margin-bottom: 0.5px; list-style-type: disc; }
-  .skills-row { font-size: 8.8pt; margin-bottom: 1px; }
-  .edu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-weight: bold;
-    font-size: 9pt;
-  }
-  .edu-detail { font-size: 8.8pt; margin-top: 1px; }
+  .edu-head .entry-title { font-size: 14.5px; }
+  .edu-detail { font-size: 13px; color: var(--muted); margin-top: 3px; }
+
   @media print {
-    body { padding: 0.22in 0.48in; }
+    body { background: #fff; padding: 0; }
+    .sheet { box-shadow: none; border-radius: 0; max-width: none; padding: 0.4in 0.55in; }
+    .contact a, .entry-sub a { color: var(--accent); }
+  }
+
+  @media (max-width: 600px) {
+    .sheet { padding: 32px 24px; }
+    .entry-head, .edu-head { flex-direction: column; gap: 1px; }
   }
 </style>
 </head>
 <body>
+<div class="sheet">
 
-<h1>MASON OBEGI</h1>
-<p class="contact">
-  Camas, WA &nbsp;&bull;&nbsp; (360) 921-0148 &nbsp;&bull;&nbsp;
-  <a href="mailto:mobegibusiness@gmail.com">mobegibusiness@gmail.com</a> &nbsp;&bull;&nbsp;
-  <a href="https://linkedin.com/in/mason-obegi-5a963b1ba">linkedin.com/in/mason-obegi-5a963b1ba</a> &nbsp;&bull;&nbsp;
-  <a href="https://github.com/masonobegi">github.com/masonobegi</a>
-</p>
+  <header>
+    <h1>Mason Obegi</h1>
+    <p class="contact">
+      Camas, WA <span class="dot">•</span> (360) 921-0148 <span class="dot">•</span>
+      <a href="mailto:mobegibusiness@gmail.com">mobegibusiness@gmail.com</a> <span class="dot">•</span>
+      <a href="https://linkedin.com/in/mason-obegi-5a963b1ba">linkedin.com/in/mason-obegi-5a963b1ba</a> <span class="dot">•</span>
+      <a href="https://github.com/masonobegi">github.com/masonobegi</a>
+    </p>
+  </header>
 
-<div class="section-title">Experience</div>
+  <div class="section-title">Experience</div>
 
-<div class="job">
-  <div class="job-header">
-    <span class="job-title">HP &mdash; Quality Engineer III</span>
-    <span class="job-date">Oct 2025 &ndash; Present</span>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-title">HP — Quality Engineer III</span>
+      <span class="entry-date">Oct 2025 – Present</span>
+    </div>
+    <ul>
+      <li>Design and develop internal web applications to host automation tooling, giving testers a central place to launch, monitor, and share programs across the QE org.</li>
+      <li>Build automation systems that replace repetitive manual testing processes, improving coverage and freeing engineering time.</li>
+      <li>Rebuilt a degraded Power BI reporting database from the ground up, restoring reliable team-wide reporting on test results and product metrics.</li>
+    </ul>
   </div>
-  <ul>
-    <li>Design and develop internal web applications to host automation tooling, giving testers a central place to launch, monitor, and share programs across the QE org.</li>
-    <li>Build automation systems that replace repetitive manual testing processes, improving coverage and freeing engineering time.</li>
-    <li>Rebuilt a degraded Power BI reporting database from the ground up, restoring reliable team-wide reporting on test results and product metrics.</li>
-  </ul>
-</div>
 
-<div class="job">
-  <div class="job-header">
-    <span class="job-title">HP &mdash; Test Specialist I</span>
-    <span class="job-date">Feb 2025 &ndash; Oct 2025</span>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-title">HP — Test Specialist I</span>
+      <span class="entry-date">Feb 2025 – Oct 2025</span>
+    </div>
+    <ul>
+      <li>Automated enterprise-level reporting pipelines using Python and R, improving efficiency, accuracy, and consistency across stakeholder workflows.</li>
+      <li>Built time series forecasts and statistical models in R to support data-driven planning and decision-making.</li>
+      <li>Developed prompt-engineering workflows for internal LLM tools and built dashboards and Tkinter desktop applications for internal stakeholders.</li>
+    </ul>
   </div>
-  <ul>
-    <li>Automated enterprise-level reporting pipelines using Python and R, improving efficiency, accuracy, and consistency across stakeholder workflows.</li>
-    <li>Built time series forecasts and statistical models in R to support data-driven planning and decision-making.</li>
-    <li>Developed prompt-engineering workflows for internal LLM tools and built dashboards and Tkinter desktop applications for internal stakeholders.</li>
-  </ul>
-</div>
 
-<div class="job">
-  <div class="job-header">
-    <span class="job-title">Molecular Testing Labs &mdash; Lab Automation Engineering Intern</span>
-    <span class="job-date">Jun 2023 &ndash; Apr 2024</span>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-title">Molecular Testing Labs — Lab Automation Engineering Intern</span>
+      <span class="entry-date">Jun 2023 – Apr 2024</span>
+    </div>
+    <ul>
+      <li>Developed computer vision pipelines using OpenCV and PIL.</li>
+      <li>Built machine learning models using TensorFlow and Keras; presented findings to executive leadership.</li>
+      <li>Created KPI dashboards using R Shiny and designed components in Autodesk Fusion 360.</li>
+    </ul>
   </div>
-  <ul>
-    <li>Developed computer vision pipelines using OpenCV and PIL.</li>
-    <li>Built machine learning models using TensorFlow and Keras; presented findings to executive leadership.</li>
-    <li>Created KPI dashboards using R Shiny and designed components in Autodesk Fusion 360.</li>
-  </ul>
-</div>
 
-<div class="section-title">Projects</div>
+  <div class="section-title">Projects</div>
 
-<div class="job">
-  <div class="job-header">
-    <span class="job-title">Bootleggers &mdash; Real-Time Multiplayer Strategy Game</span>
-    <span class="job-date">Mar 2026 &ndash; Present</span>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-title">Bootleggers — Real-Time Multiplayer Strategy Game</span>
+      <span class="entry-date">Mar 2026 – Present</span>
+    </div>
+    <p class="entry-sub">TypeScript, Node.js, Phaser 3, PostgreSQL, Socket.io, Railway — <a href="https://bootleggers.up.railway.app">bootleggers.up.railway.app</a></p>
+    <ul>
+      <li>Designed and built a full-stack real-time multiplayer strategy game — Phaser 3 frontend, Node.js + Socket.io backend — deployed on Railway.</li>
+      <li>Designed a normalized PostgreSQL schema with a hand-rolled idempotent migration runner; authored complex SQL for Google OAuth upsert, 24-column lifetime stat aggregation, and conditional streak tracking.</li>
+      <li>Engineered a four-tier bot AI (Easy – Expert) with EV-driven scoring across builds, sprawls, gambles, and trades; Expert bots evaluate ~30 candidate moves per turn using forward-thinking heuristics, color-card probability modeling, and adversarial leader-targeting.</li>
+      <li>Authored a regression harness running 1,000+ simulated games per pass with 25,000+ behavioral invariants, catching strategy and state-machine bugs before deployment.</li>
+      <li>Built a trade evaluation engine simulating post-trade casino ownership and computing per-player expected income/VP deltas, preventing bots from accepting or proposing lopsided swaps.</li>
+    </ul>
   </div>
-  <p class="job-sub">TypeScript, Node.js, Phaser 3, PostgreSQL, Socket.io, Railway &nbsp;&ndash;&nbsp; <a href="https://bootleggers.up.railway.app">bootleggers.up.railway.app</a></p>
-  <ul>
-    <li>Designed and built a full-stack real-time multiplayer strategy game &mdash; Phaser 3 frontend, Node.js + Socket.io backend &mdash; deployed on Railway.</li>
-    <li>Designed a normalized PostgreSQL schema with a hand-rolled idempotent migration runner; authored complex SQL for Google OAuth upsert, 24-column lifetime stat aggregation, and conditional logic for streak tracking.</li>
-    <li>Engineered a four-tier bot AI (Easy &ndash; Expert) with EV-driven scoring across builds, sprawls, gambles, and trades; Expert bots evaluate ~30 candidate moves per turn using forward-thinking heuristics, color-card probability modeling, and adversarial leader-targeting.</li>
-    <li>Authored a regression harness running 1,000+ simulated games per pass with 25,000+ behavioral invariants, catching strategy and state-machine bugs before deployment.</li>
-    <li>Built a trade evaluation engine simulating post-trade casino ownership and computing per-player expected income/VP deltas, preventing bots from accepting or proposing lopsided swaps.</li>
-  </ul>
-</div>
 
-<div class="job">
-  <div class="job-header">
-    <span class="job-title">Full-Stack Web Applications &mdash; E-Commerce &amp; Booking Platforms</span>
-    <span class="job-date">Mar 2026 &ndash; Present</span>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-title">Full-Stack Web Applications — E-Commerce &amp; Booking Platforms</span>
+      <span class="entry-date">Mar 2026 – Present</span>
+    </div>
+    <p class="entry-sub">Next.js, TypeScript, Prisma, PostgreSQL, Stripe, Resend, Sharp, Railway, Cloudflare — <a href="https://imadobegi.up.railway.app">imadobegi.up.railway.app</a> · <a href="https://thepoochpitgrooming.com">thepoochpitgrooming.com</a></p>
+    <ul>
+      <li>Built two production web apps: a multi-section fine art storefront (photography prints, watercolors, sticker shop) and an appointment booking platform for a real grooming business — both live on custom domains with Cloudflare DNS/SSL and Railway-managed Postgres.</li>
+      <li>Engineered a scheduling availability engine with interval-overlap checks preventing double-bookings, configurable hours, and one-off/recurring time-off blocking; integrated a deposit + balance payment flow and transactional email notifications via Stripe and Resend.</li>
+      <li>Developed lightweight CMS dashboards for non-technical owners to edit content, pricing, policies, photos, and reviews — changes cascade site-wide instantly, backed by a settings store with safe defaults.</li>
+      <li>Automated an image-processing pipeline using Sharp and Python (pillow-heif) for watermarking and HEIC conversion; implemented secure cookie-based auth, Open Graph/SEO, and fully responsive mobile design across both platforms.</li>
+    </ul>
   </div>
-  <p class="job-sub">Next.js, TypeScript, Prisma, PostgreSQL, Stripe, Resend, Sharp, Railway, Cloudflare &nbsp;&ndash;&nbsp; <a href="https://imadobegi.up.railway.app">imadobegi.up.railway.app</a> &nbsp;&middot;&nbsp; <a href="https://thepoochpitgrooming.com">thepoochpitgrooming.com</a></p>
-  <ul>
-    <li>Built two production web apps: a multi-section fine art storefront (photography prints, watercolors, sticker shop) and an appointment booking platform for a real grooming business &mdash; both live on custom domains with Cloudflare DNS/SSL and Railway-managed Postgres.</li>
-    <li>Engineered a scheduling availability engine with interval-overlap checks preventing double-bookings, configurable hours, and one-off/recurring time-off blocking; integrated a deposit + balance payment flow and transactional email notifications via Stripe and Resend.</li>
-    <li>Developed lightweight CMS dashboards for non-technical owners to edit content, pricing, policies, photos, and reviews &mdash; changes cascade site-wide instantly, backed by a settings store with safe defaults.</li>
-    <li>Automated image-processing pipeline using Sharp and Python (pillow-heif) for watermarking and HEIC conversion; implemented secure cookie-based auth, Open Graph/SEO, and fully responsive mobile design across both platforms.</li>
-  </ul>
+
+  <div class="section-title">Technical Skills</div>
+  <p class="skill-row"><b>Languages:</b> Python, TypeScript, JavaScript, R, SQL, Java, C++</p>
+  <p class="skill-row"><b>Frontend:</b> React, Next.js, Tailwind CSS, Phaser 3</p>
+  <p class="skill-row"><b>Backend &amp; Data:</b> Node.js, PostgreSQL, Prisma, Socket.io, REST APIs, Streamlit, Tkinter, Shiny</p>
+  <p class="skill-row"><b>ML &amp; Analytics:</b> TensorFlow, Keras, PyTorch, OpenCV, Pandas, Scikit-Learn, Forecasting, Statistical Modeling, Tableau, Power BI</p>
+  <p class="skill-row"><b>Tools &amp; Math:</b> Git, GitHub, Railway, Cloudflare, Excel, VS Code, Autodesk Fusion 360 · Statistics, Linear Algebra, Calculus</p>
+
+  <div class="section-title">Education</div>
+  <div class="edu-head">
+    <span class="entry-title">Washington State University</span>
+    <span class="entry-date">2024</span>
+  </div>
+  <p class="edu-detail">B.S. Data Analytics <span class="dot">•</span> Minor in Mathematics <span class="dot">•</span> Minor in Criminal Justice <span class="dot">•</span> GPA: 3.62 / 4.00 <span class="dot">•</span> 2024 Outstanding Data Analytics Student Award</p>
+
 </div>
-
-<div class="section-title">Technical Skills</div>
-<p class="skills-row"><b>Languages:</b> Python, TypeScript, JavaScript, R, SQL, Java, C++</p>
-<p class="skills-row"><b>Frontend:</b> React, Next.js, Tailwind CSS, Phaser 3</p>
-<p class="skills-row"><b>Backend &amp; Data:</b> Node.js, PostgreSQL, Prisma, Socket.io, REST APIs, Streamlit, Tkinter, Shiny</p>
-<p class="skills-row"><b>ML &amp; Analytics:</b> TensorFlow, Keras, PyTorch, OpenCV, Pandas, Scikit-Learn, Forecasting, Statistical Modeling, Tableau, Power BI</p>
-<p class="skills-row"><b>Tools &amp; Math:</b> Git, GitHub, Railway, Cloudflare, Excel, VS Code, Autodesk Fusion 360 &nbsp;&middot;&nbsp; Statistics, Linear Algebra, Calculus</p>
-
-<div class="section-title">Education</div>
-<div class="edu-header">
-  <span>Washington State University</span>
-  <span>2024</span>
-</div>
-<p class="edu-detail">B.S. Data Analytics &nbsp;&bull;&nbsp; Minor in Mathematics &nbsp;&bull;&nbsp; Minor in Criminal Justice &nbsp;&bull;&nbsp; GPA: 3.62 / 4.00 &nbsp;&bull;&nbsp; 2024 Outstanding Data Analytics Student Award</p>
-
 </body>
 </html>
