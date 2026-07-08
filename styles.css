@@ -47,11 +47,11 @@ a { color: inherit; text-decoration: none; }
 
 .hero, #projects, .contact, .footer, .topnav { }
 
-main { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+main { max-width: 1280px; margin: 0 auto; padding: 0 3rem; }
 
 /* ===== Top nav ===== */
 .topnav {
-  max-width: 1180px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 1.6rem 3rem;
   display: flex;
