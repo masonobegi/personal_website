@@ -35,7 +35,7 @@ const PROJECTS = [
     featured: true,
   },
   {
-    title: "Imad Photography",
+    title: "OBGillustrator",
     category: "Client Work",
     description:
       "A multi-section fine-art e-commerce storefront for a photographer — prints, watercolors, and a sticker shop — with Stripe checkout and an automated image pipeline.",
@@ -46,7 +46,7 @@ const PROJECTS = [
     featured: true,
   },
   {
-    title: "Gibbs Prudential",
+    title: "Oswego Legacy Partners",
     category: "Client Work",
     description:
       "A marketing site and password-protected admin dashboard for a wealth-management advisory firm.",
@@ -79,7 +79,7 @@ const PROJECTS = [
     featured: true,
   },
   {
-    title: "Betrayal",
+    title: "Betrayal at House on the Hill",
     category: "Passion Projects",
     description:
       "An online multiplayer engine for Betrayal at House on the Hill, built on a server-authoritative rules architecture with a framework-free HTML5 Canvas client and procedural audio.",
@@ -90,7 +90,7 @@ const PROJECTS = [
     status: "In progress",
   },
   {
-    title: "Discord Soccer",
+    title: "Spot Kick",
     category: "Passion Projects",
     description:
       "A two-player penalty-shootout party game that runs as a Discord Activity, with momentum-powered special abilities. Playable versus a bot, pass-and-play, or online in real time over WebSockets.",
