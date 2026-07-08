@@ -96,7 +96,7 @@ const PROJECTS = [
       "A two-player penalty-shootout party game that runs as a Discord Activity, with momentum-powered special abilities. Playable versus a bot, pass-and-play, or online in real time over WebSockets.",
     tags: ["JavaScript", "Node", "WebSockets", "Discord SDK"],
     image: "images/discord-soccer.png",
-    live: "",
+    live: "https://discord-soccer-production.up.railway.app",
     code: "",
   },
   {
@@ -106,7 +106,7 @@ const PROJECTS = [
       "A best-of-five Discord duel that rotates through Connect 4, Checkers, Battleship, Chess, and mini golf — first to three games wins. Full Discord Activity integration.",
     tags: ["JavaScript", "Node", "WebSockets", "Discord SDK"],
     image: "images/bestof5.png",
-    live: "",
+    live: "https://bestof5-production-54ef.up.railway.app",
     code: "",
   },
 ];
