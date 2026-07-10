@@ -16,9 +16,9 @@
     <nav class="nav-links">
       <a href="#projects" data-tab="projects">Projects</a>
       <a href="#about" data-tab="about">About</a>
-      <a href="#hobbies" data-tab="hobbies">Hobbies</a>
       <a href="#contact" data-tab="contact">Contact</a>
       <a href="resume.html" target="_blank" rel="noopener">Resume</a>
+      <a href="#hobbies" data-tab="hobbies">Hobbies</a>
     </nav>
   </header>
 
@@ -51,6 +51,59 @@
         <a href="#projects" data-tab="projects" class="view-all">View all projects →</a>
       </div>
       <div id="featured" class="card-grid"></div>
+
+      <hr class="divider" />
+
+      <div class="section-head">
+        <h2>About</h2>
+        <a href="#about" data-tab="about" class="view-all">More about me →</a>
+      </div>
+      <div class="about-body">
+        <p>
+          I'm a software engineer and Washington State University Data Analytics
+          graduate, and a Quality Engineer at HP — I build internal web tools,
+          test-automation systems, and data infrastructure by day, and ship
+          complete products for real clients and myself by night.
+        </p>
+        <p>
+          I work across the stack in TypeScript, React, Node, and Next.js, with a
+          data and ML background in Python and R.
+        </p>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="section-head">
+        <h2>Experience</h2>
+        <a href="#about" data-tab="about" class="view-all">Full experience →</a>
+      </div>
+      <div class="exp-list">
+        <article class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-date">2025 — Present</span>
+            <span class="exp-company">HP</span>
+          </div>
+          <div class="exp-detail">
+            <h3>Quality Engineer III <span class="exp-prev">· prev. Test Specialist I</span></h3>
+            <ul>
+              <li>Design internal web applications that host automation tooling for the QE org, and build automation systems that replace repetitive manual testing.</li>
+              <li>Automate enterprise reporting and time-series forecasting in Python and R, and build prompt-engineering workflows and dashboards for internal LLM tools.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <hr class="divider" />
+
+      <div class="section-head">
+        <h2>Get In Touch</h2>
+        <a href="#contact" data-tab="contact" class="view-all">Contact →</a>
+      </div>
+      <p class="page-lead">I'm currently open to new opportunities — feel free to reach out.</p>
+      <div class="contact-lines">
+        <a class="contact-link copy-email" href="#" data-email="mobegibusiness@gmail.com">mobegibusiness@gmail.com →</a>
+        <a class="contact-link" href="tel:+13609210148">(360) 921-0148 →</a>
+      </div>
     </section>
 
     <!-- ===== PROJECTS ===== -->
@@ -66,6 +119,7 @@
     <!-- ===== ABOUT ===== -->
     <section class="page" id="page-about" hidden>
       <h1 class="page-title">About</h1>
+      <div class="about-intro">
       <div class="about-body">
         <p>
           I'm a software engineer and Washington State University Data Analytics
@@ -96,6 +150,10 @@
           data and ML background in Python and R. I like hard problems and
           shipping things people actually rely on.
         </p>
+      </div>
+      <div class="about-photo">
+        <img src="images/hero.jpg" alt="Mason Obegi" onerror="this.closest('.about-photo').remove()" />
+      </div>
       </div>
 
       <hr class="divider" />
@@ -178,41 +236,30 @@
       <p class="page-lead">
         The stuff that keeps me sharp when I'm away from the keyboard.
       </p>
-      <div class="hobby-grid">
-        <article class="hobby-card">
-          <span class="hobby-icon">🏋️</span>
-          <h3>Lifting</h3>
-          <p>
-            In the gym most days — it's my reset button. Progressive overload is
-            basically debugging: track everything, change one variable, measure,
-            repeat.
-          </p>
+      <div class="exp-list">
+        <article class="exp-item">
+          <div class="exp-meta"><span class="exp-company">Lifting</span></div>
+          <div class="exp-detail">
+            <p>In the gym most days — it's my reset button. Progressive overload is basically debugging: track everything, change one variable, measure, repeat.</p>
+          </div>
         </article>
-        <article class="hobby-card">
-          <span class="hobby-icon">♟️</span>
-          <h3>Chess</h3>
-          <p>
-            A longtime chess player. I love the long game — calculating lines and
-            spotting patterns — which is the same strategic thinking that shows up
-            in the game AI I build.
-          </p>
+        <article class="exp-item">
+          <div class="exp-meta"><span class="exp-company">Chess</span></div>
+          <div class="exp-detail">
+            <p>A longtime chess player. I love the long game — calculating lines and spotting patterns — the same strategic thinking that shows up in the game AI I build.</p>
+          </div>
         </article>
-        <article class="hobby-card">
-          <span class="hobby-icon">🧱</span>
-          <h3>LEGO</h3>
-          <p>
-            I build LEGO to unwind, the big technical sets especially. Something
-            satisfying about a few thousand precise parts coming together into one
-            working whole.
-          </p>
+        <article class="exp-item">
+          <div class="exp-meta"><span class="exp-company">LEGO</span></div>
+          <div class="exp-detail">
+            <p>I build LEGO to unwind, the big technical sets especially. Something satisfying about a few thousand precise parts coming together into one working whole.</p>
+          </div>
         </article>
-        <article class="hobby-card">
-          <span class="hobby-icon">🛹</span>
-          <h3>Skating</h3>
-          <p>
-            Skating gets me out of my head and into flow — a good reminder that
-            getting good at anything is just falling, adjusting, and trying again.
-          </p>
+        <article class="exp-item">
+          <div class="exp-meta"><span class="exp-company">Skating</span></div>
+          <div class="exp-detail">
+            <p>Skating gets me out of my head and into flow — a good reminder that getting good at anything is just falling, adjusting, and trying again.</p>
+          </div>
         </article>
       </div>
     </section>
