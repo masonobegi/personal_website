@@ -17,15 +17,18 @@ function statusPill(p) {
 }
 
 function galleryHtml(p) {
-  const shots = (p.gallery && p.gallery.length ? p.gallery : [p.image]).filter(Boolean);
+  const raw = (p.gallery && p.gallery.length ? p.gallery : [p.image]).filter(Boolean);
+  // Gallery entries may be a plain "path" or { src, caption }.
+  const shots = raw.map((s) => (typeof s === "string" ? { src: s, caption: "" } : s));
   const vid = p.video
     ? `<div class="detail-video-wrap"><video class="detail-video" controls preload="metadata" src="${p.video}"></video></div>`
     : "";
   if (!shots.length && !vid) return "";
 
+  const first = shots[0] || { src: "", caption: "" };
   const main = shots.length
     ? `<figure class="gallery-main">
-         <img id="gallery-main-img" src="${shots[0]}" alt="${p.title} screenshot" />
+         <img id="gallery-main-img" src="${first.src}" alt="${p.title} screenshot" />
          <span class="gallery-zoom" aria-hidden="true">Click to enlarge</span>
        </figure>`
     : "";
@@ -34,13 +37,17 @@ function galleryHtml(p) {
     shots.length > 1
       ? `<div class="gallery-thumbs">${shots
           .map(
-            (src, i) => `
-          <button type="button" class="gallery-thumb${i === 0 ? " is-active" : ""}" data-src="${src}" aria-label="View screenshot ${i + 1}">
-            <img src="${src}" alt="" loading="lazy" />
+            (s, i) => `
+          <button type="button" class="gallery-thumb${i === 0 ? " is-active" : ""}" data-src="${s.src}" data-caption="${(s.caption || "").replace(/"/g, "&quot;")}" aria-label="View screenshot ${i + 1}">
+            <img src="${s.src}" alt="" loading="lazy" />
           </button>`
           )
           .join("")}</div>`
       : "";
+
+  const caption = shots.some((s) => s.caption)
+    ? `<p class="gallery-caption" id="gallery-caption">${first.caption || ""}</p>`
+    : "";
 
   return `
     ${vid}
@@ -48,6 +55,7 @@ function galleryHtml(p) {
       ${main}
       ${thumbs}
     </div>
+    ${caption}
     <div class="lightbox" id="lightbox" aria-hidden="true">
       <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
       <img class="lightbox-img" id="lightbox-img" src="" alt="" />
@@ -60,9 +68,11 @@ function initGallery() {
   if (!main) return;
 
   const thumbs = Array.from(document.querySelectorAll(".gallery-thumb"));
+  const capEl = document.getElementById("gallery-caption");
   thumbs.forEach((btn) => {
     btn.addEventListener("click", () => {
       main.src = btn.getAttribute("data-src");
+      if (capEl) capEl.textContent = btn.getAttribute("data-caption") || "";
       thumbs.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
     });
