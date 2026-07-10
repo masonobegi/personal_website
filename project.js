@@ -19,22 +19,86 @@ function statusPill(p) {
 function galleryHtml(p) {
   const shots = (p.gallery && p.gallery.length ? p.gallery : [p.image]).filter(Boolean);
   const vid = p.video
-    ? `<video class="detail-video" controls preload="metadata" src="${p.video}"></video>`
+    ? `<div class="detail-video-wrap"><video class="detail-video" controls preload="metadata" src="${p.video}"></video></div>`
     : "";
-  const imgs = shots
-    .map(
-      (src) => `
-      <figure class="shot">
-        <img src="${src}" alt="${p.title} screenshot" loading="lazy" onerror="this.closest('.shot').remove()" />
-      </figure>`
-    )
-    .join("");
-  if (!imgs && !vid) return "";
+  if (!shots.length && !vid) return "";
+
+  const main = shots.length
+    ? `<figure class="gallery-main">
+         <img id="gallery-main-img" src="${shots[0]}" alt="${p.title} screenshot" />
+         <span class="gallery-zoom" aria-hidden="true">Click to enlarge</span>
+       </figure>`
+    : "";
+
+  const thumbs =
+    shots.length > 1
+      ? `<div class="gallery-thumbs">${shots
+          .map(
+            (src, i) => `
+          <button type="button" class="gallery-thumb${i === 0 ? " is-active" : ""}" data-src="${src}" aria-label="View screenshot ${i + 1}">
+            <img src="${src}" alt="" loading="lazy" />
+          </button>`
+          )
+          .join("")}</div>`
+      : "";
+
   return `
-    <div class="detail-gallery">
-      ${vid}
-      ${imgs}
+    ${vid}
+    <div class="detail-gallery${shots.length > 1 ? "" : " is-single"}">
+      ${main}
+      ${thumbs}
+    </div>
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+      <img class="lightbox-img" id="lightbox-img" src="" alt="" />
     </div>`;
+}
+
+// Thumbnail rail swaps the main image; clicking the main image opens a lightbox.
+function initGallery() {
+  const main = document.getElementById("gallery-main-img");
+  if (!main) return;
+
+  const thumbs = Array.from(document.querySelectorAll(".gallery-thumb"));
+  thumbs.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      main.src = btn.getAttribute("data-src");
+      thumbs.forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+    });
+  });
+
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img");
+  const open = () => {
+    lbImg.src = main.src;
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden", "false");
+  };
+  const close = () => {
+    lb.classList.remove("open");
+    lb.setAttribute("aria-hidden", "true");
+  };
+  main.addEventListener("click", open);
+  lb.addEventListener("click", close);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+
+  // Match the thumbnail rail height to the main image (desktop side-rail only).
+  const rail = document.querySelector(".gallery-thumbs");
+  const sync = () => {
+    if (!rail) return;
+    if (window.innerWidth > 760) {
+      const h = main.clientHeight;
+      if (h) rail.style.maxHeight = h + "px";
+    } else {
+      rail.style.maxHeight = "";
+    }
+  };
+  if (main.complete) sync();
+  main.addEventListener("load", sync);
+  window.addEventListener("resize", sync);
 }
 
 function render() {
@@ -91,6 +155,8 @@ function render() {
         <div class="tool-list">${tools}</div>
       </aside>
     </div>`;
+
+  initGallery();
 }
 
 render();
