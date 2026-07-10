@@ -558,7 +558,20 @@ main { max-width: 1280px; margin: 0 auto; padding: 0 3rem; }
 }
 
 /* Hobbies reuse the Experience layout */
-.exp-detail > p { color: var(--muted); font-size: 0.95rem; line-height: 1.65; margin: 0; max-width: 68ch; }
+.exp-detail p { color: var(--muted); font-size: 0.95rem; line-height: 1.65; margin: 0; max-width: 68ch; }
+.hobby-row { display: flex; gap: 1.5rem; align-items: flex-start; }
+.hobby-row > p { flex: 1; }
+.hobby-media { flex: 0 0 auto; position: relative; display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); line-height: 0; }
+.hobby-media img { display: block; width: 100%; height: auto; }
+.hobby-media:hover { border-color: var(--text); }
+.hobby-media-video { width: 118px; }
+.hobby-media-wide { width: 232px; align-self: center; }
+.hobby-play {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.28);
+}
 
 /* About intro: bio + photo */
 .about-intro { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start; }
@@ -619,6 +632,8 @@ main { max-width: 1280px; margin: 0 auto; padding: 0 3rem; }
   .form-row { grid-template-columns: 1fr; }
   .about-intro { grid-template-columns: 1fr; gap: 2rem; }
   .about-photo { max-width: 280px; }
+  .hobby-row { flex-direction: column; }
+  .hobby-media-wide { align-self: flex-start; }
 }
 
 @media (max-width: 480px) {
