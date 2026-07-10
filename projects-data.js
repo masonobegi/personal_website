@@ -167,7 +167,6 @@ const PROJECTS = [
     gallery: [
       "images/bootleggers-title.png",
       "images/bootleggers.png",
-      "images/bootleggers-action.png",
       "images/bootleggers-dice.png",
       "images/bootleggers-draw.png",
       "images/bootleggers-roll.png",
