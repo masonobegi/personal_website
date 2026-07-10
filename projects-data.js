@@ -193,8 +193,9 @@ const PROJECTS = [
     ],
     tags: ["Node", "WebSocket", "Vanilla JS", "Canvas"],
     tools: ["Node.js", "WebSocket (ws)", "Vanilla JS (ES modules)", "HTML5 Canvas", "Web Audio API"],
-    image: "images/betrayal-lobby.png",
+    image: "images/betrayal-title.png",
     gallery: [
+      { src: "images/betrayal-title.png", caption: "The title screen — create or join a room to enter the House on the Hill." },
       { src: "images/betrayal.png", caption: "Room placement — rotate and place newly discovered rooms as you explore the house." },
       { src: "images/betrayal-lobby.png", caption: "The lobby: share a room code and each player claims an explorer." },
       { src: "images/betrayal-event.png", caption: "Resolving an event card, with the live game log on the right." },
