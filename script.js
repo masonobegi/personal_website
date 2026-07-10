@@ -68,6 +68,16 @@ function render() {
   // Grouped grid (ALL projects, including featured), in CATEGORY_ORDER.
   const groupsEl = document.getElementById("project-groups");
   let html = "";
+
+  // Lead with a Featured group so best work is clear on the Projects page too.
+  if (featured.length) {
+    html += `
+      <div class="project-group">
+        <h3 class="group-title">Featured</h3>
+        <div class="card-grid">${featured.map((p) => card(p, true)).join("")}</div>
+      </div>`;
+  }
+
   for (const category of CATEGORY_ORDER) {
     const items = PROJECTS.filter((p) => p.category === category);
     if (!items.length) continue;
@@ -116,6 +126,19 @@ function initHobbyCarousel() {
 
     car.querySelector(".carousel-prev").addEventListener("click", () => go(idx - 1));
     car.querySelector(".carousel-next").addEventListener("click", () => go(idx + 1));
+
+    // Arrow-key navigation — only when the carousel is visible, the lightbox is
+    // closed, and you're not typing in a field.
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      const tag = (document.activeElement && document.activeElement.tagName) || "";
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      if (!car.offsetParent) return; // carousel not on the visible tab
+      const lb = document.getElementById("hobby-lightbox");
+      if (lb && lb.classList.contains("open")) return;
+      go(e.key === "ArrowLeft" ? idx - 1 : idx + 1);
+      e.preventDefault();
+    });
   });
 }
 
