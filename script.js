@@ -16,8 +16,6 @@ function socialsHtml() {
     items.push(`<a href="${SOCIALS.github}" target="_blank" rel="noopener">GitHub →</a>`);
   if (SOCIALS.linkedin)
     items.push(`<a href="${SOCIALS.linkedin}" target="_blank" rel="noopener">LinkedIn →</a>`);
-  if (SOCIALS.email)
-    items.push(`<a href="#contact" data-tab="contact">Email →</a>`);
   return items.join("");
 }
 
