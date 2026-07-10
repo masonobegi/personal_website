@@ -16,6 +16,8 @@
                    dropping images in images/ and listing them here.
      video       - optional screen-recording path (e.g. "images/pooch.mp4"); "" = none
      live        - public URL (shown as a subtle link on the detail page)
+     liveLabel   - optional custom label for the live link (e.g. "Download on
+                   the App Store ↗"); defaults to "Visit live site ↗"
      code        - GitHub URL (optional)
      status      - e.g. "In progress"  (optional)
      featured    - true to show in the featured row + a Featured tag
@@ -90,6 +92,33 @@ const PROJECTS = [
     video: "",
     live: "https://oswegolegacypartners.com",
     code: "",
+    featured: true,
+  },
+  {
+    slug: "basketrogue",
+    title: "BasketRogue",
+    category: "Apps",
+    description:
+      "A published App Store basketball roguelike, built from scratch in Godot with GDScript. Draft a squad, pick a run-defining X-Factor, and battle deeper into an escalating bracket — earning upgrades, stealing players, and gambling in a between-rounds shop.",
+    long: [
+      "BasketRogue is a fast-paced basketball roguelike I designed, built, and shipped to the Apple App Store. Every run starts fresh: you draft and customize a squad, allocate skill points across shooting, defense, speed, and dribbling, and lock in a single run-defining X-Factor ability before tip-off — no two teams play the same.",
+      "Matches play out on an arcade court with a retro LED scoreboard and a real game clock. Between rounds a roguelike progression loop lets you bank winnings, upgrade skills, steal players off the opposing roster, and gamble in a shop on one-off drinks and superstitions — while rivalry games and per-city difficulty modifiers ramp the pressure the deeper you push into the bracket.",
+      "It's built in the Godot Engine with GDScript and exported natively to iOS (iPhone and iPad) as well as WebAssembly. This is a deliberately different stack from my TypeScript/Phaser games — a from-scratch Godot build covering game feel, UI, opponent AI, and the full economy and progression systems, carried all the way through App Store review and release.",
+    ],
+    tags: ["Godot", "GDScript", "iOS", "App Store", "WebAssembly"],
+    tools: ["Godot Engine", "GDScript", "iOS (iPhone & iPad)", "WebAssembly", "Xcode", "App Store Connect"],
+    image: "images/basketrogue-3.png",
+    gallery: [
+      "images/basketrogue.png",
+      "images/basketrogue-2.png",
+      "images/basketrogue-3.png",
+      "images/basketrogue-4.png",
+    ],
+    video: "",
+    live: "https://apps.apple.com/us/app/basketrogue/id6762860660",
+    liveLabel: "Download on the App Store ↗",
+    code: "",
+    status: "Published",
     featured: true,
   },
   {

@@ -64,7 +64,7 @@ function render() {
     .join("");
 
   const liveLink = p.live
-    ? `<a class="detail-live" href="${p.live}" target="_blank" rel="noopener">Visit live site ↗</a>`
+    ? `<a class="detail-live" href="${p.live}" target="_blank" rel="noopener">${p.liveLabel || "Visit live site ↗"}</a>`
     : "";
   const codeLink = p.code
     ? `<a class="detail-live" href="${p.code}" target="_blank" rel="noopener">View code ↗</a>`
