@@ -169,9 +169,9 @@ const PROJECTS = [
     image: "images/bootleggers-title.png",
     gallery: [
       { src: "images/bootleggers-title.png", caption: "The landing screen — start a game, read the rules, or watch a match." },
-      { src: "images/bootleggers.png", caption: "The main board: build, sprawl, and gamble across the Vegas strip." },
+      { src: "images/bootleggers.png", caption: "The main board — building and sprawling across the Vegas strip, with a trade underway between players." },
       { src: "images/bootleggers-dice.png", caption: "Rolling the bootlegging dice to resolve a play." },
-      { src: "images/bootleggers-draw.png", caption: "Drawing a card on your turn." },
+      { src: "images/bootleggers-draw.png", caption: "A built-in tutorial that walks new players through the rules." },
       { src: "images/bootleggers-roll.png", caption: "A roll resolves — win or lose big on the stakes." },
       { src: "images/bootleggers-stats.png", caption: "Lifetime player stats: 24 columns of aggregated career numbers." },
       { src: "images/bootleggers-gameover.png", caption: "Game over — a victory-points-over-time graph and the final standings." },

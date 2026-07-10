@@ -69,17 +69,25 @@ function initGallery() {
 
   const thumbs = Array.from(document.querySelectorAll(".gallery-thumb"));
   const capEl = document.getElementById("gallery-caption");
-  thumbs.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      main.src = btn.getAttribute("data-src");
-      if (capEl) capEl.textContent = btn.getAttribute("data-caption") || "";
-      thumbs.forEach((b) => b.classList.remove("is-active"));
-      btn.classList.add("is-active");
-    });
-  });
-
   const lb = document.getElementById("lightbox");
   const lbImg = document.getElementById("lightbox-img");
+  let index = 0;
+
+  // Switch to image i (wraps around) and sync main image, caption, lightbox, rail.
+  function select(i) {
+    if (!thumbs.length) return;
+    index = (i + thumbs.length) % thumbs.length;
+    const btn = thumbs[index];
+    const src = btn.getAttribute("data-src");
+    main.src = src;
+    if (lb.classList.contains("open")) lbImg.src = src;
+    if (capEl) capEl.textContent = btn.getAttribute("data-caption") || "";
+    thumbs.forEach((b) => b.classList.remove("is-active"));
+    btn.classList.add("is-active");
+  }
+
+  thumbs.forEach((btn, i) => btn.addEventListener("click", () => select(i)));
+
   const open = () => {
     lbImg.src = main.src;
     lb.classList.add("open");
@@ -91,8 +99,17 @@ function initGallery() {
   };
   main.addEventListener("click", open);
   lb.addEventListener("click", close);
+
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") close();
+    if (e.key === "Escape") { close(); return; }
+    if (!thumbs.length) return;
+    const inLightbox = lb.classList.contains("open");
+    // Left/Right always browse; Up/Down browse only in the lightbox (so the
+    // page still scrolls normally otherwise).
+    const prev = e.key === "ArrowLeft" || (inLightbox && e.key === "ArrowUp");
+    const next = e.key === "ArrowRight" || (inLightbox && e.key === "ArrowDown");
+    if (prev) { select(index - 1); e.preventDefault(); }
+    else if (next) { select(index + 1); e.preventDefault(); }
   });
 
   // Match the thumbnail rail height to the main image (desktop side-rail only).

@@ -12,57 +12,60 @@
 </head>
 <body>
   <header class="topnav">
-    <a class="brand" href="#top">masonobegi.com</a>
+    <a class="brand" href="#home" data-tab="home">masonobegi.com</a>
     <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="resume.html" id="resume-link" target="_blank" rel="noopener">Resume</a>
-      <a href="#contact">Contact</a>
+      <a href="#projects" data-tab="projects">Projects</a>
+      <a href="#about" data-tab="about">About</a>
+      <a href="#hobbies" data-tab="hobbies">Hobbies</a>
+      <a href="#contact" data-tab="contact">Contact</a>
+      <a href="resume.html" target="_blank" rel="noopener">Resume</a>
     </nav>
   </header>
 
   <main id="top">
-    <!-- HERO -->
-    <section class="hero" id="intro">
-      <div class="hero-text">
-        <h1>Hi, I'm Mason Obegi.</h1>
-        <p class="role">Software Engineer</p>
-        <p class="bio">
-          I take software from idea to shipped — frontend, backend, data, and
-          deployment. Not a little of everything, but complete, production apps
-          that real people and businesses use every day.
-        </p>
-        <div class="hero-links" id="socials"></div>
-      </div>
-      <div class="hero-media">
-        <div class="hero-image">
-          <span class="hero-placeholder">Add images/hero.jpg</span>
-          <img src="images/hero.jpg" alt="Mason Obegi" onerror="this.remove()" />
+    <!-- ===== HOME ===== -->
+    <section class="page" id="page-home">
+      <section class="hero" id="intro">
+        <div class="hero-text">
+          <h1>Hi, I'm Mason Obegi.</h1>
+          <p class="role">Software Engineer</p>
+          <p class="bio">
+            I take software from idea to shipped — frontend, backend, data, and
+            deployment. Not a little of everything, but complete, production apps
+            that real people and businesses use every day.
+          </p>
+          <div class="hero-links" id="socials"></div>
         </div>
-      </div>
-    </section>
+        <div class="hero-media">
+          <div class="hero-image">
+            <span class="hero-placeholder">Add images/hero.jpg</span>
+            <img src="images/hero.jpg" alt="Mason Obegi" onerror="this.remove()" />
+          </div>
+        </div>
+      </section>
 
-    <hr class="divider" />
+      <hr class="divider" />
 
-    <!-- PROJECTS -->
-    <section id="projects">
       <div class="section-head">
         <h2>Featured Projects</h2>
-        <a href="#all-projects" class="view-all">View all projects →</a>
+        <a href="#projects" data-tab="projects" class="view-all">View all projects →</a>
       </div>
       <div id="featured" class="card-grid"></div>
-
-      <div id="all-projects">
-        <div id="project-groups"></div>
-      </div>
     </section>
 
-    <hr class="divider" />
+    <!-- ===== PROJECTS ===== -->
+    <section class="page" id="page-projects" hidden>
+      <h1 class="page-title">Projects</h1>
+      <p class="page-lead">
+        Production client sites, published apps, and the passion projects where I
+        take on the hardest systems problems. Click any project for the full write-up.
+      </p>
+      <div id="project-groups"></div>
+    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="about-section">
-      <h2>About</h2>
+    <!-- ===== ABOUT ===== -->
+    <section class="page" id="page-about" hidden>
+      <h1 class="page-title">About</h1>
       <div class="about-body">
         <p>
           I'm a software engineer and Washington State University Data Analytics
@@ -93,92 +96,168 @@
           data and ML background in Python and R. I like hard problems and
           shipping things people actually rely on.
         </p>
-        <p class="about-aside">Away from the keyboard: chess, lifting, and skating.</p>
       </div>
+
+      <hr class="divider" />
+
+      <section class="experience" id="experience">
+        <h2>Experience</h2>
+        <div class="exp-list">
+          <article class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-date">2025 — Present</span>
+              <span class="exp-company">HP</span>
+            </div>
+            <div class="exp-detail">
+              <h3>Quality Engineer III <span class="exp-prev">· prev. Test Specialist I</span></h3>
+              <ul>
+                <li>Design and develop internal web applications that host automation tooling, giving testers a central place to launch, monitor, and share programs across the QE org.</li>
+                <li>Build automation systems that replace repetitive manual testing, and rebuilt a degraded Power BI reporting database from the ground up to restore reliable team-wide reporting.</li>
+                <li>Automate enterprise reporting and time-series forecasting in Python and R, and develop prompt-engineering workflows and dashboards for internal LLM tools and stakeholders.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-date">2023 — 2024</span>
+              <span class="exp-company">Molecular Testing Labs</span>
+            </div>
+            <div class="exp-detail">
+              <h3>Lab Automation Engineering Intern</h3>
+              <ul>
+                <li>Developed computer-vision pipelines with OpenCV and PIL, and built machine-learning models with TensorFlow and Keras — presenting findings to executive leadership.</li>
+                <li>Created KPI dashboards in R Shiny and designed components in Autodesk Fusion 360.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="education">
+          <h3 class="edu-title">Education</h3>
+          <p>
+            <strong>B.S. Data Analytics</strong>, Washington State University (2024)
+            — 3.62 GPA, minors in Mathematics &amp; Criminal Justice.
+            Honored as an Outstanding Data Analytics Student.
+          </p>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="skills" id="skills">
+        <h2>Skills</h2>
+        <dl class="skills-list">
+          <div class="skill-row">
+            <dt>Languages</dt>
+            <dd>Python, TypeScript, JavaScript, R, SQL, Java, C++</dd>
+          </div>
+          <div class="skill-row">
+            <dt>Frontend</dt>
+            <dd>React, Next.js, Tailwind CSS, Phaser 3, Godot (GDScript)</dd>
+          </div>
+          <div class="skill-row">
+            <dt>Backend &amp; Data</dt>
+            <dd>Node.js, PostgreSQL, Prisma, Socket.io, REST APIs, Streamlit, Tkinter, Shiny</dd>
+          </div>
+          <div class="skill-row">
+            <dt>ML &amp; Analytics</dt>
+            <dd>TensorFlow, Keras, PyTorch, OpenCV, Pandas, Scikit-Learn, Forecasting, Statistical Modeling, Tableau, Power BI</dd>
+          </div>
+          <div class="skill-row">
+            <dt>Tools &amp; Math</dt>
+            <dd>Git, GitHub, Railway, Cloudflare, Excel, VS Code, Autodesk Fusion 360 · Statistics, Linear Algebra, Calculus</dd>
+          </div>
+        </dl>
+      </section>
     </section>
 
-    <hr class="divider" />
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="experience">
-      <h2>Experience</h2>
-      <div class="exp-list">
-        <article class="exp-item">
-          <div class="exp-meta">
-            <span class="exp-date">2025 — Present</span>
-            <span class="exp-company">HP</span>
-          </div>
-          <div class="exp-detail">
-            <h3>Quality Engineer III <span class="exp-prev">· prev. Test Specialist I</span></h3>
-            <ul>
-              <li>Design and develop internal web applications that host automation tooling, giving testers a central place to launch, monitor, and share programs across the QE org.</li>
-              <li>Build automation systems that replace repetitive manual testing, and rebuilt a degraded Power BI reporting database from the ground up to restore reliable team-wide reporting.</li>
-              <li>Automate enterprise reporting and time-series forecasting in Python and R, and develop prompt-engineering workflows and dashboards for internal LLM tools and stakeholders.</li>
-            </ul>
-          </div>
+    <!-- ===== HOBBIES ===== -->
+    <section class="page" id="page-hobbies" hidden>
+      <h1 class="page-title">Beyond Code</h1>
+      <p class="page-lead">
+        The stuff that keeps me sharp when I'm away from the keyboard.
+      </p>
+      <div class="hobby-grid">
+        <article class="hobby-card">
+          <span class="hobby-icon">🏋️</span>
+          <h3>Lifting</h3>
+          <p>
+            In the gym most days — it's my reset button. Progressive overload is
+            basically debugging: track everything, change one variable, measure,
+            repeat.
+          </p>
         </article>
-
-        <article class="exp-item">
-          <div class="exp-meta">
-            <span class="exp-date">2023 — 2024</span>
-            <span class="exp-company">Molecular Testing Labs</span>
-          </div>
-          <div class="exp-detail">
-            <h3>Lab Automation Engineering Intern</h3>
-            <ul>
-              <li>Developed computer-vision pipelines with OpenCV and PIL, and built machine-learning models with TensorFlow and Keras — presenting findings to executive leadership.</li>
-              <li>Created KPI dashboards in R Shiny and designed components in Autodesk Fusion 360.</li>
-            </ul>
-          </div>
+        <article class="hobby-card">
+          <span class="hobby-icon">♟️</span>
+          <h3>Chess</h3>
+          <p>
+            A longtime chess player. I love the long game — calculating lines and
+            spotting patterns — which is the same strategic thinking that shows up
+            in the game AI I build.
+          </p>
+        </article>
+        <article class="hobby-card">
+          <span class="hobby-icon">🧱</span>
+          <h3>LEGO</h3>
+          <p>
+            I build LEGO to unwind, the big technical sets especially. Something
+            satisfying about a few thousand precise parts coming together into one
+            working whole.
+          </p>
+        </article>
+        <article class="hobby-card">
+          <span class="hobby-icon">🛹</span>
+          <h3>Skating</h3>
+          <p>
+            Skating gets me out of my head and into flow — a good reminder that
+            getting good at anything is just falling, adjusting, and trying again.
+          </p>
         </article>
       </div>
-
-      <div class="education">
-        <h3 class="edu-title">Education</h3>
-        <p>
-          <strong>B.S. Data Analytics</strong>, Washington State University (2024)
-          — 3.62 GPA, minors in Mathematics &amp; Criminal Justice.
-          Honored as an Outstanding Data Analytics Student.
-        </p>
-      </div>
     </section>
 
-    <hr class="divider" />
+    <!-- ===== CONTACT ===== -->
+    <section class="page" id="page-contact" hidden>
+      <h1 class="page-title">Get In Touch</h1>
+      <p class="page-lead">
+        I'm currently open to new opportunities — send a message below, or reach
+        me directly.
+      </p>
 
-    <!-- SKILLS -->
-    <section id="skills" class="skills">
-      <h2>Skills</h2>
-      <dl class="skills-list">
-        <div class="skill-row">
-          <dt>Languages</dt>
-          <dd>Python, TypeScript, JavaScript, R, SQL, Java, C++</dd>
-        </div>
-        <div class="skill-row">
-          <dt>Frontend</dt>
-          <dd>React, Next.js, Tailwind CSS, Phaser 3, Godot (GDScript)</dd>
-        </div>
-        <div class="skill-row">
-          <dt>Backend &amp; Data</dt>
-          <dd>Node.js, PostgreSQL, Prisma, Socket.io, REST APIs, Streamlit, Tkinter, Shiny</dd>
-        </div>
-        <div class="skill-row">
-          <dt>ML &amp; Analytics</dt>
-          <dd>TensorFlow, Keras, PyTorch, OpenCV, Pandas, Scikit-Learn, Forecasting, Statistical Modeling, Tableau, Power BI</dd>
-        </div>
-        <div class="skill-row">
-          <dt>Tools &amp; Math</dt>
-          <dd>Git, GitHub, Railway, Cloudflare, Excel, VS Code, Autodesk Fusion 360 · Statistics, Linear Algebra, Calculus</dd>
-        </div>
-      </dl>
-    </section>
+      <div class="contact-layout">
+        <form id="contact-form" class="contact-form">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="New message from masonobegi.com" />
+          <input type="hidden" name="from_name" value="masonobegi.com contact form" />
+          <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" />
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-      <h2>Get In Touch</h2>
-      <p>I'm currently open to new opportunities — feel free to reach out.</p>
-      <div class="contact-lines">
-        <a class="contact-link copy-email" href="#" data-email="mobegibusiness@gmail.com">mobegibusiness@gmail.com →</a>
-        <a class="contact-link" href="tel:+13609210148">(360) 921-0148 →</a>
+          <div class="form-row">
+            <label class="form-field">
+              <span>Name</span>
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+            <label class="form-field">
+              <span>Email</span>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+          </div>
+          <label class="form-field">
+            <span>Message</span>
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <button type="submit" class="form-submit">Send message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="contact-direct">
+          <h3>Or reach me directly</h3>
+          <div class="contact-lines">
+            <a class="contact-link copy-email" href="#" data-email="mobegibusiness@gmail.com">mobegibusiness@gmail.com →</a>
+            <a class="contact-link" href="tel:+13609210148">(360) 921-0148 →</a>
+          </div>
+          <div class="hero-links" id="contact-socials"></div>
+        </aside>
       </div>
     </section>
 

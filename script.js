@@ -57,8 +57,10 @@ function card(p, showFeatured) {
 }
 
 function render() {
-  // Social links (hero)
-  document.getElementById("socials").innerHTML = socialsHtml();
+  // Social links (hero + contact page)
+  [document.getElementById("socials"), document.getElementById("contact-socials")].forEach(
+    (el) => { if (el) el.innerHTML = socialsHtml(); }
+  );
 
   // Featured grid (shown first, highlighted)
   const featured = PROJECTS.filter((p) => p.featured);
@@ -84,6 +86,71 @@ function render() {
 
   initTheme();
   initCopyEmail();
+  initTabs();
+  initContactForm();
+}
+
+// --- Tabbed navigation: show one "page" section at a time --------------------
+function initTabs() {
+  const pages = Array.from(document.querySelectorAll(".page"));
+  if (!pages.length) return;
+  const navLinks = Array.from(document.querySelectorAll(".nav-links a[data-tab]"));
+
+  function show(tab) {
+    if (!document.getElementById("page-" + tab)) tab = "home";
+    pages.forEach((p) => { p.hidden = p.id !== "page-" + tab; });
+    navLinks.forEach((a) =>
+      a.classList.toggle("is-active", a.getAttribute("data-tab") === tab)
+    );
+    window.scrollTo(0, 0);
+  }
+
+  window.addEventListener("hashchange", () =>
+    show((location.hash || "#home").slice(1))
+  );
+  show((location.hash || "#home").slice(1));
+}
+
+// --- Contact form (Web3Forms — no backend needed) ----------------------------
+function initContactForm() {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+  const status = document.getElementById("form-status");
+  const setStatus = (msg, cls) => {
+    status.textContent = msg;
+    status.className = "form-status" + (cls ? " " + cls : "");
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const key = form.querySelector('input[name="access_key"]').value;
+    if (key.indexOf("YOUR_") === 0) {
+      setStatus(
+        "The form isn't wired up yet — email me directly at mobegibusiness@gmail.com.",
+        "is-error"
+      );
+      return;
+    }
+    setStatus("Sending…", "");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: new FormData(form),
+      });
+      const json = await res.json();
+      if (json.success) {
+        form.reset();
+        setStatus("Thanks — your message is on its way. I'll get back to you soon.", "is-success");
+      } else {
+        throw new Error(json.message || "failed");
+      }
+    } catch (err) {
+      setStatus(
+        "Something went wrong. Please email me directly at mobegibusiness@gmail.com.",
+        "is-error"
+      );
+    }
+  });
 }
 
 render();
