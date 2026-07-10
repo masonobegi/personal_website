@@ -86,7 +86,37 @@ function render() {
   initCopyEmail();
   initTabs();
   initContactForm();
+  initHobbyCarousel();
   initHobbyLightbox();
+}
+
+// --- LEGO carousel: prev/next arrows + dots ---------------------------------
+function initHobbyCarousel() {
+  document.querySelectorAll(".hobby-carousel").forEach((car) => {
+    const slides = Array.from(car.querySelectorAll(".carousel-slide"));
+    if (slides.length < 2) return;
+    const dotsWrap = car.querySelector(".carousel-dots");
+    let idx = 0;
+
+    const dots = slides.map((_, i) => {
+      const d = document.createElement("button");
+      d.type = "button";
+      d.className = "carousel-dot" + (i === 0 ? " is-active" : "");
+      d.setAttribute("aria-label", "Show build " + (i + 1));
+      d.addEventListener("click", () => go(i));
+      if (dotsWrap) dotsWrap.appendChild(d);
+      return d;
+    });
+
+    function go(i) {
+      idx = (i + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle("is-active", k === idx));
+      dots.forEach((d, k) => d.classList.toggle("is-active", k === idx));
+    }
+
+    car.querySelector(".carousel-prev").addEventListener("click", () => go(idx - 1));
+    car.querySelector(".carousel-next").addEventListener("click", () => go(idx + 1));
+  });
 }
 
 // --- Click-to-enlarge for hobby photos that aren't links ---------------------

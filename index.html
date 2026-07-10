@@ -273,13 +273,18 @@
             <div class="hobby-row">
               <div class="hobby-text">
                 <p>I build LEGO to unwind, the big technical sets especially. Something satisfying about a few thousand precise parts coming together into one working whole.</p>
-                <span class="hobby-hint">Click a build to enlarge it.</span>
+                <span class="hobby-hint">Use the arrows to browse — click a build to enlarge it.</span>
               </div>
-              <span class="hobby-media hobby-collage" aria-label="LEGO builds: Jazz Club, Star Wars, and Minecraft">
-                <img class="c-main" src="images/lego-thumb.jpg" alt="LEGO modular Jazz Club" data-full="images/lego-thumb.jpg" loading="lazy" />
-                <img src="images/starwars-thumb.jpg" alt="LEGO Star Wars scene" data-full="images/starwars-thumb.jpg" loading="lazy" />
-                <img src="images/minecraft-thumb.jpg" alt="LEGO Minecraft build" data-full="images/minecraft-thumb.jpg" loading="lazy" />
-              </span>
+              <div class="hobby-media hobby-carousel" aria-label="LEGO builds: Jazz Club, Star Wars, and Minecraft">
+                <div class="carousel-viewport">
+                  <img class="carousel-slide is-active" src="images/lego-thumb.jpg" alt="LEGO modular Jazz Club" data-full="images/lego-thumb.jpg" loading="lazy" />
+                  <img class="carousel-slide" src="images/starwars-thumb.jpg" alt="LEGO Star Wars scene" data-full="images/starwars-thumb.jpg" loading="lazy" />
+                  <img class="carousel-slide" src="images/minecraft-thumb.jpg" alt="LEGO Minecraft build" data-full="images/minecraft-thumb.jpg" loading="lazy" />
+                </div>
+                <button type="button" class="carousel-arrow carousel-prev" aria-label="Previous build">‹</button>
+                <button type="button" class="carousel-arrow carousel-next" aria-label="Next build">›</button>
+                <div class="carousel-dots"></div>
+              </div>
             </div>
           </div>
         </article>
