@@ -119,7 +119,6 @@ const PROJECTS = [
     liveLabel: "Download on the App Store ↗",
     code: "",
     status: "Published",
-    featured: true,
   },
   {
     slug: "cigar-maps",
