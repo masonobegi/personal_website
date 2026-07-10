@@ -86,6 +86,35 @@ function render() {
   initCopyEmail();
   initTabs();
   initContactForm();
+  initHobbyLightbox();
+}
+
+// --- Click-to-enlarge for hobby photos that aren't links ---------------------
+function initHobbyLightbox() {
+  const imgs = Array.from(document.querySelectorAll("img[data-full]"));
+  const lb = document.getElementById("hobby-lightbox");
+  const lbImg = document.getElementById("hobby-lightbox-img");
+  if (!imgs.length || !lb || !lbImg) return;
+
+  const close = () => {
+    lb.classList.remove("open");
+    lb.setAttribute("aria-hidden", "true");
+    lbImg.src = "";
+  };
+  const open = (src, alt) => {
+    lbImg.src = src;
+    lbImg.alt = alt || "";
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden", "false");
+  };
+
+  imgs.forEach((im) =>
+    im.addEventListener("click", () => open(im.getAttribute("data-full"), im.alt))
+  );
+  lb.addEventListener("click", close);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lb.classList.contains("open")) close();
+  });
 }
 
 // --- Tabbed navigation: show one "page" section at a time --------------------

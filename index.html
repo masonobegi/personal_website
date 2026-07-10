@@ -242,7 +242,10 @@
           <div class="exp-meta"><span class="exp-company">Lifting</span></div>
           <div class="exp-detail">
             <div class="hobby-row">
-              <p>In the gym most days — it's my reset button. Progressive overload is basically debugging: track everything, change one variable, measure, repeat.</p>
+              <div class="hobby-text">
+                <p>In the gym most days — it's my reset button. Progressive overload is basically debugging: track everything, change one variable, measure, repeat.</p>
+                <a class="hobby-cta" href="https://youtube.com/shorts/Wi4xY0LBCQ0" target="_blank" rel="noopener">Watch a lift on YouTube →</a>
+              </div>
               <a class="hobby-media hobby-media-video" href="https://youtube.com/shorts/Wi4xY0LBCQ0" target="_blank" rel="noopener" aria-label="Watch a lift on YouTube">
                 <img src="images/lifting-thumb.jpg" alt="A lift on YouTube" loading="lazy" />
                 <span class="hobby-play" aria-hidden="true">▶</span>
@@ -254,7 +257,10 @@
           <div class="exp-meta"><span class="exp-company">Chess</span></div>
           <div class="exp-detail">
             <div class="hobby-row">
-              <p>A longtime chess player. I love the long game — calculating lines and spotting patterns — the same strategic thinking that shows up in the game AI I build.</p>
+              <div class="hobby-text">
+                <p>A longtime chess player. I love the long game — calculating lines and spotting patterns — the same strategic thinking that shows up in the game AI I build.</p>
+                <a class="hobby-cta" href="https://www.chess.com/member/obg2001" target="_blank" rel="noopener">Play me on Chess.com — I'm OBG2001 →</a>
+              </div>
               <a class="hobby-media hobby-media-wide" href="https://www.chess.com/member/obg2001" target="_blank" rel="noopener" aria-label="OBG2001 on Chess.com">
                 <img src="images/chess-thumb.png" alt="OBG2001 on Chess.com" loading="lazy" />
               </a>
@@ -265,9 +271,14 @@
           <div class="exp-meta"><span class="exp-company">LEGO</span></div>
           <div class="exp-detail">
             <div class="hobby-row">
-              <p>I build LEGO to unwind, the big technical sets especially. Something satisfying about a few thousand precise parts coming together into one working whole.</p>
-              <span class="hobby-media hobby-media-wide">
-                <img src="images/lego-thumb.jpg" alt="A LEGO modular Jazz Club build" loading="lazy" />
+              <div class="hobby-text">
+                <p>I build LEGO to unwind, the big technical sets especially. Something satisfying about a few thousand precise parts coming together into one working whole.</p>
+                <span class="hobby-hint">Click a build to enlarge it.</span>
+              </div>
+              <span class="hobby-media hobby-collage" aria-label="LEGO builds: Jazz Club, Star Wars, and Minecraft">
+                <img class="c-main" src="images/lego-thumb.jpg" alt="LEGO modular Jazz Club" data-full="images/lego-thumb.jpg" loading="lazy" />
+                <img src="images/starwars-thumb.jpg" alt="LEGO Star Wars scene" data-full="images/starwars-thumb.jpg" loading="lazy" />
+                <img src="images/minecraft-thumb.jpg" alt="LEGO Minecraft build" data-full="images/minecraft-thumb.jpg" loading="lazy" />
               </span>
             </div>
           </div>
@@ -276,9 +287,12 @@
           <div class="exp-meta"><span class="exp-company">Skating</span></div>
           <div class="exp-detail">
             <div class="hobby-row">
-              <p>Skating gets me out of my head and into flow — a good reminder that getting good at anything is just falling, adjusting, and trying again.</p>
+              <div class="hobby-text">
+                <p>Skating gets me out of my head and into flow — a good reminder that getting good at anything is just falling, adjusting, and trying again.</p>
+                <span class="hobby-hint">Click to enlarge.</span>
+              </div>
               <span class="hobby-media hobby-media-wide">
-                <img src="images/skating-thumb.jpg" alt="Skating on the tennis courts" loading="lazy" />
+                <img src="images/skating-thumb.jpg" alt="Skating on the tennis courts" data-full="images/skating-thumb.jpg" loading="lazy" />
               </span>
             </div>
           </div>
@@ -335,6 +349,11 @@
       <span>Built with vanilla HTML, CSS &amp; JS</span>
     </footer>
   </main>
+
+  <div class="lightbox" id="hobby-lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="hobby-lightbox-close" aria-label="Close">×</button>
+    <img class="lightbox-img" id="hobby-lightbox-img" src="" alt="" />
+  </div>
 
   <script src="projects-data.js"></script>
   <script src="theme.js"></script>

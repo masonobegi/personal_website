@@ -559,17 +559,36 @@ main { max-width: 1280px; margin: 0 auto; padding: 0 3rem; }
 
 /* Hobbies reuse the Experience layout */
 .exp-detail p { color: var(--muted); font-size: 0.95rem; line-height: 1.65; margin: 0; max-width: 68ch; }
-.hobby-row { display: flex; gap: 1.5rem; align-items: flex-start; }
-.hobby-row > p { flex: 1; }
+.hobby-row { display: flex; gap: 2.25rem; align-items: flex-start; }
+.hobby-text { flex: 1; min-width: 0; max-width: 42ch; }
+.hobby-cta {
+  display: inline-block; margin-top: 1rem;
+  font-size: 0.92rem; font-weight: 600;
+  color: var(--text); text-decoration: none;
+  border-bottom: 2px solid var(--accent); padding-bottom: 2px;
+}
+.hobby-cta:hover { opacity: 0.65; }
+.hobby-hint {
+  display: inline-block; margin-top: 0.9rem;
+  font-size: 0.82rem; color: var(--muted-dim);
+}
 .hobby-media { flex: 0 0 auto; position: relative; display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); line-height: 0; }
 .hobby-media img { display: block; width: 100%; height: auto; }
-.hobby-media:hover { border-color: var(--text); }
-.hobby-media-video { width: 118px; }
-.hobby-media-wide { width: 232px; align-self: center; }
+a.hobby-media:hover, .hobby-collage:hover, .hobby-media img[data-full]:hover { border-color: var(--text); }
+.hobby-media img[data-full] { cursor: zoom-in; }
+.hobby-media-video { width: 210px; }
+.hobby-media-wide { width: 440px; align-self: center; }
+.hobby-collage {
+  width: 440px; aspect-ratio: 3 / 2; align-self: center;
+  display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 3px; background: var(--border);
+}
+.hobby-collage img { width: 100%; height: 100%; object-fit: cover; }
+.hobby-collage .c-main { grid-row: 1 / 3; }
 .hobby-play {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 1.5rem;
+  color: #fff; font-size: 2rem;
   background: rgba(0, 0, 0, 0.28);
 }
 
@@ -633,7 +652,9 @@ main { max-width: 1280px; margin: 0 auto; padding: 0 3rem; }
   .about-intro { grid-template-columns: 1fr; gap: 2rem; }
   .about-photo { max-width: 280px; }
   .hobby-row { flex-direction: column; }
-  .hobby-media-wide { align-self: flex-start; }
+  .hobby-text { max-width: none; }
+  .hobby-media-wide, .hobby-collage { width: 100%; max-width: 440px; align-self: flex-start; }
+  .hobby-media-video { width: 190px; }
 }
 
 @media (max-width: 480px) {
