@@ -142,31 +142,61 @@ function initHobbyCarousel() {
   });
 }
 
-// --- Click-to-enlarge for hobby photos that aren't links ---------------------
+// --- Click-to-enlarge for hobby photos, with prev/next through a set ---------
 function initHobbyLightbox() {
   const imgs = Array.from(document.querySelectorAll("img[data-full]"));
   const lb = document.getElementById("hobby-lightbox");
   const lbImg = document.getElementById("hobby-lightbox-img");
+  const prevBtn = document.getElementById("hobby-lb-prev");
+  const nextBtn = document.getElementById("hobby-lb-next");
+  const closeBtn = document.getElementById("hobby-lightbox-close");
   if (!imgs.length || !lb || !lbImg) return;
 
+  let group = [];
+  let gi = 0;
+
+  const render = () => {
+    const im = group[gi];
+    lbImg.src = im.getAttribute("data-full") || im.src;
+    lbImg.alt = im.alt || "";
+    const many = group.length > 1;
+    if (prevBtn) prevBtn.style.display = many ? "flex" : "none";
+    if (nextBtn) nextBtn.style.display = many ? "flex" : "none";
+  };
+  const nav = (d) => {
+    if (group.length < 2) return;
+    gi = (gi + d + group.length) % group.length;
+    render();
+  };
   const close = () => {
     lb.classList.remove("open");
     lb.setAttribute("aria-hidden", "true");
     lbImg.src = "";
+    group = [];
   };
-  const open = (src, alt) => {
-    lbImg.src = src;
-    lbImg.alt = alt || "";
+  const open = (im) => {
+    // If the image belongs to a carousel, page through that whole set.
+    const car = im.closest(".hobby-carousel");
+    group = car ? Array.from(car.querySelectorAll("img[data-full]")) : [im];
+    gi = Math.max(0, group.indexOf(im));
+    render();
     lb.classList.add("open");
     lb.setAttribute("aria-hidden", "false");
   };
 
-  imgs.forEach((im) =>
-    im.addEventListener("click", () => open(im.getAttribute("data-full"), im.alt))
-  );
-  lb.addEventListener("click", close);
+  imgs.forEach((im) => im.addEventListener("click", () => open(im)));
+
+  // Clicking the backdrop closes; clicking a control does not.
+  lb.addEventListener("click", (e) => { if (e.target === lb || e.target === lbImg) close(); });
+  if (prevBtn) prevBtn.addEventListener("click", (e) => { e.stopPropagation(); nav(-1); });
+  if (nextBtn) nextBtn.addEventListener("click", (e) => { e.stopPropagation(); nav(1); });
+  if (closeBtn) closeBtn.addEventListener("click", (e) => { e.stopPropagation(); close(); });
+
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && lb.classList.contains("open")) close();
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") { nav(-1); e.preventDefault(); }
+    else if (e.key === "ArrowRight") { nav(1); e.preventDefault(); }
   });
 }
 
