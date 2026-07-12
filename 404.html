@@ -3,15 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project — Mason Obegi</title>
-  <meta name="description" content="A project by Mason Obegi — software engineer." />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="masonobegi.com" />
-  <meta property="og:title" content="Projects — Mason Obegi" />
-  <meta property="og:description" content="Production client sites, published apps, and real-time multiplayer games by Mason Obegi." />
-  <meta property="og:image" content="https://masonobegi.com/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://masonobegi.com/og-image.png" />
+  <title>404 — Mason Obegi</title>
+  <meta name="robots" content="noindex" />
   <link rel="icon" href="favicon.ico" sizes="32x32" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
@@ -20,6 +13,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .notfound { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 4rem 0; }
+    .notfound .code { font-size: clamp(3rem, 12vw, 6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+    .notfound p { color: var(--muted); max-width: 52ch; margin: 1rem 0 2rem; line-height: 1.7; }
+    .notfound .hero-links { margin-top: 0; }
+  </style>
 </head>
 <body>
   <header class="topnav">
@@ -34,13 +33,16 @@
   </header>
 
   <main>
-    <!-- Rendered by project.js from ?id=SLUG -->
-    <div id="detail" class="detail"></div>
+    <section class="notfound">
+      <div class="code">404</div>
+      <p>This page wandered off. The link may be broken or the page moved — let's get you back to something that works.</p>
+      <div class="hero-links">
+        <a href="index.html">Back to home →</a>
+        <a href="index.html#projects" data-tab="projects">See my projects →</a>
+      </div>
+    </section>
   </main>
 
-  <script src="projects-data.js"></script>
-  <script src="theme.js"></script>
-  <script src="project.js"></script>
   <script src="analytics.js"></script>
 </body>
 </html>

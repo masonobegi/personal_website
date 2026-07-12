@@ -4,6 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mason Obegi — Resume</title>
+<meta name="description" content="Résumé of Mason Obegi — software engineer (full-stack, data, ML)." />
+<meta property="og:title" content="Mason Obegi — Résumé" />
+<meta property="og:description" content="Software engineer — full-stack apps, real-time games, and data." />
+<meta property="og:image" content="https://masonobegi.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://masonobegi.com/og-image.png" />
 <link rel="icon" href="favicon.ico" sizes="32x32" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
@@ -116,10 +122,21 @@
   .edu-head .entry-title { font-size: 14.5px; }
   .edu-detail { font-size: 13px; color: var(--muted); margin-top: 3px; }
 
+  .download-pdf {
+    position: fixed; top: 20px; right: 20px; z-index: 10;
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--ink); color: #fff; text-decoration: none;
+    font-size: 13px; font-weight: 600;
+    padding: 9px 16px; border-radius: 6px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  }
+  .download-pdf:hover { background: #000; }
+
   @media print {
     body { background: #fff; padding: 0; }
     .sheet { box-shadow: none; border-radius: 0; max-width: none; padding: 0.4in 0.55in; }
     .contact a, .entry-sub a { color: var(--accent); }
+    .download-pdf { display: none; }
   }
 
   @media (max-width: 600px) {
@@ -129,6 +146,7 @@
 </style>
 </head>
 <body>
+<a class="download-pdf" href="Mason_Obegi_Resume.pdf" download>↓ Download PDF</a>
 <div class="sheet">
 
   <header>
@@ -226,5 +244,6 @@
   <p class="edu-detail">B.S. Data Analytics <span class="dot">•</span> Minor in Mathematics <span class="dot">•</span> Minor in Criminal Justice <span class="dot">•</span> GPA: 3.62 / 4.00 <span class="dot">•</span> 2024 Outstanding Data Analytics Student Award</p>
 
 </div>
+<script src="analytics.js"></script>
 </body>
 </html>
