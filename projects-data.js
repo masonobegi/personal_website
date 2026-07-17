@@ -76,7 +76,7 @@ const PROJECTS = [
       { src: "images/obg-orders.png", caption: "Order management with Stripe checkout: fulfil orders and email customers. (Customer details redacted.)" },
     ],
     video: "",
-    live: "https://imadobegi.up.railway.app",
+    live: "https://obgillustrator.com",
     code: "",
     featured: true,
   },
