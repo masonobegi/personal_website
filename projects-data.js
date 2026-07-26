@@ -182,30 +182,6 @@ const PROJECTS = [
     featured: true,
   },
   {
-    slug: "betrayal",
-    title: "Betrayal at House on the Hill",
-    category: "Passion Projects",
-    description:
-      "An online multiplayer engine for Betrayal at House on the Hill, built on a server-authoritative rules architecture with a framework-free HTML5 Canvas client and procedural audio.",
-    long: [
-      "An online multiplayer engine for the board game Betrayal at House on the Hill. It uses a server-authoritative rules architecture — all game logic is validated on the server — with a framework-free HTML5 Canvas client and procedural audio.",
-      "Rules are data-driven and live in JSON, and it ships with bots and a test suite. Engine, netcode, and UI are working; game content is still being filled in.",
-    ],
-    tags: ["Node", "WebSocket", "Vanilla JS", "Canvas"],
-    tools: ["Node.js", "WebSocket (ws)", "Vanilla JS (ES modules)", "HTML5 Canvas", "Web Audio API"],
-    image: "images/betrayal-title.png",
-    gallery: [
-      { src: "images/betrayal-title.png", caption: "The title screen — create or join a room to enter the House on the Hill." },
-      { src: "images/betrayal.png", caption: "Room placement — rotate and place newly discovered rooms as you explore the house." },
-      { src: "images/betrayal-lobby.png", caption: "The lobby: share a room code and each player claims an explorer." },
-      { src: "images/betrayal-event.png", caption: "Resolving an event card, with the live game log on the right." },
-    ],
-    video: "",
-    live: "https://betrayal-production-c191.up.railway.app",
-    code: "",
-    status: "In progress",
-  },
-  {
     slug: "spot-kick",
     title: "Spot Kick",
     category: "Passion Projects",

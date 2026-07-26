@@ -11,7 +11,7 @@
    With an empty TOKEN this file does nothing, so it's safe to ship as-is.
    ========================================================================= */
 (function () {
-  var TOKEN = ""; // ← paste your Cloudflare Web Analytics token here
+  var TOKEN = ""; // ← paste your Cloudflare Web Analytics token here (e.g., from your Cloudflare dashboard)
   if (!TOKEN) return;
   var s = document.createElement("script");
   s.defer = true;
