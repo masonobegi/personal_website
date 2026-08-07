@@ -105,6 +105,32 @@ const PROJECTS = [
     featured: true,
   },
   {
+    slug: "the-jeweler",
+    title: "The Jeweler",
+    category: "Client Work",
+    description:
+      "A content-managed website for an independent jewelry & watch-repair shop in Washington Square Mall — every word, photo, and service editable by the owner from a no-code dashboard, with SEO structured data built for the Google business panel.",
+    long: [
+      "The Jeweler is a production website I'm building for Ernie Pittaway's independent jewelry and watch-repair shop inside Washington Square Mall in Tigard, Oregon. It's a marketing site with a purpose-built content management system: every heading, paragraph, photo, video, service, and legal page a visitor reads is editable by the owner from a password-protected dashboard — no code changes and no redeploy.",
+      "I built it on Next.js (App Router) with a PostgreSQL backend. Uploaded photos and videos are stored in Postgres and served with HTTP Range support so iOS will actually play them; iPhone HEIC photos are converted to JPEG in the browser on upload and large shots are downscaled before saving. The contact form writes every submission to the database before it attempts an email, so a provider outage can never lose a customer's message — notifications go out through Resend or Web3Forms.",
+      "It's engineered to stay up when things go wrong: if Postgres is unreachable the site serves its shipped default content instead of erroring, which also lets it build cleanly on Railway. For discoverability it ships JSON-LD structured data — a JewelryStore profile with address, hours, and service catalog to power the Google business panel — plus a sitemap, robots rules, and a live-generated llms.txt summary for AI answer engines. It's an active work in progress.",
+    ],
+    tags: ["Next.js", "PostgreSQL", "React", "Resend", "SEO"],
+    tools: ["Next.js (App Router)", "React", "PostgreSQL", "Resend", "Web3Forms", "heic2any", "JSON-LD / SEO", "Railway"],
+    image: "images/jeweler-home.png",
+    gallery: [
+      { src: "images/jeweler-home.png", caption: "The homepage — a full-bleed hero of the shop, a welcome from the bench, and a browse-by-category collection." },
+      { src: "images/jeweler-services.png", caption: "The services page: a twelve-item grid spanning repair, custom design, appraisal, and consignment — nearly all of it done on-site." },
+      { src: "images/jeweler-gallery.png", caption: "A filterable gallery of custom designs, vintage & estate pieces, and restorations — a showcase, not a store." },
+      { src: "images/jeweler-about.png", caption: "The About page — the shop's story and the jeweler himself, Ernie Pittaway." },
+      { src: "images/jeweler-contact.png", caption: "Visit & Contact: address, hours, and a form whose messages are saved to the database before any email is sent." },
+    ],
+    video: "",
+    live: "https://www.thejewelerservices.com",
+    code: "",
+    status: "In progress",
+  },
+  {
     slug: "basketrogue",
     title: "BasketRogue",
     category: "Apps",
