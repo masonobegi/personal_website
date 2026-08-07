@@ -236,11 +236,12 @@ main { max-width: 1280px; margin: 0 auto; padding: 0 3rem; }
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .thumb-placeholder { position: absolute; color: var(--muted-dim); font-size: 0.72rem; }
 
-.thumb img { position: relative; width: 100%; height: 100%; object-fit: cover; }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
 .thumb-badge {
   position: absolute;
