@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work With Me — Custom Websites for Local Businesses | Mason Obegi</title>
+  <meta name="description" content="Custom websites for local businesses and professional practices — real payments, online booking, and a dashboard you run yourself. Built by an engineer, not a template. Serving Camas, Vancouver, and the Portland metro." />
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Link preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="masonobegi.com" />
+  <meta property="og:url" content="https://masonobegi.com/hire.html" />
+  <meta property="og:title" content="Custom Websites for Local Businesses — Mason Obegi" />
+  <meta property="og:description" content="Real payments, online booking, and a dashboard you run yourself. Built by an engineer, not a template." />
+  <meta property="og:image" content="https://masonobegi.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://masonobegi.com/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ===== Work-With-Me landing page (scoped .lp-*) ===== */
+    .lp-eyebrow {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted-dim);
+    }
+    .lp-section { padding: 3.75rem 0; border-top: 1px solid var(--border); }
+    .lp-section:first-of-type { border-top: none; }
+    .lp-section h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
+    .lp-section > .lp-sub { color: var(--muted); max-width: 60ch; margin-top: 0.6rem; }
+
+    /* Hero */
+    .lp-hero { padding: 3.5rem 0 3rem; }
+    .lp-hero h1 {
+      font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 700;
+      letter-spacing: -0.03em; line-height: 1.08; margin: 0.9rem 0 0; max-width: 20ch;
+    }
+    .lp-hero .lp-lead {
+      color: var(--muted); font-size: 1.05rem; line-height: 1.6;
+      margin-top: 1.35rem; max-width: 54ch;
+    }
+    .lp-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: inherit; font-size: 0.92rem; font-weight: 600; cursor: pointer;
+      border-radius: 7px; padding: 0.8rem 1.5rem; border: 1px solid transparent;
+      transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-bright); }
+    .btn-ghost:hover { border-color: var(--text); }
+    .lp-hero-note { font-size: 0.85rem; color: var(--muted-dim); margin-top: 1.1rem; }
+
+    /* Trust bar */
+    .lp-trust { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; padding: 1.75rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .lp-trust .lp-trust-label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-dim); }
+    .lp-trust .lp-trust-names { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; font-weight: 600; font-size: 0.95rem; }
+    .lp-trust .lp-trust-names span { color: var(--muted-dim); font-weight: 400; }
+
+    /* Pillars */
+    .lp-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .lp-pillar { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+    .lp-pillar h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .lp-pillar p { color: var(--muted); font-size: 0.92rem; }
+
+    /* Pricing */
+    .lp-pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .lp-plan { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem; display: flex; flex-direction: column; }
+    .lp-plan.is-featured { border-color: var(--text); box-shadow: var(--shadow-hover); }
+    .lp-plan-flag { position: absolute; top: -0.7rem; left: 1.5rem; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bg); background: var(--text); padding: 0.25rem 0.6rem; border-radius: 20px; }
+    .lp-plan h3 { font-size: 1.05rem; font-weight: 600; }
+    .lp-plan .lp-price { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 0.5rem 0 0.1rem; }
+    .lp-plan .lp-price small { font-size: 0.8rem; font-weight: 500; color: var(--muted-dim); }
+    .lp-plan .lp-plan-for { color: var(--muted); font-size: 0.85rem; min-height: 2.4em; }
+    .lp-plan ul { list-style: none; margin: 1.1rem 0 1.5rem; padding: 0; }
+    .lp-plan li { position: relative; padding-left: 1.4rem; color: var(--muted); font-size: 0.9rem; margin-bottom: 0.55rem; }
+    .lp-plan li::before { content: "✓"; position: absolute; left: 0; color: var(--text); font-weight: 700; }
+    .lp-plan .btn { margin-top: auto; justify-content: center; width: 100%; }
+    .lp-care { margin-top: 1.25rem; background: var(--card); border: 1px dashed var(--border-bright); border-radius: 12px; padding: 1.15rem 1.4rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1rem; }
+    .lp-care b { font-weight: 700; }
+    .lp-care span { color: var(--muted); font-size: 0.9rem; }
+    .lp-price-note { color: var(--muted-dim); font-size: 0.82rem; font-style: italic; margin-top: 1rem; }
+
+    /* Process */
+    .lp-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .lp-step { border-top: 2px solid var(--text); padding-top: 0.9rem; }
+    .lp-step .lp-step-n { font-size: 0.8rem; font-weight: 700; color: var(--muted-dim); }
+    .lp-step h3 { font-size: 1rem; font-weight: 600; margin: 0.2rem 0 0.4rem; }
+    .lp-step p { color: var(--muted); font-size: 0.88rem; }
+
+    /* Work cards */
+    .lp-work-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .lp-work-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: block; transition: border-color 0.2s ease, transform 0.2s ease; }
+    .lp-work-card:hover { border-color: var(--border-bright); transform: translateY(-2px); }
+    .lp-work-thumb { position: relative; width: 100%; aspect-ratio: 16 / 10; background: var(--thumb-bg); overflow: hidden; }
+    .lp-work-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .lp-work-body { padding: 0.9rem 1.1rem 1.1rem; }
+    .lp-work-body h3 { font-size: 0.95rem; font-weight: 600; }
+    .lp-work-body p { color: var(--muted); font-size: 0.82rem; margin-top: 0.3rem; }
+
+    /* Reviews */
+    .lp-reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .lp-review { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; display: flex; flex-direction: column; }
+    .lp-review.is-placeholder { border-style: dashed; opacity: 0.7; }
+    .lp-review .lp-stars { color: #e6a817; letter-spacing: 0.1em; font-size: 0.95rem; }
+    .lp-review .lp-quote { margin: 0.7rem 0 1rem; font-size: 0.94rem; line-height: 1.6; }
+    .lp-review .lp-review-by { margin-top: auto; font-size: 0.85rem; }
+    .lp-review .lp-review-by b { font-weight: 600; }
+    .lp-review .lp-review-by span { color: var(--muted-dim); }
+    .lp-review .lp-review-src { display: inline-block; margin-top: 0.5rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-dim); }
+    .lp-review .lp-ph-tag { position: absolute; }
+    .lp-review-example { display: inline-block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-dim); border: 1px solid var(--border-bright); border-radius: 20px; padding: 0.12rem 0.5rem; margin-bottom: 0.7rem; align-self: flex-start; }
+
+    /* FAQ */
+    .lp-faq { margin-top: 1.75rem; max-width: 760px; }
+    .lp-faq details { border-bottom: 1px solid var(--border); padding: 1rem 0; }
+    .lp-faq summary { cursor: pointer; font-weight: 600; font-size: 0.98rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+    .lp-faq summary::-webkit-details-marker { display: none; }
+    .lp-faq summary::after { content: "+"; color: var(--muted-dim); font-weight: 400; }
+    .lp-faq details[open] summary::after { content: "–"; }
+    .lp-faq details p { color: var(--muted); font-size: 0.92rem; margin-top: 0.7rem; max-width: 68ch; }
+
+    /* Final CTA band */
+    .lp-cta { text-align: center; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 3rem 1.5rem; margin: 3.75rem 0; }
+    .lp-cta h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; max-width: 22ch; margin: 0 auto; }
+    .lp-cta p { color: var(--muted); margin: 0.8rem auto 0; max-width: 46ch; }
+    .lp-cta .lp-actions { justify-content: center; }
+    .lp-cta-direct { margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted); }
+    .lp-cta-direct a { border-bottom: 1px solid var(--border-bright); }
+    .lp-cta-direct a:hover { border-color: var(--text); }
+
+    @media (max-width: 950px) {
+      .lp-grid-3, .lp-pricing, .lp-reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .lp-steps, .lp-work-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .lp-grid-3, .lp-pricing, .lp-reviews-grid, .lp-steps, .lp-work-grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; justify-content: center; }
+      .lp-actions { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topnav">
+    <a class="brand" href="index.html">masonobegi.com</a>
+    <nav class="nav-links">
+      <a href="hire.html" aria-current="page">Work With Me</a>
+      <a href="index.html#projects">See My Work</a>
+      <a href="index.html#about">About</a>
+      <a class="book-cta" href="#lets-talk">Book a call</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="lp-hero">
+      <p class="lp-eyebrow">Custom websites for local businesses</p>
+      <h1>A website you actually own — not another template.</h1>
+      <p class="lp-lead">
+        I build custom websites for local businesses and professional practices —
+        real online payments, booking, and a dashboard you run yourself, with
+        Google-ready SEO. Built by an engineer, priced for a small business.
+      </p>
+      <div class="lp-actions">
+        <a class="btn btn-primary book-cta" href="#lets-talk">Book a free 20-min call →</a>
+        <a class="btn btn-ghost" href="#work">See my work</a>
+      </div>
+      <p class="lp-hero-note">Serving Camas, Vancouver &amp; the greater Portland metro — and remote.</p>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="lp-trust">
+      <span class="lp-trust-label">Trusted to build for</span>
+      <div class="lp-trust-names">
+        <span>The Pooch Pit</span>
+        <span>OBGillustrator</span>
+        <span>Oswego Legacy Partners</span>
+        <span>The Jeweler</span>
+      </div>
+    </div>
+
+    <!-- PILLARS -->
+    <section class="lp-section">
+      <p class="lp-eyebrow">Why this, not a template</p>
+      <h2>More than a pretty page.</h2>
+      <div class="lp-grid-3">
+        <div class="lp-pillar">
+          <h3>A site you control</h3>
+          <p>Every site comes with a simple, no-code dashboard so you can edit text,
+             photos, prices, and hours yourself — instantly, no dev calls, no monthly
+             "just change this one thing" emails.</p>
+        </div>
+        <div class="lp-pillar">
+          <h3>Real features, done right</h3>
+          <p>Stripe payments and deposits, online booking that prevents
+             double-bookings, contact forms that never lose a message, and SEO built
+             to show up on Google. Things templates fake or can't do.</p>
+        </div>
+        <div class="lp-pillar">
+          <h3>Built by an engineer</h3>
+          <p>You work directly with the person writing the code — no agency markup,
+             no offshore handoff. Fast, secure, and yours to keep, on your own domain
+             and hosting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="lp-section" id="pricing">
+      <p class="lp-eyebrow">Packages</p>
+      <h2>Straightforward pricing.</h2>
+      <p class="lp-sub">Pick a starting point — every project is quoted individually after a quick call.</p>
+
+      <!-- ↓↓↓ MASON: edit the prices and bullets below to match your market ↓↓↓ -->
+      <div class="lp-pricing">
+        <div class="lp-plan">
+          <h3>Starter Site</h3>
+          <div class="lp-price">Starting at $1,500</div>
+          <p class="lp-plan-for">For a business that needs a clean, credible presence online.</p>
+          <ul>
+            <li>3–5 page custom marketing site</li>
+            <li>Mobile &amp; tablet responsive</li>
+            <li>Contact form to your inbox</li>
+            <li>Local SEO &amp; Google-ready setup</li>
+            <li>Your domain, your hosting</li>
+          </ul>
+          <a class="btn btn-ghost book-cta" href="#lets-talk">Get started</a>
+        </div>
+
+        <div class="lp-plan is-featured">
+          <span class="lp-plan-flag">Most popular</span>
+          <h3>Business Site</h3>
+          <div class="lp-price">Starting at $3,500</div>
+          <p class="lp-plan-for">For a business that needs to take bookings or sell online.</p>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Online booking <em>or</em> store (Stripe)</li>
+            <li>No-code owner dashboard</li>
+            <li>Deposits, payments &amp; email notifications</li>
+            <li>Photo galleries &amp; content you manage</li>
+          </ul>
+          <a class="btn btn-primary book-cta" href="#lets-talk">Get started</a>
+        </div>
+
+        <div class="lp-plan">
+          <h3>Custom Platform</h3>
+          <div class="lp-price">Let's talk</div>
+          <p class="lp-plan-for">For a bigger build — multiple features, integrations, or scale.</p>
+          <ul>
+            <li>Fully custom features</li>
+            <li>Multi-section content platforms</li>
+            <li>Integrations (payments, calendars, email)</li>
+            <li>Advanced SEO &amp; analytics</li>
+            <li>Like the sites in my portfolio</li>
+          </ul>
+          <a class="btn btn-ghost book-cta" href="#lets-talk">Book a call</a>
+        </div>
+      </div>
+
+      <div class="lp-care">
+        <b>Care Plan — $99/mo</b>
+        <span>Hosting, domain &amp; SSL, backups, updates, and small edits handled for you.
+               Optional, cancel anytime. Keeps your site fast, secure, and current.</span>
+      </div>
+      <p class="lp-price-note">Prices are starting points and depend on scope — you'll get a fixed quote before any work begins.</p>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="lp-section">
+      <p class="lp-eyebrow">How it works</p>
+      <h2>Simple, no-surprises process.</h2>
+      <div class="lp-steps">
+        <div class="lp-step">
+          <div class="lp-step-n">01</div>
+          <h3>Free call</h3>
+          <p>A quick 20 minutes to understand your business, goals, and what the site needs to do. You get a clear quote and timeline.</p>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step-n">02</div>
+          <h3>Design</h3>
+          <p>I design a site around your brand and your customers — you review and shape it before a line of production code is written.</p>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step-n">03</div>
+          <h3>Build</h3>
+          <p>I build the real thing — payments, booking, dashboard, SEO — and you see progress on a live preview link the whole way.</p>
+        </div>
+        <div class="lp-step">
+          <div class="lp-step-n">04</div>
+          <h3>Launch &amp; care</h3>
+          <p>We go live on your domain, I show you the dashboard, and — if you want — I keep it running with a Care Plan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="lp-section" id="work">
+      <p class="lp-eyebrow">Recent work</p>
+      <h2>Real sites, real businesses.</h2>
+      <p class="lp-sub">A few of the client sites I've designed, built, and shipped — click any to see the full write-up.</p>
+      <div class="lp-work-grid" id="lp-work-grid"></div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="lp-section" id="reviews">
+      <p class="lp-eyebrow">In their words</p>
+      <h2>What clients say.</h2>
+      <p class="lp-sub">Straight from the people I've built for — not paraphrased.</p>
+      <div class="lp-reviews-grid" id="lp-reviews-grid"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="lp-section">
+      <p class="lp-eyebrow">Questions</p>
+      <h2>Good to know.</h2>
+      <div class="lp-faq">
+        <details>
+          <summary>How long does a website take?</summary>
+          <p>Most Starter and Business sites launch in 2–4 weeks, depending on scope and how quickly you get me content. Larger custom platforms take longer — you'll get a timeline on our first call.</p>
+        </details>
+        <details>
+          <summary>Can I update the site myself?</summary>
+          <p>Yes — that's the point. Every Business and Custom build comes with a simple dashboard where you edit text, photos, pricing, and hours yourself, with no code and no waiting on me.</p>
+        </details>
+        <details>
+          <summary>Do I own the site and my domain?</summary>
+          <p>Completely. The site is yours, on your own domain and hosting. There's no lock-in — if you ever want to leave, everything goes with you.</p>
+        </details>
+        <details>
+          <summary>What about payments and booking?</summary>
+          <p>I set up real payment processing through Stripe (deposits, checkout, tipping) and booking systems that prevent double-bookings. You've seen these live on The Pooch Pit and my other client sites.</p>
+        </details>
+        <details>
+          <summary>What do you charge to maintain it?</summary>
+          <p>The site works on its own after launch. If you'd rather not think about hosting, updates, and small tweaks, the optional Care Plan ($99/mo) covers all of it. Cancel anytime.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="lp-cta" id="lets-talk">
+      <h2>Let's build something you own.</h2>
+      <p>Book a free 20-minute call — no pressure, no jargon. We'll figure out what your business needs and I'll give you a clear quote.</p>
+      <div class="lp-actions">
+        <a class="btn btn-primary book-cta" href="#">Book a free 20-min call →</a>
+      </div>
+      <p class="lp-cta-direct">
+        Or reach me directly:
+        <a class="copy-email" href="#" data-email="mobegibusiness@gmail.com">mobegibusiness@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="tel:+13609210148">(360) 921-0148</a>
+      </p>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Mason Obegi</span>
+      <nav class="footer-links">
+        <a href="index.html">Portfolio</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </footer>
+  </main>
+
+  <script src="projects-data.js"></script>
+  <script src="reviews-data.js"></script>
+  <script src="theme.js"></script>
+  <script src="hire.js"></script>
+  <script src="ga.js"></script>
+</body>
+</html>
