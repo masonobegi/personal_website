@@ -18,9 +18,14 @@
   <meta property="og:url" content="https://masonobegi.com/hire.html" />
   <meta property="og:title" content="Custom Websites for Local Businesses — Mason Obegi" />
   <meta property="og:description" content="Real payments, online booking, and a dashboard you run yourself. Built by an engineer, not a template." />
-  <meta property="og:image" content="https://masonobegi.com/og-image.png" />
+  <meta property="og:image" content="https://masonobegi.com/hire-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://masonobegi.com/og-image.png" />
+  <meta name="twitter:title" content="Custom Websites for Local Businesses — Mason Obegi" />
+  <meta name="twitter:image" content="https://masonobegi.com/hire-og.png" />
+  <meta name="geo.region" content="US-WA" />
+  <meta name="geo.placename" content="Camas, Washington" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -372,6 +377,65 @@
       </nav>
     </footer>
   </main>
+
+  <!-- SEO: local business structured data (powers Google's local results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Mason Obegi — Web Design & Development",
+    "description": "Custom website design and development for local businesses and professional practices — online booking, payments, SEO, and owner-managed content, built by a software engineer.",
+    "url": "https://masonobegi.com/hire.html",
+    "image": "https://masonobegi.com/hire-og.png",
+    "logo": "https://masonobegi.com/logo.png",
+    "telephone": "+1-360-921-0148",
+    "email": "mobegibusiness@gmail.com",
+    "priceRange": "$$",
+    "founder": { "@type": "Person", "name": "Mason Obegi" },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Camas",
+      "addressRegion": "WA",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Camas, WA" },
+      { "@type": "City", "name": "Vancouver, WA" },
+      { "@type": "City", "name": "Washougal, WA" },
+      { "@type": "City", "name": "Portland, OR" },
+      { "@type": "City", "name": "Beaverton, OR" },
+      { "@type": "City", "name": "Tigard, OR" },
+      { "@type": "City", "name": "Lake Oswego, OR" },
+      { "@type": "City", "name": "Hillsboro, OR" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/mason-obegi-5a963b1ba",
+      "https://github.com/masonobegi"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Website Packages",
+      "itemListElement": [
+        { "@type": "Offer", "priceCurrency": "USD", "price": "750", "itemOffered": { "@type": "Service", "name": "Starter Website" } },
+        { "@type": "Offer", "priceCurrency": "USD", "price": "2500", "itemOffered": { "@type": "Service", "name": "Business Website with online booking or store" } },
+        { "@type": "Offer", "priceCurrency": "USD", "price": "250", "itemOffered": { "@type": "Service", "name": "Website Care Plan (annual)" } }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How long does a website take?", "acceptedAnswer": { "@type": "Answer", "text": "Most Starter and Business sites launch in 2–4 weeks, depending on scope and how quickly you get me content. Larger custom platforms take longer — you'll get a timeline on our first call." } },
+      { "@type": "Question", "name": "Can I update the site myself?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — that's the point. Every Business and Custom build comes with a simple dashboard where you edit text, photos, pricing, and hours yourself, with no code and no waiting on me." } },
+      { "@type": "Question", "name": "Do I own the site and my domain?", "acceptedAnswer": { "@type": "Answer", "text": "Completely. The site is yours, on your own domain and hosting. There's no lock-in — if you ever want to leave, everything goes with you." } },
+      { "@type": "Question", "name": "What about payments and booking?", "acceptedAnswer": { "@type": "Answer", "text": "I set up real payment processing through Stripe (deposits, checkout, tipping) and booking systems that prevent double-bookings. You've seen these live on The Pooch Pit and my other client sites." } },
+      { "@type": "Question", "name": "What do you charge to maintain it?", "acceptedAnswer": { "@type": "Answer", "text": "The site works on its own after launch. If you'd rather not think about hosting, updates, and small tweaks, the optional Care Plan ($250/year) covers all of it." } }
+    ]
+  }
+  </script>
 
   <script src="projects-data.js"></script>
   <script src="reviews-data.js"></script>

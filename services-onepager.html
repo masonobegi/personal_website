@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Mason Obegi — Web Design Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1a1a18;
+    --muted: #55534d;
+    --faint: #8a8880;
+    --gold: #c9922f;
+    --line: #e4e1d8;
+    --panel: #f7f6f1;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: letter; margin: 0.5in; }
+  body { font-family: "Inter", system-ui, sans-serif; color: var(--ink); line-height: 1.45; -webkit-font-smoothing: antialiased; }
+  .mono { font-family: "JetBrains Mono", monospace; }
+
+  /* Header */
+  header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--ink); padding-bottom: 12px; }
+  .brand .name { font-family: "JetBrains Mono", monospace; font-size: 21px; font-weight: 700; letter-spacing: -0.01em; }
+  .brand .tag { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 3px; }
+  .contact { text-align: right; font-size: 10.5px; color: var(--muted); line-height: 1.7; }
+  .contact b { color: var(--ink); font-weight: 600; }
+
+  .lead { margin: 14px 0 4px; font-size: 13.5px; color: var(--muted); max-width: 92%; }
+  .lead b { color: var(--ink); font-weight: 600; }
+
+  .sec-label { font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin: 16px 0 8px; }
+
+  /* Packages */
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .plan { border: 1px solid var(--line); border-radius: 8px; padding: 12px 13px; }
+  .plan.hot { border-color: var(--ink); background: var(--panel); }
+  .plan h3 { font-size: 13px; font-weight: 700; }
+  .plan .price { font-family: "JetBrains Mono", monospace; font-size: 17px; font-weight: 700; margin: 3px 0 2px; }
+  .plan .price small { font-size: 10px; color: var(--faint); font-weight: 500; }
+  .plan .for { font-size: 10px; color: var(--muted); min-height: 26px; }
+  .plan ul { list-style: none; margin-top: 7px; }
+  .plan li { position: relative; padding-left: 14px; font-size: 10.5px; color: var(--muted); margin-bottom: 3px; }
+  .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .flag { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 8px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: var(--ink); padding: 2px 6px; border-radius: 10px; margin-bottom: 5px; }
+
+  .care { margin-top: 10px; border: 1px dashed var(--faint); border-radius: 8px; padding: 9px 13px; display: flex; align-items: baseline; gap: 10px; }
+  .care b { font-family: "JetBrains Mono", monospace; font-size: 12.5px; }
+  .care span { font-size: 10.5px; color: var(--muted); }
+
+  /* Two columns: why + work */
+  .cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 22px; margin-top: 6px; }
+  .why li { position: relative; padding-left: 16px; font-size: 11px; color: var(--muted); margin-bottom: 6px; list-style: none; }
+  .why li::before { content: ""; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .why li b { color: var(--ink); font-weight: 600; }
+  .work-list { list-style: none; }
+  .work-list li { font-size: 11px; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--line); }
+  .work-list li b { color: var(--ink); font-weight: 600; }
+  .work-list li:last-child { border-bottom: none; }
+
+  /* CTA */
+  .cta { margin-top: 16px; background: var(--ink); color: #fff; border-radius: 10px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+  .cta .big { font-family: "JetBrains Mono", monospace; font-size: 14px; font-weight: 700; }
+  .cta .sub { font-size: 10.5px; color: #c9c6bd; margin-top: 2px; }
+  .cta .url { font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 700; color: #f2c363; text-align: right; }
+  .cta .url small { display: block; font-family: "Inter"; font-size: 10px; color: #c9c6bd; font-weight: 400; margin-top: 2px; }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="name">Mason Obegi</div>
+      <div class="tag">Web Design &amp; Development</div>
+    </div>
+    <div class="contact">
+      <b>mobegibusiness@gmail.com</b><br />
+      (360) 921-0148<br />
+      masonobegi.com/hire
+    </div>
+  </header>
+
+  <p class="lead">
+    <b>Custom websites for local businesses</b> — real online payments, booking, and a
+    dashboard you run yourself, with Google-ready SEO. Built by a software engineer, not a
+    template shop, and priced for a small business.
+  </p>
+
+  <div class="sec-label">Packages</div>
+  <div class="plans">
+    <div class="plan">
+      <h3>Starter Site</h3>
+      <div class="price">from $750</div>
+      <div class="for">A clean, credible presence online.</div>
+      <ul>
+        <li>3–5 page custom site</li>
+        <li>Mobile &amp; tablet ready</li>
+        <li>Contact form</li>
+        <li>Local SEO setup</li>
+        <li>Your domain &amp; hosting</li>
+      </ul>
+    </div>
+    <div class="plan hot">
+      <span class="flag">Most popular</span>
+      <h3>Business Site</h3>
+      <div class="price">from $2,500</div>
+      <div class="for">Take bookings or sell online.</div>
+      <ul>
+        <li>Everything in Starter</li>
+        <li>Booking <em>or</em> store (Stripe)</li>
+        <li>No-code owner dashboard</li>
+        <li>Deposits &amp; email alerts</li>
+        <li>Galleries you manage</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <h3>Custom Platform</h3>
+      <div class="price">Let's talk</div>
+      <div class="for">Bigger builds &amp; integrations.</div>
+      <ul>
+        <li>Fully custom features</li>
+        <li>Multi-section platforms</li>
+        <li>Payments &amp; calendars</li>
+        <li>Advanced SEO &amp; analytics</li>
+        <li>Like my portfolio work</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="care">
+    <b>Care Plan — $250/yr</b>
+    <span>Hosting, domain &amp; SSL, backups, updates, and small edits handled for you. Optional.</span>
+  </div>
+
+  <div class="cols">
+    <div>
+      <div class="sec-label">Why work with me</div>
+      <ul class="why">
+        <li><b>A site you control.</b> Edit text, photos, prices, and hours yourself — no dev calls.</li>
+        <li><b>Real features, done right.</b> Stripe payments, booking that stops double-bookings, SEO that ranks.</li>
+        <li><b>Built by an engineer.</b> Work directly with the person writing the code — no agency markup.</li>
+        <li><b>You own everything.</b> Your site, your domain, your data. No lock-in.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="sec-label">Recent work</div>
+      <ul class="work-list">
+        <li><b>The Pooch Pit</b> — booking + Stripe deposits for a grooming business</li>
+        <li><b>OBGillustrator</b> — fine-art e-commerce storefront</li>
+        <li><b>Oswego Legacy Partners</b> — wealth-firm site + content platform</li>
+        <li><b>The Jeweler</b> — content-managed shop site</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div>
+      <div class="big">Let's build something you own.</div>
+      <div class="sub">Book a free 20-minute call — no pressure, clear quote.</div>
+    </div>
+    <div class="url">masonobegi.com/hire<small>mobegibusiness@gmail.com · (360) 921-0148</small></div>
+  </div>
+</body>
+</html>
