@@ -62,7 +62,7 @@ main { max-width: 1280px; margin: 0 auto; padding: 0 3rem; }
 }
 
 .brand { font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 0.5rem; }
-.brand-logo { height: 20px; width: auto; display: block; }
+.brand-logo { height: 26px; width: auto; display: block; }
 
 .nav-links { display: flex; align-items: center; gap: 2rem; }
 
