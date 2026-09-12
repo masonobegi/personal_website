@@ -33,6 +33,7 @@
 
   <style>
     /* ===== Work-With-Me landing page (scoped .lp-*) ===== */
+    :root { --brand: #693BAA; --brand-ink: #58309a; }
     .lp-eyebrow {
       font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--muted-dim);
@@ -59,8 +60,8 @@
       border-radius: 7px; padding: 0.8rem 1.5rem; border: 1px solid transparent;
       transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
-    .btn-primary { background: var(--text); color: var(--bg); }
-    .btn-primary:hover { opacity: 0.88; }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .btn-primary:hover { background: var(--brand-ink); }
     .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-bright); }
     .btn-ghost:hover { border-color: var(--text); }
     .lp-hero-note { font-size: 0.85rem; color: var(--muted-dim); margin-top: 1.1rem; }
@@ -80,8 +81,8 @@
     /* Pricing */
     .lp-pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
     .lp-plan { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem; display: flex; flex-direction: column; }
-    .lp-plan.is-featured { border-color: var(--text); box-shadow: var(--shadow-hover); }
-    .lp-plan-flag { position: absolute; top: -0.7rem; left: 1.5rem; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bg); background: var(--text); padding: 0.25rem 0.6rem; border-radius: 20px; }
+    .lp-plan.is-featured { border-color: var(--brand); box-shadow: var(--shadow-hover); }
+    .lp-plan-flag { position: absolute; top: -0.7rem; left: 1.5rem; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: var(--brand); padding: 0.25rem 0.6rem; border-radius: 20px; }
     .lp-plan h3 { font-size: 1.05rem; font-weight: 600; }
     .lp-plan .lp-price { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 0.5rem 0 0.1rem; }
     .lp-plan .lp-price small { font-size: 0.8rem; font-weight: 500; color: var(--muted-dim); }
@@ -97,7 +98,7 @@
 
     /* Process */
     .lp-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2rem; }
-    .lp-step { border-top: 2px solid var(--text); padding-top: 0.9rem; }
+    .lp-step { border-top: 2px solid var(--brand); padding-top: 0.9rem; }
     .lp-step .lp-step-n { font-size: 0.8rem; font-weight: 700; color: var(--muted-dim); }
     .lp-step h3 { font-size: 1rem; font-weight: 600; margin: 0.2rem 0 0.4rem; }
     .lp-step p { color: var(--muted); font-size: 0.88rem; }
