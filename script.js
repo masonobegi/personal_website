@@ -7,7 +7,7 @@
 const SOCIALS = {
   github:   "https://github.com/masonobegi?tab=repositories",
   linkedin: "https://www.linkedin.com/in/mason-obegi-5a963b1ba/",
-  email:    "mobegibusiness@gmail.com",
+  email:    "info@masonobegi.com",
 };
 
 function socialsHtml() {
@@ -236,7 +236,7 @@ function initContactForm() {
     const key = form.querySelector('input[name="access_key"]').value;
     if (key.indexOf("YOUR_") === 0) {
       setStatus(
-        "The form isn't wired up yet — email me directly at mobegibusiness@gmail.com.",
+        "The form isn't wired up yet — email me directly at info@masonobegi.com.",
         "is-error"
       );
       return;
@@ -256,7 +256,7 @@ function initContactForm() {
       }
     } catch (err) {
       setStatus(
-        "Something went wrong. Please email me directly at mobegibusiness@gmail.com.",
+        "Something went wrong. Please email me directly at info@masonobegi.com.",
         "is-error"
       );
     }
