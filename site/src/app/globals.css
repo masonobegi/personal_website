@@ -1,0 +1,1385 @@
+@import "tailwindcss";
+
+/* ===========================================================================
+   OSWEGO LEGACY PARTNERS — DESIGN SYSTEM
+   Editorial, high-end, restrained. Serif display type, cream fields,
+   deep forest for hero/footer, brass + ember accents.
+   =========================================================================== */
+
+:root {
+  /* masonobegi.com — warm off-white fields, navy for dark bands, purple accent,
+     monospace type throughout (matching the //MO brand). */
+  --cream: #f4f3ee;
+  --cream-deep: #ecebe4;
+  --cream-card: #ffffff;
+  --ink: #1c1c1a;
+  --ink-soft: #45443f;
+  --ink-faint: #6b6b64;
+  --forest: #141b28;
+  --forest-2: #172132;
+  --forest-3: #17213200;
+  /* "brass" is the accent-on-cream text tone (darker purple for contrast);
+     "ember" is the primary action color (purple), used as button backgrounds
+     with white text; "-soft" is the light tint that sits on the navy bands. */
+  --brass: #563091;
+  --brass-accent: #693baa;
+  --brass-soft: #c3a3ef;
+  --ember: #693baa;
+  --ember-deep: #58309a;
+  --line: #e2e0d7;
+  --line-control: #7d7667;
+  --line-soft: #ece9e1;
+  --paper: #fbf9f3;
+
+  --font-display: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-body: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-sans: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --maxw: 1140px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Announced by a screen reader, invisible on screen. Used for live regions
+   that have to exist before their text does, so the text is heard when it
+   arrives rather than appearing together with the region and being missed. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.08;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Preserve line breaks the admin types into the content editor. JSX collapses
+   source-code newlines before render, so the only newlines left in a paragraph
+   are ones the admin actually authored — making this safe to apply globally. */
+p {
+  white-space: pre-line;
+}
+
+/* ---- Layout helpers ---- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 28px;
+}
+
+.section {
+  padding-block: 92px;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.lead {
+  font-size: 1.15em;
+  color: var(--ink-soft);
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.divider {
+  width: 54px;
+  height: 1px;
+  background: var(--brass-accent);
+  margin: 22px 0;
+}
+.divider.center {
+  margin-inline: auto;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.btn-ember {
+  background: var(--ember);
+  color: #fff;
+}
+.btn-ember:hover {
+  background: var(--ember-deep);
+}
+.btn-outline {
+  background: transparent;
+  border-color: currentColor;
+  color: var(--ink);
+}
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn-ghost-light {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+/* ---- Hero (forest / lake) ---- */
+.hero {
+  position: relative;
+  color: #f4f0e8;
+  /* Hero photo is set via a CSS variable (swappable in the admin dashboard);
+     falls back to the committed sunset photo. */
+  background-image: var(
+    --hero-image,
+    image-set(url("/hero-1920.webp") type("image/webp"), url("/hero-1920.jpg") type("image/jpeg"))
+  );
+  background-size: cover;
+  /* Bias downward so the lake/water and reflection stay in frame */
+  background-position: center 78%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  /* Consistent hero height on every page; content is centered vertically. */
+  display: flex;
+  align-items: center;
+  min-height: 640px;
+}
+/* A phone has no use for a 1920px photo. Declared right here rather than down
+   with the other hero breakpoints so the two sizes stay next to each other. */
+@media (max-width: 760px) {
+  .hero {
+    background-image: var(
+      --hero-image-sm,
+      image-set(url("/hero-1080.webp") type("image/webp"), url("/hero-1080.jpg") type("image/jpeg"))
+    );
+  }
+}
+
+/* Dark overlay for text legibility, kept as a layer so the image can be a
+   plain background var. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 14, 11, 0.5) 0%,
+    /* Raised from 0.42 to give the hero copy headroom. Measured on the page
+       as it renders, the text sits at about 11:1 — but the photograph behind
+       it is swappable from the dashboard, and a brighter one would eat that
+       margin. This scrim is what has to carry the contrast, not the picture. */
+    rgba(8, 14, 11, 0.5) 42%,
+    rgba(8, 14, 11, 0.72) 100%
+  );
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-block: 48px;
+  /* Centered hero content (matches the reference images) */
+  text-align: center;
+}
+.hero-inner h1,
+.hero-inner .hero-sub,
+.hero-inner .hero-body,
+.hero-inner p {
+  margin-inline: auto;
+}
+.hero-inner .btn-row {
+  justify-content: center;
+}
+.hero-inner .divider {
+  margin-inline: auto;
+}
+.hero h1 {
+  color: #f6f2ea;
+  font-size: clamp(2.7rem, 6vw, 4.6rem);
+  font-weight: 500;
+}
+.hero .hero-sub {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  color: #efe9db;
+  font-style: italic;
+}
+.hero .hero-body {
+  /* Lightened along with the scrim above, for the same reason: margin for a
+     photograph the firm may swap for a brighter one. */
+  color: #f0ebe0;
+  /* Wider than a typical reading measure on purpose: these intros sit above the
+     content people came for, so a shorter, wider block gets them there sooner. */
+  max-width: 62ch;
+}
+
+/* subtle tree-line silhouette at bottom of hero */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(180deg, transparent, rgba(6, 12, 9, 0.6));
+  z-index: 1;
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--cream-card);
+  border: 1px solid var(--line-soft);
+  padding: 34px 32px;
+}
+.card h3 {
+  font-size: 1.5rem;
+}
+
+/* ---- Forms ---- */
+.field {
+  display: block;
+  margin-bottom: 18px;
+}
+.field label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 7px;
+}
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line-control);
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--brass-accent);
+}
+
+/* ---- Numbered process list ---- */
+.step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  padding-block: 20px;
+  border-top: 1px solid var(--line-soft);
+}
+.step-n {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--brass);
+  line-height: 1;
+  padding-top: 4px;
+}
+
+/* ---- PLACEHOLDER styling — deliberately loud so nothing ships by accident ---- */
+.ph {
+  position: relative;
+  border: 2px dashed #d81b8c;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(216, 27, 140, 0.06),
+    rgba(216, 27, 140, 0.06) 12px,
+    rgba(216, 27, 140, 0.11) 12px,
+    rgba(216, 27, 140, 0.11) 24px
+  );
+}
+.ph-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #d81b8c;
+  padding: 4px 10px;
+}
+.ph-note {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #a01268;
+  font-weight: 600;
+}
+
+/* grid utilities */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ---- Magazine layout: narrative column + sticky booking rail ---- */
+.magazine {
+  display: grid;
+  grid-template-columns: 1.55fr 0.95fr;
+  gap: 56px;
+  align-items: start;
+}
+.magazine .rail {
+  position: sticky;
+  top: 96px;
+}
+
+/* ---- Advisor cards: one row on desktop, however many there are (up to 4) ---- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--team-cols, 3), minmax(0, 1fr));
+  gap: 24px;
+  /* Break out past the 1140px text measure. Four cards inside the normal
+     column would leave each photo barely 180px wide against a 340px height —
+     far too narrow. Text stays at its comfortable width; only this row widens. */
+  width: min(1360px, calc(100vw - 56px));
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* Trimmed from the standard card padding so the photo, not the margin,
+   gets the extra width. */
+.team-grid .card {
+  padding: 26px 22px;
+}
+/* Photos shrink with the column, so four across stay proportionate. */
+.team-grid .team-photo {
+  height: 330px;
+}
+@media (max-width: 1180px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+  .team-grid .team-photo {
+    height: 340px;
+  }
+}
+@media (max-width: 860px) {
+  /* Back inside the normal container — no breakout needed at two columns. */
+  .team-grid {
+    width: auto;
+    left: auto;
+    transform: none;
+  }
+}
+@media (max-width: 620px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .team-grid .card {
+    padding: 24px 20px;
+  }
+  .team-grid .team-photo {
+    height: 320px;
+  }
+}
+
+/* ---- Bulleted question list (matches reference) ---- */
+.qlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.qlist li {
+  position: relative;
+  padding-left: 24px;
+  padding-block: 13px;
+  border-top: 1px solid var(--line-soft);
+  color: var(--ink-soft);
+}
+.qlist li:last-child {
+  border-bottom: 1px solid var(--line-soft);
+}
+.qlist li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  top: 12px;
+  color: var(--brass);
+  font-size: 1.2em;
+}
+
+/* ---- Reusable booking / contact card ---- */
+.contact-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 30px 28px;
+}
+.contact-card h3 {
+  font-size: 1.7rem;
+}
+
+/* =========================================================================
+   RESPONSIVE / MOBILE
+   ========================================================================= */
+@media (max-width: 940px) {
+  .magazine {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .magazine .rail {
+    position: static;
+  }
+}
+
+@media (max-width: 860px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding-block: 58px;
+  }
+  .hero {
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 18px;
+  }
+  .container {
+    padding-inline: 20px;
+  }
+  .section {
+    padding-block: 48px;
+  }
+  .hero {
+    min-height: 440px;
+  }
+  .card,
+  .contact-card {
+    padding: 24px 20px;
+  }
+  /* CTAs go full-width and stack cleanly on phones */
+  .btn {
+    width: 100%;
+  }
+  .btn-row .btn {
+    width: 100%;
+  }
+}
+
+.btn-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Dark backdrop behind page content so the fade-in reveals the dark hero color
+   (not the bright cream body) — turns the transition into a smooth dark
+   cross-fade instead of a bright flash. Every page starts with a dark hero. */
+main {
+  background: var(--forest);
+}
+
+/* Subtle fade-in on every page navigation (via app/template.js) */
+.page-fade {
+  animation: pageFade 0.55s ease-out both;
+}
+@keyframes pageFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* The accessibility statement says the site respects this setting, and
+     smooth scrolling and the page fade were ignoring it. */
+  html {
+    scroll-behavior: auto;
+  }
+  .page-fade {
+    animation: none;
+  }
+  .page-fade {
+    animation: none;
+  }
+}
+
+/* ---- Hero spacing ----
+   Kept in CSS rather than inline so media queries can tighten it: a hero is
+   sized by its contents, so capping min-height alone never shortened one. */
+.hero-inner > h1 { margin-top: 16px; }
+.hero-inner > .hero-sub { margin-top: 14px; }
+.hero-inner > .hero-body { margin-top: 18px; }
+.hero-inner > .btn-row { margin-top: 32px; }
+/* Interior heroes hold the title to a reading measure so it wraps deliberately
+   rather than spanning the full width. */
+.hero-inner > .hero-title { max-width: 18ch; }
+.hero-inner > .hero-body { font-size: 1.1rem; }
+/* Reserves a lane at the bottom so the cue never lands on a button. */
+.hero .hero-inner { padding-bottom: 86px; }
+
+/* ---- "More below" cue ----
+   A bare chevron rather than a button-looking circle: it has to be noticeable
+   without competing with the actual call to action a few pixels above it. */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 18px;
+  z-index: 3;
+  width: 44px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgba(246, 242, 234, 0.72);
+  cursor: pointer;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.55));
+  transition: opacity 0.4s ease, color 0.2s ease;
+  animation: cueNudge 2.6s ease-in-out infinite;
+}
+.scroll-cue:hover { color: #fff; }
+@keyframes cueNudge {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue { animation: none; }
+}
+
+/* ---- Short screens (laptops) ----
+   Scales the display type and the gaps down so the section below the hero is
+   visible. A long title like "Financial Planning for Physicians and Healthcare
+   Professionals" is the worst case: at full size and an 18ch measure it runs to
+   four lines and fills the viewport on its own, so the measure widens too. */
+@media (min-width: 861px) and (max-height: 900px) {
+  .hero { min-height: 0; }
+  .hero h1 { font-size: clamp(2.2rem, 4.2vw, 3.4rem); }
+  .hero-inner > .hero-title { max-width: 26ch; }
+  .hero .hero-sub { font-size: clamp(1.1rem, 1.9vw, 1.35rem); }
+  .hero .hero-body { font-size: 1rem; }
+  .hero .hero-inner { padding-top: 34px; padding-bottom: 72px; }
+  .hero-inner > h1 { margin-top: 12px; }
+  .hero-inner > .hero-sub { margin-top: 12px; }
+  .hero-inner > .hero-body { margin-top: 14px; }
+  .hero-inner > .btn-row { margin-top: 26px; }
+}
+@media (min-width: 861px) and (max-height: 780px) {
+  .hero h1 { font-size: clamp(2rem, 3.6vw, 2.9rem); }
+  .hero-inner > .hero-title { max-width: 30ch; }
+  .hero .hero-inner { padding-top: 26px; padding-bottom: 64px; }
+  .scroll-cue { bottom: 12px; }
+}
+
+/* Phones don't have this problem: heroes are already short there and the next
+   section is plainly visible, so the cue would be clutter solving nothing. */
+@media (max-width: 860px) {
+  .scroll-cue { display: none; }
+  .hero .hero-inner { padding-bottom: 48px; }
+}
+
+/* =========================================================================
+   ACCESSIBILITY + CONTENT
+   ========================================================================= */
+
+/* Keyboard users can jump past the navigation straight to the page. */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 300;
+  background: var(--cream-card);
+  color: var(--ink);
+  border: 2px solid var(--brass-accent);
+  padding: 10px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Visible focus for keyboard navigation everywhere. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--brass-accent);
+  outline-offset: 2px;
+}
+
+/* Links written into body text ([label](url)). */
+.rt-link {
+  color: var(--ember);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.rt-link:hover {
+  color: var(--ember-deep);
+}
+.rt-list {
+  padding-left: 1.3em;
+  /* Tailwind's reset strips the markers from every list, so a numbered list
+     rendered as plain indented lines — which meant the fix that starts a list
+     at the right number had nothing visible to act on. `revert` puts the
+     browser's own marker back for whichever tag is in use. */
+  list-style: revert;
+}
+.rt-list li {
+  margin: 0.3em 0;
+  padding-left: 0.2em;
+}
+.rt-list li::marker {
+  color: var(--brass);
+}
+
+/* ---- Article pages ---- */
+.article-body .ab-h2 {
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  margin: 1.6em 0 0.55em;
+  line-height: 1.15;
+  scroll-margin-top: 96px;
+}
+.article-body .ab-h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.55rem);
+  margin: 1.4em 0 0.45em;
+  line-height: 1.2;
+  scroll-margin-top: 96px;
+}
+.article-body > .ab-h2:first-child,
+.article-body > .ab-h3:first-child {
+  margin-top: 0;
+}
+.article-byline a:hover {
+  color: #fff;
+}
+.article-toc {
+  border: 1px solid var(--line);
+  background: var(--cream-card);
+  padding: 20px 24px;
+  margin-bottom: 36px;
+}
+.article-toc ol {
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: 17px;
+}
+.article-toc li {
+  margin: 0.25em 0;
+}
+.article-toc a {
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+.article-toc a:hover {
+  color: var(--ember);
+}
+.fine-print {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.fine-print h2 {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+.fine-print p {
+  margin: 0 0 0.8em;
+}
+.article-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+.article-link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+  padding: 22px 24px;
+  transition: border-color 0.15s ease;
+}
+.article-link-card:hover {
+  border-color: var(--brass-accent);
+}
+.article-link-card .alc-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.article-link-card .alc-sub {
+  display: block;
+  font-size: 15px;
+}
+.article-link-card .alc-cta {
+  display: block;
+  margin-top: 6px;
+  color: var(--ember);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+}
+.author-card {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+.author-photo {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--cream-deep);
+}
+.article-tags {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.article-tags-label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.tag-chip {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+}
+.tag-chip:hover {
+  border-color: var(--brass-accent);
+}
+.pdf-card {
+  background: #fff;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pdf-icon {
+  width: 52px;
+  height: 66px;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  background: var(--cream-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ember);
+}
+.pdf-preview {
+  display: none;
+}
+@media (min-width: 860px) {
+  .pdf-preview {
+    display: block;
+  }
+}
+
+/* ---- Cards (Library, related articles) ---- */
+.card-meta {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 8px;
+}
+.card-cta {
+  /* Pinned to the bottom of the card, so cards in a row line up. */
+  margin-top: auto;
+  padding-top: 16px;
+  color: var(--ember);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+/* Long summaries would stretch every card in the row; four lines is plenty.
+   (It must not be a growing flex item, or the hidden lines show again.) */
+.card-excerpt {
+  flex: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.video-card:hover {
+  border-color: var(--brass-accent) !important;
+}
+
+/* ---- Specialty pages: the full series list ---- */
+.series-list {
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
+}
+.series-list h3 {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+.series-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 40px;
+}
+.series-list li {
+  break-inside: avoid;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 17px;
+  line-height: 1.4;
+}
+.series-list a {
+  color: var(--ink);
+}
+.series-list a:hover {
+  color: var(--ember);
+}
+@media (max-width: 760px) {
+  .series-list ul {
+    columns: 1;
+  }
+}
+
+/* ---- Home: specialty links ---- */
+.specialty-grid {
+  display: grid;
+  /* 240px let two cards squeeze onto a 560px screen, where each was too narrow
+     to read. Going to one column sooner is better than two cramped ones. */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+}
+.specialty-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.specialty-card:hover {
+  border-color: var(--brass-accent);
+}
+.specialty-card .sc-title {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  line-height: 1.2;
+  color: var(--ink);
+  flex-grow: 1;
+}
+/* Reserve two lines for the label above the title, so titles in a row start at
+   the same height whether their label wraps or not. */
+.specialty-card .eyebrow {
+  min-height: 2.4em;
+}
+
+/* Anchored sections land below the sticky header, not under it. */
+.team-card,
+[id] {
+  scroll-margin-top: 96px;
+}
+
+/* =========================================================================
+   AD LANDING PAGES (/go/<slug>) — no site navigation, one offer, one form
+   ========================================================================= */
+.lp {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+}
+.lp-wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: 28px;
+}
+.lp-top {
+  background: var(--forest);
+  border-bottom: 1px solid rgba(162, 133, 79, 0.28);
+  padding-block: 16px;
+}
+.lp-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--brass-soft);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.lp-brand span {
+  color: #efe9db;
+}
+.lp-preview {
+  background: #fbf5e6;
+  border-bottom: 1px solid #dcc58f;
+  color: #5a4719;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  text-align: center;
+  padding: 10px 16px;
+}
+.lp-main {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(180deg, rgba(8, 14, 11, 0.78), rgba(8, 14, 11, 0.86)),
+    var(
+        --hero-image,
+        image-set(url("/hero-1920.webp") type("image/webp"), url("/hero-1920.jpg") type("image/jpeg"))
+      )
+      center 70% / cover no-repeat;
+  padding-block: 64px 72px;
+}
+/* These are the pages the firm buys traffic for, so the smaller photograph
+   matters here more than anywhere. Same breakpoint as the main hero. */
+@media (max-width: 760px) {
+  .lp-main {
+    background: linear-gradient(180deg, rgba(8, 14, 11, 0.78), rgba(8, 14, 11, 0.86)),
+      var(
+          --hero-image-sm,
+          image-set(url("/hero-1080.webp") type("image/webp"), url("/hero-1080.jpg") type("image/jpeg"))
+        )
+        center 70% / cover no-repeat;
+  }
+}
+.lp-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: start;
+}
+.lp-copy {
+  color: #ece6d7;
+  padding-top: 12px;
+}
+.lp-eyebrow {
+  color: var(--brass-soft);
+}
+.lp-copy h1 {
+  color: #f6f2ea;
+  font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+  margin-top: 14px;
+  line-height: 1.06;
+}
+.lp-sub {
+  color: #d7d0c0;
+  font-size: 1.15rem;
+  margin-top: 18px;
+  max-width: 52ch;
+}
+.lp-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0 0;
+  max-width: 52ch;
+}
+.lp-bullets li {
+  position: relative;
+  padding: 10px 0 10px 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e6dfcf;
+  font-size: 17.5px;
+  line-height: 1.5;
+}
+.lp-bullets li::before {
+  content: "✓";
+  position: absolute;
+  left: 2px;
+  top: 10px;
+  color: var(--brass-soft);
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+.lp-image {
+  margin-top: 28px;
+  max-width: 460px;
+  border: 1px solid rgba(162, 133, 79, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+.lp-card {
+  background: var(--cream-card);
+  border: 1px solid var(--line);
+  padding: 32px 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.lp-card .field label {
+  font-size: 11.5px;
+}
+.lp-card-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.18;
+  color: var(--ink);
+  outline: none;
+  display: block;
+}
+.lp-card-sub {
+  color: var(--ink-soft);
+  font-size: 17px;
+  margin: 10px 0 18px;
+}
+.lp-card-meta {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin: 0 0 18px;
+}
+.lp-full {
+  width: 100%;
+}
+.lp-progress {
+  margin-bottom: 18px;
+}
+.lp-progress-label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 8px;
+}
+.lp-progress-bar {
+  height: 4px;
+  background: var(--line-soft);
+  overflow: hidden;
+}
+.lp-progress-bar span {
+  display: block;
+  height: 100%;
+  background: var(--brass-accent);
+  transition: width 0.25s ease;
+}
+.lp-q {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.lp-q legend {
+  padding: 0;
+  margin-bottom: 6px;
+}
+.lp-q-text {
+  font-size: 1.55rem;
+}
+.lp-options {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.lp-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  line-height: 1.35;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.lp-option:hover {
+  border-color: var(--brass-accent);
+}
+.lp-option.is-on {
+  border-color: var(--forest-2);
+  background: #f1f4ef;
+}
+.lp-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--forest-2);
+  flex-shrink: 0;
+  margin: 0;
+}
+.lp-option-label {
+  flex: 1;
+}
+.lp-points {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: var(--brass);
+  white-space: nowrap;
+}
+.lp-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 17px;
+  border: 1px solid var(--line-control);
+  padding: 12px 14px;
+  background: #fff;
+  margin-top: 12px;
+}
+.lp-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+.lp-nav .btn {
+  width: auto;
+  flex: 1;
+}
+.lp-error {
+  color: #9c3f20;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  min-height: 1.4em;
+  margin: 10px 0;
+}
+.lp-error:empty {
+  margin: 4px 0;
+}
+.lp-consent {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  margin: 14px 0 0;
+}
+.lp-back-link {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--ember);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  cursor: pointer;
+}
+.lp-check {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #e7f0e3;
+  color: #3c6b34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 14px;
+}
+.lp-result {
+  text-align: center;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 20px 20px 6px;
+  margin: 18px 0;
+}
+.lp-score {
+  font-family: var(--font-display);
+  line-height: 1;
+}
+.lp-score-n {
+  font-size: 3.4rem;
+  color: var(--ink);
+}
+.lp-score-of {
+  font-size: 1.6rem;
+  color: var(--ink-faint);
+  margin-left: 6px;
+}
+.lp-band {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+.lp-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.lp-countdown {
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin-top: 14px;
+}
+.lp-countdown button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--ember);
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+.lp-foot {
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+  padding-block: 30px 36px;
+}
+.lp-disclosure {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.lp-links {
+  margin-top: 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+.lp-links a {
+  color: var(--ember);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+@media (max-width: 900px) {
+  .lp-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .lp-main {
+    padding-block: 36px 48px;
+  }
+  .lp-image {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .lp-wrap {
+    padding-inline: 16px;
+  }
+  .lp-card {
+    padding: 24px 18px;
+  }
+  .lp-nav .btn {
+    width: auto;
+  }
+}
+
+/* ---- Admin: Inbox details ---- */
+.inbox-dl dt {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 3px;
+}
+.inbox-dl dd {
+  margin: 0;
+}
+
+@keyframes bookingsSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [style*="bookingsSpin"] {
+    animation: none !important;
+  }
+}
