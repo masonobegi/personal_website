@@ -133,10 +133,10 @@ export default async function HirePage() {
       )}
 
       {/* CTA */}
-      <section className="section" style={{ background: "var(--forest)", color: "#ece6d7", textAlign: "center" }}>
+      <section className="section" style={{ background: "var(--cream-deep)", borderTop: "1px solid var(--line)", textAlign: "center" }}>
         <div className="container" style={{ maxWidth: 640 }}>
-          <h2 style={{ color: "#f4efe2", fontSize: "clamp(1.8rem, 4vw, 2.5rem)" }}>{fmt(h.ctaTitle)}</h2>
-          {h.ctaBody && <p style={{ color: "#c9c3b3", marginTop: 12 }}>{fmt(h.ctaBody)}</p>}
+          <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)" }}>{fmt(h.ctaTitle)}</h2>
+          {h.ctaBody && <p className="muted" style={{ marginTop: 12 }}>{fmt(h.ctaBody)}</p>}
           <div className="btn-row" style={{ justifyContent: "center", marginTop: 22 }}>
             <a href={bookHref} className="btn btn-ember" {...(bookHref.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>Book a free 20-min call →</a>
           </div>

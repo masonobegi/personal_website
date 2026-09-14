@@ -445,13 +445,10 @@ const SEEDS = [
 ];
 
 async function doSeed() {
-  if (await getMeta("seeded_landing_v1")) return;
-  for (const seed of SEEDS) {
-    if (!(await rawGet(seed.slug))) {
-      await rawSave({ ...sanitizeLandingInput(seed), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
-    }
-  }
-  await setMeta("seeded_landing_v1", "1");
+  // No seeded landing pages on a personal site. Create your own in the admin
+  // (Landing tab). SEEDS kept for reference/import only.
+  void SEEDS;
+  return;
 }
 
 function ensureSeed() {

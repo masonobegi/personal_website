@@ -78,7 +78,7 @@ export default function AdminDashboard({ insecure = false }) {
     setUnauthorizedHandler(() => router.refresh());
     return () => setUnauthorizedHandler(null);
   }, [router]);
-  const [tab, setTab] = useState("pages"); // pages | team
+  const [tab, setTab] = useState("content");
   const [pages, setPages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(null);
@@ -360,7 +360,6 @@ export default function AdminDashboard({ insecure = false }) {
         {tabBtn("inbox", "Inbox", unread)}
         {tabBtn("content", "Content")}
         {tabBtn("projects", "Projects")}
-        {tabBtn("pages", "Pages")}
         {tabBtn("library", "Library")}
         {tabBtn("landing", "Landing Pages")}
         {tabBtn("backup", "Backup")}

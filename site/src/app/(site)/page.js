@@ -87,20 +87,20 @@ export default async function HomePage() {
 
       {/* ---------------- EXPERIENCE ---------------- */}
       {firstJob && (
-        <section className="section" style={{ background: "var(--forest-2)", color: "#ece6d7" }}>
+        <section className="section" style={{ background: "var(--cream-deep)" }}>
           <div className="container" style={{ maxWidth: 820 }}>
-            <div className="eyebrow" style={{ color: "var(--brass-soft)" }}>{home.experienceTitle || "Experience"}</div>
-            <h2 style={{ color: "#f4efe2", fontSize: "clamp(1.7rem, 3vw, 2.3rem)", marginTop: 12 }}>
+            <div className="eyebrow">{home.experienceTitle || "Experience"}</div>
+            <h2 style={{ fontSize: "clamp(1.7rem, 3vw, 2.3rem)", marginTop: 12 }}>
               {firstJob.title} · {firstJob.company}
             </h2>
-            <p style={{ color: "#c9c3b3", marginTop: 6 }}>{firstJob.dates}</p>
+            <p className="card-meta" style={{ marginTop: 6 }}>{firstJob.dates}</p>
             <ul className="qlist" style={{ marginTop: 18 }}>
               {(firstJob.bullets || []).map((b, i) => (
-                <li key={i} style={{ color: "#d7d1c2" }}>{b}</li>
+                <li key={i}>{b}</li>
               ))}
             </ul>
             <div className="btn-row" style={{ marginTop: 26 }}>
-              <Link href="/about" className="btn btn-ghost-light">Full experience</Link>
+              <Link href="/about" className="btn btn-outline">Full experience</Link>
             </div>
           </div>
         </section>

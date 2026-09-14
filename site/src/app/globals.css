@@ -13,19 +13,19 @@
   --cream-deep: #ecebe4;
   --cream-card: #ffffff;
   --ink: #1c1c1a;
-  --ink-soft: #45443f;
-  --ink-faint: #6b6b64;
-  --forest: #141b28;
-  --forest-2: #172132;
-  --forest-3: #17213200;
-  /* "brass" is the accent-on-cream text tone (darker purple for contrast);
-     "ember" is the primary action color (purple), used as button backgrounds
-     with white text; "-soft" is the light tint that sits on the navy bands. */
-  --brass: #563091;
-  --brass-accent: #693baa;
-  --brass-soft: #c3a3ef;
-  --ember: #693baa;
-  --ember-deep: #58309a;
+  --ink-soft: #6b6b64;
+  --ink-faint: #9a9a92;
+  /* Monochrome: no dark bands. These "dark" tokens are remapped to cream so any
+     section still using them reads as a light band. */
+  --forest: #f4f3ee;
+  --forest-2: #ecebe4;
+  --forest-3: #f4f3ee00;
+  /* Accents are monochrome ink; "ember" is the primary (dark) button. */
+  --brass: #6b6b64;
+  --brass-accent: #1c1c1a;
+  --brass-soft: #6b6b64;
+  --ember: #1c1c1a;
+  --ember-deep: #000000;
   --line: #e2e0d7;
   --line-control: #7d7667;
   --line-soft: #ece9e1;
@@ -147,8 +147,9 @@ p {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 15px 30px;
+  padding: 13px 26px;
   border: 1px solid transparent;
+  border-radius: 7px;
   cursor: pointer;
   transition: all 0.18s ease;
 }
@@ -170,123 +171,56 @@ p {
 }
 .btn-ghost-light {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.55);
-  color: #fff;
+  border-color: var(--line-control);
+  color: var(--ink);
 }
 .btn-ghost-light:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
 }
 
-/* ---- Hero (forest / lake) ---- */
+/* ---- Hero (light, minimal) ---- */
 .hero {
   position: relative;
-  color: #f4f0e8;
-  /* Hero photo is set via a CSS variable (swappable in the admin dashboard);
-     falls back to the committed sunset photo. */
-  background-image: var(
-    --hero-image,
-    image-set(url("/hero-1920.webp") type("image/webp"), url("/hero-1920.jpg") type("image/jpeg"))
-  );
-  background-size: cover;
-  /* Bias downward so the lake/water and reflection stay in frame */
-  background-position: center 78%;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  /* Consistent hero height on every page; content is centered vertically. */
-  display: flex;
-  align-items: center;
-  min-height: 640px;
-}
-/* A phone has no use for a 1920px photo. Declared right here rather than down
-   with the other hero breakpoints so the two sizes stay next to each other. */
-@media (max-width: 760px) {
-  .hero {
-    background-image: var(
-      --hero-image-sm,
-      image-set(url("/hero-1080.webp") type("image/webp"), url("/hero-1080.jpg") type("image/jpeg"))
-    );
-  }
-}
-
-/* Dark overlay for text legibility, kept as a layer so the image can be a
-   plain background var. */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(8, 14, 11, 0.5) 0%,
-    /* Raised from 0.42 to give the hero copy headroom. Measured on the page
-       as it renders, the text sits at about 11:1 — but the photograph behind
-       it is swappable from the dashboard, and a brighter one would eat that
-       margin. This scrim is what has to carry the contrast, not the picture. */
-    rgba(8, 14, 11, 0.5) 42%,
-    rgba(8, 14, 11, 0.72) 100%
-  );
+  background: var(--cream);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 .hero-inner {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding-block: 48px;
-  /* Centered hero content (matches the reference images) */
-  text-align: center;
-}
-.hero-inner h1,
-.hero-inner .hero-sub,
-.hero-inner .hero-body,
-.hero-inner p {
-  margin-inline: auto;
-}
-.hero-inner .btn-row {
-  justify-content: center;
-}
-.hero-inner .divider {
-  margin-inline: auto;
+  padding-block: 64px 44px;
+  text-align: left;
 }
 .hero h1 {
-  color: #f6f2ea;
-  font-size: clamp(2.7rem, 6vw, 4.6rem);
-  font-weight: 500;
+  color: var(--ink);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
 }
 .hero .hero-sub {
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
-  color: #efe9db;
-  font-style: italic;
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--ink-soft);
+  font-style: normal;
 }
 .hero .hero-body {
-  /* Lightened along with the scrim above, for the same reason: margin for a
-     photograph the firm may swap for a brighter one. */
-  color: #f0ebe0;
-  /* Wider than a typical reading measure on purpose: these intros sit above the
-     content people came for, so a shorter, wider block gets them there sooner. */
-  max-width: 62ch;
-}
-
-/* subtle tree-line silhouette at bottom of hero */
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 120px;
-  background: linear-gradient(180deg, transparent, rgba(6, 12, 9, 0.6));
-  z-index: 1;
+  color: var(--ink-soft);
+  max-width: 60ch;
 }
 
 /* ---- Cards ---- */
 .card {
   background: var(--cream-card);
-  border: 1px solid var(--line-soft);
-  padding: 34px 32px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px 26px;
 }
 .card h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 /* ---- Forms ---- */
