@@ -251,8 +251,8 @@ export default function ContentManager() {
               onClick={() => setActive(s.key)}
               style={{
                 padding: "9px 18px", borderRadius: 999, cursor: "pointer", fontFamily: "var(--font-sans)", fontSize: 13,
-                border: "1px solid", borderColor: on ? "var(--forest-2)" : "var(--line)",
-                background: on ? "var(--forest-2)" : "#fff", color: on ? "#f4efe2" : "var(--ink-soft)",
+                border: "1px solid", borderColor: on ? "var(--accent)" : "var(--line)",
+                background: on ? "var(--accent)" : "#fff", color: on ? "#f4efe2" : "var(--ink-soft)",
               }}
             >
               {s.label}
@@ -267,7 +267,7 @@ export default function ContentManager() {
         </p>
       )}
 
-      <div className="card" style={{ background: "#fff", marginBottom: 20, minHeight: 120 }}>
+      <div className="card" style={{ background: "#fff", marginBottom: 20, minHeight: 120, maxWidth: 760, padding: "1.5rem 1.75rem" }}>
         {active === "identity" && (
           <>
             {Field(["siteName"], "Your name")}

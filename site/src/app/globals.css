@@ -755,7 +755,8 @@ a.hobby-media:hover, .hobby-media img[data-full]:hover { border-color: var(--tex
 .hero-sub { color: var(--muted); }
 .field { display: block; margin-bottom: 1rem; }
 .field label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.35rem; }
-.field input, .field textarea, .field select { width: 100%; font-family: inherit; font-size: 0.9rem; color: var(--text); background: #fff; border: 1px solid var(--border-bright); border-radius: 6px; padding: 0.55rem 0.7rem; }
+.field input, .field textarea, .field select { width: 100%; font-family: inherit; font-size: 0.9rem; line-height: 1.6; color: var(--text); background: #fff; border: 1px solid var(--border-bright); border-radius: 6px; padding: 0.7rem 0.95rem; }
+.field textarea { min-height: 90px; }
 .brand-logo { height: 26px; width: auto; display: block; }
 .footer { max-width: 1280px; margin: 0 auto; }
 .skip-link { position: absolute; left: -9999px; top: 0; background: var(--text); color: var(--bg); padding: 0.5rem 1rem; z-index: 100; border-radius: 0 0 6px 0; }

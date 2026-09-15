@@ -229,10 +229,10 @@ export default function AdminDashboard({ insecure = false }) {
         letterSpacing: "0.08em",
         textTransform: "uppercase",
         cursor: "pointer",
-        background: tab === key ? "var(--forest-2)" : "transparent",
+        background: tab === key ? "var(--accent)" : "transparent",
         color: tab === key ? "#f4efe2" : "var(--ink-soft)",
         border: "1px solid var(--line)",
-        borderColor: tab === key ? "var(--forest-2)" : "var(--line)",
+        borderColor: tab === key ? "var(--accent)" : "var(--line)",
       }}
     >
       {label}
