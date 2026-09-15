@@ -24,7 +24,11 @@ export function nameAllowed(name) {
 export function sanitizeCommentInput(input) {
   const name = String(input.name || "").trim().slice(0, 40);
   const body = String(input.body || "").trim().slice(0, 2000);
-  return { name, body };
+  // Optional: an address to notify when this comment gets a reply, and the id
+  // of the comment being replied to. Both are validated by the caller.
+  const email = String(input.email || "").trim().slice(0, 254);
+  const parentId = String(input.parentId || "").trim().slice(0, 40);
+  return { name, body, email, parentId };
 }
 
 function ensurePgSchema() {
@@ -41,8 +45,14 @@ function ensurePgSchema() {
 
 const newId = () => `c_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
 
-export async function addComment({ slug, name, body, isAdmin }) {
-  const rec = { id: newId(), slug, name: name || "", body, isAdmin: !!isAdmin, createdAt: new Date().toISOString() };
+export async function addComment({ slug, name, body, isAdmin, email, parentId }) {
+  const rec = {
+    id: newId(), slug, name: name || "", body, isAdmin: !!isAdmin,
+    // Kept server-side only — never returned by the public listing.
+    ...(email ? { email } : {}),
+    ...(parentId ? { parentId } : {}),
+    createdAt: new Date().toISOString(),
+  };
   if (USE_PG) {
     await ensurePgSchema();
     await getPool().query(
@@ -68,6 +78,18 @@ export async function listComments(slug) {
   }
   const list = await readJson("comments.json", []);
   return list.filter((c) => c.slug === slug).sort((a, b) => String(a.createdAt).localeCompare(String(b.createdAt)));
+}
+
+// One comment by id, with its private fields (email/parentId) — for the API to
+// look up the parent author when a reply comes in. Never sent to the browser.
+export async function getComment(id) {
+  if (USE_PG) {
+    await ensurePgSchema();
+    const { rows } = await getPool().query("SELECT data FROM comments WHERE id = $1", [id]);
+    return rows[0]?.data || null;
+  }
+  const list = await readJson("comments.json", []);
+  return list.find((c) => c.id === id) || null;
 }
 
 export async function deleteComment(id) {

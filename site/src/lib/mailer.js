@@ -41,7 +41,7 @@ export function escapeHtml(s = "") {
 }
 
 // Returns { status: "sent" | "not-configured" | "no-recipients" | "failed" }.
-export async function sendEmail({ to, subject, html, text, replyTo }) {
+export async function sendEmail({ to, subject, html, text, replyTo, fromName }) {
   const recipients = [...new Set((to || []).filter(isDeliverable))];
   if (!recipients.length) return { status: "no-recipients" };
   if (!emailConfigured()) {
@@ -55,7 +55,7 @@ export async function sendEmail({ to, subject, html, text, replyTo }) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const from = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
     const { error } = await resend.emails.send({
-      from: `Oswego Legacy Partners <${from}>`,
+      from: `${fromName || "Oswego Legacy Partners"} <${from}>`,
       to: recipients.slice(0, 50),
       ...(replyTo && isEmail(replyTo) ? { replyTo } : {}),
       subject: String(subject).replace(/[\r\n]+/g, " ").slice(0, 200),
