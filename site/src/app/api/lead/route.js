@@ -8,6 +8,7 @@ import {
   rateLimited,
   readJsonBody,
   submittedTooFast,
+  looksSpammy,
 } from "@/lib/mailer";
 import { isAdminRequest } from "@/lib/auth";
 
@@ -117,7 +118,9 @@ export async function POST(request) {
     page: `/go/${landing.slug}`,
     // Flagged, not refused: an autofilled form can be this quick. The advisors
     // still get it, with the flag on the record so the Inbox can show it.
-    ...(submittedTooFast(body) ? { suspectedSpam: "timing" } : {}),
+    ...((submittedTooFast(body) || looksSpammy(message))
+      ? { suspectedSpam: submittedTooFast(body) ? "timing" : "links" }
+      : {}),
     id: newSubmissionId(),
   };
 

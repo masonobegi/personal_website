@@ -68,7 +68,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const [article, content] = await Promise.all([getArticle(slug), getContent()]);
   if (!article || !article.published) {
-    return { title: { absolute: `Not found | ${content.firmName}` }, robots: { index: false } };
+    return { title: { absolute: `Not found | ${content.siteName}` }, robots: { index: false } };
   }
   const image = await shareImageFor(article);
   return buildMetadata({
@@ -77,7 +77,7 @@ export async function generateMetadata({ params }) {
     description: articleSeoDescription(article),
     image,
     type: "article",
-    firm: content.firmName,
+    firm: content.siteName,
     // Pages that only point somewhere else aren't worth a search listing.
     noindex: isPointerArticle(article),
     article: {

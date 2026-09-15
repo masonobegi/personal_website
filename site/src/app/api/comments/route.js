@@ -1,5 +1,6 @@
 import { isAdminRequest } from "@/lib/auth";
 import { getContent } from "@/lib/contentStore";
+import { looksSpammy } from "@/lib/mailer";
 import { addComment, listComments, deleteComment, sanitizeCommentInput, nameAllowed } from "@/lib/commentsStore";
 
 export const runtime = "nodejs";
@@ -48,6 +49,19 @@ export async function POST(request) {
   if (!text) return Response.json({ error: "Write something first." }, { status: 400 });
 
   const admin = await isAdminRequest();
+
+  // Bot checks (skip for a logged-in admin). Submitted-instantly + link/keyword
+  // spam are the two strongest signals; the honeypot + throttle above catch the rest.
+  if (!admin) {
+    const elapsed = Number(body.elapsedMs);
+    if (Number.isFinite(elapsed) && elapsed > 0 && elapsed < 1500) {
+      return Response.json({ error: "That was too fast — try again." }, { status: 400 });
+    }
+    if (looksSpammy(text) || looksSpammy(name)) {
+      return Response.json({ error: "That looked like spam and wasn't posted." }, { status: 400 });
+    }
+  }
+
   let finalName = name;
   if (admin) {
     const c = await getContent();

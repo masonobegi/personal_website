@@ -98,6 +98,15 @@ export function submittedTooFast(body) {
   return Number.isFinite(elapsed) && elapsed > 0 && elapsed < 800;
 }
 
+// Cheap link/keyword spam signal for free-text (messages, comments). Bots dump
+// several links or known spam terms; real messages almost never do.
+export function looksSpammy(text) {
+  const s = String(text || "");
+  const links = (s.match(/https?:\/\/|www\.|\[url|\[link/gi) || []).length;
+  if (links >= 3) return true;
+  return /\b(viagra|cialis|casino|porn|crypto\s*giveaway|bit\.ly|tinyurl|loan offer|seo services|buy followers)\b/i.test(s);
+}
+
 // Reads a JSON request body with a hard ceiling on how much is read. Without
 // one, an unauthenticated caller can make the server buffer as much as it cares
 // to send. 64 KB is far more than any form here produces.

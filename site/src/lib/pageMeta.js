@@ -10,7 +10,7 @@ export async function standardMetadata(key, path, { title, description, noindex 
     path,
     title: p.title || title,
     description: p.description || description,
-    firm: c.firmName,
+    firm: c.siteName,
     noindex,
   });
 }

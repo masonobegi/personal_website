@@ -16,6 +16,8 @@ export default function ArticleComments({ slug }) {
   const [status, setStatus] = useState("idle"); // idle | sending | error
   const [error, setError] = useState("");
   const website = useRef(null); // honeypot
+  const startedAt = useRef(0);
+  useEffect(() => { startedAt.current = Date.now(); }, []);
 
   const load = useCallback(async () => {
     try {
@@ -39,7 +41,7 @@ export default function ArticleComments({ slug }) {
       const res = await fetch("/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, name, body, website: website.current?.value || "" }),
+        body: JSON.stringify({ slug, name, body, website: website.current?.value || "", elapsedMs: Date.now() - startedAt.current }),
       });
       const json = await res.json();
       if (res.ok && json.comment) {

@@ -16,7 +16,7 @@ export async function generateMetadata() {
     path: "/library",
     title: p.title || "Library",
     description: p.description,
-    firm: c.firmName,
+    firm: c.siteName,
   });
 }
 

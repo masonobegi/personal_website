@@ -25,13 +25,13 @@ async function loadPage(slug) {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const [{ landing }, c] = await Promise.all([loadPage(slug), getContent()]);
-  if (!landing) return { title: { absolute: c.firmName }, robots: { index: false } };
+  if (!landing) return { title: { absolute: c.siteName }, robots: { index: false } };
   return buildMetadata({
     path: `/go/${slug}`,
-    title: landing.headline || c.firmName,
+    title: landing.headline || c.siteName,
     description: landing.subhead,
     image: landing.image || undefined,
-    firm: c.firmName,
+    firm: c.siteName,
     noindex: true,
   });
 }
@@ -94,7 +94,7 @@ export default async function LandingPage({ params }) {
               <circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" strokeWidth="0.6" />
               <path d="M20 9 L20 31 M11 20 L29 20 M13.5 13.5 L26.5 26.5 M26.5 13.5 L13.5 26.5" stroke="currentColor" strokeWidth="0.6" opacity="0.7" />
             </svg>
-            <span>{c.firmName}</span>
+            <span>{c.siteName}</span>
           </span>
         </div>
       </header>

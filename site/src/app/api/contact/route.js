@@ -6,6 +6,7 @@ import {
   isEmail,
   isHoneypot,
   submittedTooFast,
+  looksSpammy,
   rateLimited,
   readJsonBody,
 } from "@/lib/mailer";
@@ -72,8 +73,10 @@ export async function POST(request) {
     message: concern,
     source: `contact:${source}`,
     attribution: cleanAttribution(body?.attribution),
-    // Flagged, not refused — see the note in the landing-page route.
-    ...(submittedTooFast(body) ? { suspectedSpam: "timing" } : {}),
+    // Flagged, not refused — see the note above (never drop a real enquiry).
+    ...((submittedTooFast(body) ? "timing" : looksSpammy(concern) ? "links" : null)
+      ? { suspectedSpam: submittedTooFast(body) ? "timing" : "links" }
+      : {}),
     id: newSubmissionId(),
   };
 
