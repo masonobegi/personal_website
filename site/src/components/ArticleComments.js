@@ -39,7 +39,10 @@ function CommentForm({ slug, parentId, viewerIsAdmin, adminName, onPosted, onCan
       if (res.ok && json.comment) {
         onPosted(json.comment);
         setBody(""); setEmail(""); if (!viewerIsAdmin) setName("");
-        setStatus("idle");
+        // Brief confirmation so it's clear the post landed — the inputs clearing
+        // on their own reads as "nothing happened". A reply form then closes.
+        setStatus("done");
+        setTimeout(() => { if (onCancel) onCancel(); else setStatus("idle"); }, 1800);
       } else if (res.ok) {
         setStatus("idle"); // honeypot skip — pretend it worked
       } else {
@@ -90,13 +93,14 @@ function CommentForm({ slug, parentId, viewerIsAdmin, adminName, onPosted, onCan
         required
         aria-label={isReply ? "Reply" : "Comment"}
       />
-      {!viewerIsAdmin && <p className="comment-privacy">Your email stays private — used only to tell you if someone replies.</p>}
+      {!viewerIsAdmin && status !== "done" && <p className="comment-privacy">Your email stays private — used only to tell you if someone replies.</p>}
       {error && <p className="comment-error">{error}</p>}
+      {status === "done" && <p className="comment-flash" role="status">✓ Thanks — your {isReply ? "reply" : "comment"} was posted.</p>}
       <div className="comment-actions">
-        <button type="submit" className="btn btn-ember" disabled={status === "sending"}>
-          {status === "sending" ? "Posting…" : isReply ? "Post reply" : "Post comment"}
+        <button type="submit" className="btn btn-ember" disabled={status === "sending" || status === "done"}>
+          {status === "sending" ? "Posting…" : status === "done" ? "Posted ✓" : isReply ? "Post reply" : "Post comment"}
         </button>
-        {onCancel && <button type="button" className="comment-cancel" onClick={onCancel}>Cancel</button>}
+        {onCancel && status !== "done" && <button type="button" className="comment-cancel" onClick={onCancel}>Cancel</button>}
       </div>
     </form>
   );

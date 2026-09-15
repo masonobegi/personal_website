@@ -784,6 +784,8 @@ a.hobby-media:hover, .hobby-media img[data-full]:hover { border-color: var(--tex
 .comment-fields { display: flex; gap: 0.6rem; width: 100%; flex-wrap: wrap; }
 .comment-fields .comment-input { flex: 1 1 180px; width: auto; }
 .comment-privacy { font-size: 0.75rem; color: var(--muted-dim); margin: 0; }
+.comment-flash { font-size: 0.85rem; font-weight: 600; color: var(--text); margin: 0; animation: comment-flash-in 0.2s ease-out; }
+@keyframes comment-flash-in { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
 .comment-actions { display: flex; align-items: center; gap: 0.9rem; }
 .comment-cancel { font-family: inherit; font-size: 0.8rem; background: none; border: none; color: var(--muted-dim); cursor: pointer; text-decoration: underline; }
 .comment-cancel:hover { color: var(--text); }
