@@ -23,17 +23,15 @@ export default async function HirePage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero hero-home">
-        <div className="container hero-inner">
-          <div className="eyebrow" style={{ color: "var(--brass-soft)" }}>{h.eyebrow}</div>
-          <h1>{fmt(h.heroTitle)}</h1>
-          <p className="hero-body" style={{ marginTop: 16 }}>{fmt(h.heroBody)}</p>
-          <div className="btn-row">
-            <a href={bookHref} className="btn btn-ember" {...(bookHref.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>Book a free 20-min call →</a>
-            <Link href="#work" className="btn btn-ghost-light">See my work</Link>
-          </div>
-          {h.heroNote && <p className="muted" style={{ marginTop: 14, color: "#c9c3b3" }}>{h.heroNote}</p>}
+      <section style={{ paddingTop: "3rem" }}>
+        <div className="eyebrow" style={{ marginBottom: "0.5rem" }}>{h.eyebrow}</div>
+        <h1 className="page-title">{fmt(h.heroTitle)}</h1>
+        <p className="page-lead">{fmt(h.heroBody)}</p>
+        <div className="btn-row" style={{ marginTop: "0.5rem" }}>
+          <a href={bookHref} className="btn btn-ember" {...(bookHref.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>Book a free 20-min call →</a>
+          <Link href="#work" className="btn btn-outline">See my work</Link>
         </div>
+        {h.heroNote && <p className="muted" style={{ marginTop: "0.9rem" }}>{h.heroNote}</p>}
       </section>
 
       {/* Pillars */}

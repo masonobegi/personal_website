@@ -1,54 +1,26 @@
 import { PlaceholderInline } from "@/components/Placeholder";
 import { formatText } from "@/lib/formatText";
-import ScrollCue from "@/components/ScrollCue";
 
-// Compact forest hero for interior pages. Spacing and the title measure live in
-// CSS (see .hero-inner in globals.css) so they can tighten on short screens —
-// inline styles can't be overridden by a media query.
+// Minimal interior page header (matches the static site): title + lead, no
+// hero band, no scroll cue.
 export function PageHero({ eyebrow, title, sub }) {
   return (
-    <section className="hero">
-      <div className="container hero-inner">
-        {eyebrow && (
-          <div className="eyebrow" style={{ color: "var(--brass-soft)" }}>
-            {eyebrow}
-          </div>
-        )}
-        <h1 className="hero-title">{formatText(title)}</h1>
-        {sub && <p className="hero-body">{formatText(sub)}</p>}
-      </div>
-      <ScrollCue />
+    <section style={{ paddingTop: "3rem" }}>
+      {eyebrow && <div className="eyebrow" style={{ marginBottom: "0.5rem" }}>{eyebrow}</div>}
+      <h1 className="page-title">{formatText(title)}</h1>
+      {sub && <p className="page-lead">{formatText(sub)}</p>}
     </section>
   );
 }
 
-// Centered section heading.
-export function SectionHead({ eyebrow, title, sub, align = "center" }) {
+// Left-aligned section heading (matches the static site's .section-head).
+export function SectionHead({ eyebrow, title, sub }) {
   return (
-    <div
-      style={{
-        textAlign: align,
-        // Wide enough that section intros stay short vertically, so the content
-        // below them (photos, cards) comes into view sooner.
-        maxWidth: align === "center" ? "64ch" : "none",
-        marginInline: align === "center" ? "auto" : 0,
-        marginBottom: 44,
-      }}
-    >
-      {eyebrow && <div className="eyebrow">{eyebrow}</div>}
-      <h2
-        style={{
-          fontSize: "clamp(2rem, 4vw, 2.9rem)",
-          marginTop: eyebrow ? 12 : 0,
-        }}
-      >
-        {formatText(title)}
-      </h2>
-      {sub && (
-        <p className="lead" style={{ marginTop: 16 }}>
-          {formatText(sub)}
-        </p>
-      )}
+    <div style={{ marginBottom: sub ? "1.25rem" : "2rem" }}>
+      <div className="section-head" style={{ marginBottom: sub ? "0.5rem" : "2rem" }}>
+        <h2>{formatText(title)}</h2>
+      </div>
+      {sub && <p className="page-lead" style={{ marginBottom: 0 }}>{formatText(sub)}</p>}
     </div>
   );
 }
