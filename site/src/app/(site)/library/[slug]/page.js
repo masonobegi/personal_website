@@ -6,6 +6,7 @@ import CTABand from "@/components/CTABand";
 import JsonLd from "@/components/JsonLd";
 import RichText from "@/components/RichText";
 import SmartImage from "@/components/SmartImage";
+import ArticleComments from "@/components/ArticleComments";
 import {
   absoluteUrl,
   breadcrumbLd,
@@ -426,6 +427,10 @@ export default async function ArticlePage({ params }) {
           </div>
         </section>
       )}
+
+      <div className="container" style={{ maxWidth: 760 }}>
+        <ArticleComments slug={slug} />
+      </div>
 
       <CTABand />
     </>

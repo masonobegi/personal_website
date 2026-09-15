@@ -760,3 +760,22 @@ a.hobby-media:hover, .hobby-media img[data-full]:hover { border-color: var(--tex
 .footer { max-width: 1280px; margin: 0 auto; }
 .skip-link { position: absolute; left: -9999px; top: 0; background: var(--text); color: var(--bg); padding: 0.5rem 1rem; z-index: 100; border-radius: 0 0 6px 0; }
 .skip-link:focus { left: 0; }
+
+/* ===== Article comments ===== */
+.comments { margin-top: 3rem; }
+.comments-title { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1.25rem; }
+.comment-list { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.comment-empty { color: var(--muted-dim); font-size: 0.9rem; }
+.comment { border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1.1rem; background: var(--card); }
+.comment-head { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+.comment-name { font-weight: 600; font-size: 0.9rem; }
+.comment-verified { display: inline-flex; align-items: center; gap: 0.2rem; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; background: #693baa; padding: 0.1rem 0.45rem; border-radius: 20px; }
+.comment-date { font-size: 0.75rem; color: var(--muted-dim); }
+.comment-del { margin-left: auto; font-family: inherit; font-size: 0.72rem; background: none; border: none; color: var(--muted-dim); cursor: pointer; text-decoration: underline; }
+.comment-del:hover { color: #b3402f; }
+.comment-body { color: var(--text); font-size: 0.92rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+.comment-form { display: flex; flex-direction: column; gap: 0.7rem; align-items: flex-start; }
+.comment-input { width: 100%; font-family: inherit; font-size: 0.9rem; color: var(--text); background: #fff; border: 1px solid var(--border-bright); border-radius: 7px; padding: 0.6rem 0.75rem; }
+.comment-textarea { resize: vertical; min-height: 84px; }
+.comment-asyou { font-size: 0.85rem; color: var(--muted); }
+.comment-error { color: #b3402f; font-size: 0.85rem; margin: 0; }
