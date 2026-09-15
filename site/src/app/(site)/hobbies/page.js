@@ -22,22 +22,6 @@ export default async function HobbiesPage() {
       {h.heroSub && <p className="page-lead">{fmt(h.heroSub)}</p>}
 
       <div className="exp-list">
-        {/* LEGO */}
-        {legoPhotos.length > 0 && (
-          <article className="exp-item">
-            <div className="exp-meta"><span className="exp-company">{h.legoTitle || "LEGO"}</span></div>
-            <div className="exp-detail">
-              <div className="hobby-row">
-                <div className="hobby-text">
-                  {h.legoBody && <p>{fmt(h.legoBody)}</p>}
-                  <span className="hobby-hint">Use the arrows to browse — click a build to enlarge it.</span>
-                </div>
-                <HobbyLego photos={legoPhotos} />
-              </div>
-            </div>
-          </article>
-        )}
-
         {/* Lifting */}
         {h.liftingBody && (
           <article className="exp-item">
@@ -76,6 +60,22 @@ export default async function HobbiesPage() {
                     <img src="/images/chess-thumb.png" alt="Chess.com profile" loading="lazy" />
                   </a>
                 )}
+              </div>
+            </div>
+          </article>
+        )}
+
+        {/* LEGO */}
+        {legoPhotos.length > 0 && (
+          <article className="exp-item">
+            <div className="exp-meta"><span className="exp-company">{h.legoTitle || "LEGO"}</span></div>
+            <div className="exp-detail">
+              <div className="hobby-row">
+                <div className="hobby-text">
+                  {h.legoBody && <p>{fmt(h.legoBody)}</p>}
+                  <span className="hobby-hint">Use the arrows to browse — click a build to enlarge it.</span>
+                </div>
+                <HobbyLego photos={legoPhotos} />
               </div>
             </div>
           </article>
