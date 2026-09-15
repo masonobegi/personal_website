@@ -1,4 +1,4 @@
-import { PageHero, SectionHead } from "@/components/ui";
+import HobbyLego from "@/components/HobbyLego";
 import { getContent } from "@/lib/contentStore";
 import { buildMetadata } from "@/lib/seo";
 import { formatText as fmt } from "@/lib/formatText";
@@ -18,50 +18,70 @@ export default async function HobbiesPage() {
 
   return (
     <>
-      <PageHero eyebrow="Outside the code" title={h.heroTitle || "Hobbies"} sub={h.heroSub} />
+      <h1 className="page-title">{h.heroTitle || "Hobbies"}</h1>
+      {h.heroSub && <p className="page-lead">{fmt(h.heroSub)}</p>}
 
-      {/* LEGO */}
-      <section className="section" style={{ background: "var(--cream)" }}>
-        <div className="container">
-          <SectionHead eyebrow="Building" title={h.legoTitle || "LEGO"} />
-          {h.legoBody && <p className="lead" style={{ maxWidth: "60ch" }}>{fmt(h.legoBody)}</p>}
-          {legoPhotos.length > 0 ? (
-            <div className="grid-3" style={{ gap: 20, marginTop: 26 }}>
-              {legoPhotos.map((g, i) => (
-                <figure key={i} style={{ margin: 0 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={g.src} alt={g.caption || "LEGO build"} loading="lazy" style={{ width: "100%", borderRadius: 10, display: "block", border: "1px solid var(--line)" }} />
-                  {g.caption && <figcaption className="muted" style={{ marginTop: 8, fontSize: 14.5 }}>{g.caption}</figcaption>}
-                </figure>
-              ))}
+      <div className="exp-list">
+        {/* LEGO */}
+        {legoPhotos.length > 0 && (
+          <article className="exp-item">
+            <div className="exp-meta"><span className="exp-company">{h.legoTitle || "LEGO"}</span></div>
+            <div className="exp-detail">
+              <div className="hobby-row">
+                <div className="hobby-text">
+                  {h.legoBody && <p>{fmt(h.legoBody)}</p>}
+                  <span className="hobby-hint">Use the arrows to browse — click a build to enlarge it.</span>
+                </div>
+                <HobbyLego photos={legoPhotos} />
+              </div>
             </div>
-          ) : (
-            <p className="muted" style={{ marginTop: 16 }}>Photos coming soon.</p>
-          )}
-        </div>
-      </section>
+          </article>
+        )}
 
-      {/* Lifting + Chess */}
-      <section className="section" style={{ background: "var(--cream-deep)" }}>
-        <div className="container grid-2" style={{ alignItems: "start", gap: 48 }}>
-          <div>
-            <div className="eyebrow">Training</div>
-            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.1rem)", marginTop: 10 }}>{h.liftingTitle || "Lifting"}</h2>
-            {h.liftingBody && <p className="muted" style={{ marginTop: 12 }}>{fmt(h.liftingBody)}</p>}
-            {h.liftingVideoUrl && (
-              <a href={h.liftingVideoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ marginTop: 18 }}>Watch ↗</a>
-            )}
-          </div>
-          <div>
-            <div className="eyebrow">Strategy</div>
-            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.1rem)", marginTop: 10 }}>{h.chessTitle || "Chess"}</h2>
-            {h.chessBody && <p className="muted" style={{ marginTop: 12 }}>{fmt(h.chessBody)}</p>}
-            {h.chessUrl && (
-              <a href={h.chessUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ marginTop: 18 }}>My chess.com profile ↗</a>
-            )}
-          </div>
-        </div>
-      </section>
+        {/* Lifting */}
+        {h.liftingBody && (
+          <article className="exp-item">
+            <div className="exp-meta"><span className="exp-company">{h.liftingTitle || "Lifting"}</span></div>
+            <div className="exp-detail">
+              <div className="hobby-row">
+                <div className="hobby-text">
+                  <p>{fmt(h.liftingBody)}</p>
+                  {h.liftingVideoUrl && <a className="hobby-cta" href={h.liftingVideoUrl} target="_blank" rel="noopener">Watch a lift on YouTube →</a>}
+                </div>
+                {h.liftingVideoUrl && (
+                  <a className="hobby-media hobby-media-video" href={h.liftingVideoUrl} target="_blank" rel="noopener" aria-label="Watch a lift on YouTube">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {h.liftingThumb && <img src={h.liftingThumb} alt="A lift on YouTube" loading="lazy" />}
+                    <span className="hobby-play" aria-hidden="true">▶</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        )}
+
+        {/* Chess */}
+        {h.chessBody && (
+          <article className="exp-item">
+            <div className="exp-meta"><span className="exp-company">{h.chessTitle || "Chess"}</span></div>
+            <div className="exp-detail">
+              <div className="hobby-row">
+                <div className="hobby-text">
+                  <p>{fmt(h.chessBody)}</p>
+                  {h.chessUrl && <a className="hobby-cta" href={h.chessUrl} target="_blank" rel="noopener">Play me on Chess.com →</a>}
+                </div>
+                {h.chessUrl && (
+                  <a className="hobby-media hobby-media-wide" href={h.chessUrl} target="_blank" rel="noopener" aria-label="Chess.com profile">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/images/chess-thumb.png" alt="Chess.com profile" loading="lazy" />
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        )}
+      </div>
+      <div style={{ height: "4rem" }} />
     </>
   );
 }

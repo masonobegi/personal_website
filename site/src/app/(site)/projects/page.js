@@ -1,4 +1,3 @@
-import { PageHero, SectionHead } from "@/components/ui";
 import ProjectCard from "@/components/ProjectCard";
 import JsonLd from "@/components/JsonLd";
 import { getContent } from "@/lib/contentStore";
@@ -21,39 +20,28 @@ export default async function ProjectsPage() {
   return (
     <>
       <JsonLd data={breadcrumbLd([{ name: "Home", path: "/" }, { name: "Projects", path: "/projects" }])} />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          "@id": `${SITE_URL}/projects#page`,
-          url: `${SITE_URL}/projects`,
-          name: "Projects",
-          isPartOf: { "@id": WEBSITE_ID },
-          about: { "@id": ORG_ID },
-        }}
-      />
-      <PageHero eyebrow="Work" title={pp.heroTitle || "Projects"} sub={pp.heroSub} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "CollectionPage", "@id": `${SITE_URL}/projects#page`, url: `${SITE_URL}/projects`, name: "Projects", isPartOf: { "@id": WEBSITE_ID }, about: { "@id": ORG_ID } }} />
 
-      <section className="section" style={{ background: "var(--cream)" }}>
-        <div className="container">
-          {groups.length === 0 && <p className="muted">Projects are on their way.</p>}
-          {groups.map((g, gi) => (
-            <div key={g.category} style={{ marginTop: gi === 0 ? 0 : 56 }}>
-              <SectionHead eyebrow={`0${gi + 1}`} title={g.category} />
-              {g.subsections.map((sub) => (
-                <div key={sub.name} style={{ marginBottom: 28 }}>
-                  {sub.name && (
-                    <h3 style={{ fontSize: "1.2rem", margin: "8px 0 18px", color: "var(--ink-soft)" }}>{sub.name}</h3>
-                  )}
-                  <div className="grid-3">
-                    {sub.items.map((p) => <ProjectCard key={p.slug} project={p} />)}
-                  </div>
+      <h1 className="page-title">{pp.heroTitle || "Projects"}</h1>
+      {pp.heroSub && <p className="page-lead">{pp.heroSub}</p>}
+
+      <div id="project-groups">
+        {groups.length === 0 && <p className="muted">Projects are on their way.</p>}
+        {groups.map((g) => (
+          <div className="project-group" key={g.category}>
+            <h2 className="group-title">{g.category}</h2>
+            {g.subsections.map((sub) => (
+              <div key={sub.name || "_"}>
+                {sub.name && <h3 className="group-title" style={{ opacity: 0.75, marginTop: "1rem" }}>{sub.name}</h3>}
+                <div className="card-grid">
+                  {sub.items.map((p) => <ProjectCard key={p.slug} project={p} showFeatured />)}
                 </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div style={{ height: "4rem" }} />
     </>
   );
 }
